@@ -49,18 +49,23 @@ workshop, not the deliverable.
 
 ## 2. Hard constraints — do not break these
 
-0. **No new card ships without external legal review.** See §7. This is the one rule that is not
+0. **NEVER write a `Co-Authored-By` trailer.** Not for Claude, not for any other tool, not ever.
+   Commits are authored by the repository owner alone. No attribution footers, no tool signatures,
+   no "generated with" lines — in commit messages, tag messages, release notes, or anything else
+   this repo publishes. This is not a preference: a history polluted with them had to be destroyed
+   and the repository recreated to remove them.
+1. **No new card ships without external legal review.** See §8. This is the one rule that is not
    about typography, and the one with consequences outside this repo.
-1. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
+2. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
    notebook. An earlier 2-page-per-fiche version was rejected. The original ~23-page cap applied to
    the justice deck alone; the set is now 38 pages across five families, and grows by family.
-2. **Never drop content to make things fit.** Densify instead. This was explicit.
-3. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
+3. **Never drop content to make things fit.** Densify instead. This was explicit.
+4. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
    `build/check.sh` after editing. A card at >100% is losing material you cannot see in the PDF.
-4. **No meta-commentary on the cards.** Never print "I found a discrepancy with your notes",
+5. **No meta-commentary on the cards.** Never print "I found a discrepancy with your notes",
    "to verify with your course", or any decision/assistant voice onto a card. That belongs in chat.
    This was a hard-earned complaint. Legend keys explaining a colour code are fine.
-5. **Expand acronyms in plaintext** next to first use (OPJ, JLD, CSTAGN, CRPC…). Codes are written
+6. **Expand acronyms in plaintext** next to first use (OPJ, JLD, CSTAGN, CRPC…). Codes are written
    out in footers ("Code de procédure pénale art. 53"), not abbreviated.
 
 ---
