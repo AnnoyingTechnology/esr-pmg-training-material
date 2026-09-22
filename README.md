@@ -15,11 +15,11 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 > the date of the release that contains them, and no later — **law changes, and so does doctrine**.
 > Check anything that matters against Légifrance and your own instructors.
 
-**34 A5 cards** across five families:
+**35 A5 cards** across five families:
 
 | Family | Cards | Subject |
 |---|---|---|
-| Justice | `fiche-01` … `fiche-21` | French criminal justice: sources, infraction, enquête, jugement, garanties |
+| Justice | `fiche-01` … `fiche-22` | French criminal justice: sources, infraction, enquête, jugement, garanties |
 | Organisation | `FICHE-organisation-A5` | subdivisions, formations, units |
 | Organisation | `FICHE-territoriale-A5` | territorial echelons, national → local |
 | Histoire | `FRISE-gendarmerie-A5` | gendarmerie chronology |
@@ -32,7 +32,7 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 
 Most people want only the PDFs. They are attached to each [release](../../releases):
 
-- **`FICHES-PMG-A5.pdf`** — all 34 cards, one A5 page each. Read on screen, or print A5.
+- **`FICHES-PMG-A5.pdf`** — all 35 cards, one A5 page each. Read on screen, or print A5.
 - **`FICHES-PMG-A4-2up.pdf`** — 17 A4 landscape sheets, two cards per sheet, **true size** with cut
   frames. This is the one to print and guillotine.
 - Per-family collections: `FICHES-JUSTICE-21-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`,
@@ -68,7 +68,7 @@ loses content that the PDF will not show you. CI fails the build on it.
 
 ```
 build/          fiche.css, check.js, the shell scripts, fit.py
-build/fiches/   the 21 justice cards
+build/fiches/   the 22 justice cards
 build/route/    the 6 sécurité routière cards
 build/ip/       the 4 armement cards
 build/*.html    the standalone cards (timeline, organisation, territoriale)

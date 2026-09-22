@@ -23,9 +23,12 @@ pdfunite $JUSTICE FICHE-organisation-A5.pdf FICHE-territoriale-A5.pdf \
 
 # --- impositions A4 -------------------------------------------------------
 # 2 A5 par A4 paysage, taille réelle, avec cadre de coupe.
+# pdfjam bavarde sur stderr : on ne montre sa sortie qu'en cas d'échec réel,
+# sans pour autant l'envoyer à /dev/null (un pdflatex manquant sortait 69 en silence).
+jam() { if ! pdfjam "$@" >/tmp/pdfjam.log 2>&1; then cat /tmp/pdfjam.log; return 1; fi; }
 impose2up() {  # $1 = recueil A5, $2 = sortie A4
-  pdfjam --nup 2x1 --papersize '{297mm,210mm}' --noautoscale true --frame true \
-         --outfile "$2" "$1" >/dev/null
+  jam --nup 2x1 --papersize '{297mm,210mm}' --noautoscale true --frame true \
+      --outfile "$2" "$1"
 }
 impose2up FICHES-PMG-A5.pdf          FICHES-PMG-A4-2up.pdf
 impose2up FICHES-JUSTICE-21-A5.pdf   FICHES-A4-paysage-2up.pdf
@@ -34,8 +37,8 @@ impose2up ARMEMENT-4-A5.pdf          ARMEMENT-A4-2up.pdf
 
 # 1 A5 centré sur A4 portrait, taille réelle, pour les cartes autonomes.
 surA4() {  # $1 = carte A5, $2 = sortie
-  pdfjam --nup 1x1 --papersize '{210mm,297mm}' --noautoscale true --frame true \
-         --outfile "$2" "$1" >/dev/null
+  jam --nup 1x1 --papersize '{210mm,297mm}' --noautoscale true --frame true \
+      --outfile "$2" "$1"
 }
 surA4 FRISE-gendarmerie-A5.pdf       FRISE-A5-sur-A4.pdf
 surA4 FICHE-organisation-A5.pdf      FICHE-organisation-A5-sur-A4.pdf

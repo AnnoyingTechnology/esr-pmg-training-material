@@ -7,3 +7,6 @@ scan/
 
 # Réglages locaux de l'outillage
 .claude/
+
+# Fiches de documentation CPMGN — diffusion interdite hors Gendarmerie nationale.
+61-*.txt

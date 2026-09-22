@@ -14,18 +14,18 @@ misunderstanding would be inherited by every other candidate who downloads it.
 
 ## 1. What this repo produces
 
-**34 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
+**35 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-21.pdf` | the 21 justice cards, one A5 page each |
+| `out/fiche-01.pdf` … `fiche-22.pdf` | the 22 justice cards, one A5 page each |
 | `out/route-R1.pdf` … `route-R6.pdf` | sécurité routière (APJA) |
 | `out/ip-A1.pdf` … `ip-A4.pdf` | armement / intervention professionnelle |
 | `out/FRISE-gendarmerie-A5.pdf` | gendarmerie chronology (central-axis timeline) |
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
-| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 34 cards in order |
+| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 35 cards in order |
 | `out/FICHES-PMG-A4-2up.pdf` | **the release artefact** — 17 A4 sheets, 2 cards each, true size |
 | `out/FICHES-JUSTICE-21-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`, `ARMEMENT-4-A5.pdf` | per-family collections |
 | `out/*-A4-2up.pdf`, `out/*-sur-A4.pdf` | impositions, true size, with cut frames |
@@ -35,6 +35,8 @@ Source material lives in `content/`, one file per family, each carrying verifica
 | File | Covers | Note |
 |---|---|---|
 | `content/justice_france_21_fiches.md` | fiches 01-21 | **do not edit** — it is the reference |
+| `content/AMENDE_FORFAITAIRE.md` | fiche 22 | Légifrance only; fact-checked 22 Sept 2026 |
+| `content/ORGANISATION_TERRITORIALE.md` | territoriale | redrawn from a raster chart |
 | `content/SECURITE_ROUTIERE.md` | R1-R6 | revised after external legal review |
 | `content/ARMEMENT_IP.md` | A1-A4 | the author's MAAA table + course notes + sourcing tags |
 
@@ -49,7 +51,7 @@ workshop, not the deliverable.
    about typography, and the one with consequences outside this repo.
 1. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
    notebook. An earlier 2-page-per-fiche version was rejected. The original ~23-page cap applied to
-   the justice deck alone; the set is now 34 pages across five families, and grows by family.
+   the justice deck alone; the set is now 35 pages across five families, and grows by family.
 2. **Never drop content to make things fit.** Densify instead. This was explicit.
 3. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
    `build/check.sh` after editing. A card at >100% is losing material you cannot see in the PDF.
@@ -155,7 +157,7 @@ Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or e
 ```
 01 0.858   02 0.900   03 0.856   06 0.924   09 0.848
 11 0.900   12 0.966   13 0.900   organisation 0.89
-route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.933
+route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.933   22 0.854
 ```
 
 The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la
@@ -242,6 +244,29 @@ How to run it:
   different sentences. Work out which sentence each is talking about before changing anything.
 
 **Do not publish a release containing an unreviewed card.**
+
+---
+
+## 8 bis. Restricted documents — the publication line
+
+The gendarmerie's *fiches de documentation* (CPMGN, the `61-xx` series) carry an explicit footer:
+
+> « L'usage, l'impression, la copie, la publication ou la diffusion sont **strictement interdits en
+> dehors de la Gendarmerie nationale**. »
+
+Instruction 234000 and the mémento IP are *n.i. BO* and not publicly distributed. **The repo is
+public.** So:
+
+- **Never commit a restricted document.** `61-*.txt` and `scan/` are gitignored. Check `git status`
+  before committing after any new material arrives.
+- **Separate the law from the apparatus.** The articles these documents cite are public: a card
+  stating CP 121-3 and sourced to Légifrance is publishable. What is *not* publishable is the
+  document's own structure, comparison tables, worked examples and wording — that is what the footer
+  protects. Use a restricted notice to learn *what matters*, then write the card from the code.
+- **Record the source honestly** in `content/`, including when a card could not be built from public
+  sources. A card that cannot be sourced publicly is a card that should not go in a public release.
+- Cards A1 and A3 predate this rule: A1's colour grid comes from a MAAA training document and A3
+  reconstructs instruction 234000. Their release status is **an open decision for the author**.
 
 ---
 
