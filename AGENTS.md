@@ -14,18 +14,18 @@ misunderstanding would be inherited by every other candidate who downloads it.
 
 ## 1. What this repo produces
 
-**35 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
+**38 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-22.pdf` | the 22 justice cards, one A5 page each |
+| `out/fiche-01.pdf` … `fiche-25.pdf` | the 25 justice cards, one A5 page each |
 | `out/route-R1.pdf` … `route-R6.pdf` | sécurité routière (APJA) |
 | `out/ip-A1.pdf` … `ip-A4.pdf` | armement / intervention professionnelle |
 | `out/FRISE-gendarmerie-A5.pdf` | gendarmerie chronology (central-axis timeline) |
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
-| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 35 cards in order |
+| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 38 cards in order |
 | `out/FICHES-PMG-A4-2up.pdf` | **the release artefact** — 17 A4 sheets, 2 cards each, true size |
 
 **One deliverable.** Per-family collections and single-card impositions were dropped: they were an
@@ -38,6 +38,7 @@ Source material lives in `content/`, one file per family, each carrying verifica
 |---|---|---|
 | `content/justice_france_21_fiches.md` | fiches 01-21 | **do not edit** — it is the reference |
 | `content/AMENDE_FORFAITAIRE.md` | fiche 22 | Légifrance only; fact-checked 22 Sept 2026 |
+| `content/INFRACTION_61-02_61-03.md` | fiches 23-25 | coverage from restricted notices, written from the code |
 | `content/ORGANISATION_TERRITORIALE.md` | territoriale | redrawn from a raster chart |
 | `content/SECURITE_ROUTIERE.md` | R1-R6 | revised after external legal review |
 | `content/ARMEMENT_IP.md` | A1-A4 | the author's MAAA table + course notes + sourcing tags |
@@ -53,7 +54,7 @@ workshop, not the deliverable.
    about typography, and the one with consequences outside this repo.
 1. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
    notebook. An earlier 2-page-per-fiche version was rejected. The original ~23-page cap applied to
-   the justice deck alone; the set is now 35 pages across five families, and grows by family.
+   the justice deck alone; the set is now 38 pages across five families, and grows by family.
 2. **Never drop content to make things fit.** Densify instead. This was explicit.
 3. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
    `build/check.sh` after editing. A card at >100% is losing material you cannot see in the PDF.
@@ -159,7 +160,7 @@ Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or e
 ```
 01 0.858   02 0.900   03 0.856   06 0.924   09 0.848
 11 0.900   12 0.966   13 0.900   organisation 0.89
-route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854
+route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854   23 0.888   25 0.935
 ```
 
 The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la
