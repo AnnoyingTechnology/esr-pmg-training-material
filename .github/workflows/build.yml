@@ -78,8 +78,3 @@ jobs:
           files: |
             out/FICHES-PMG-A5.pdf
             out/FICHES-PMG-A4-2up.pdf
-            out/FICHES-JUSTICE-A5.pdf
-            out/SECURITE-ROUTIERE-6-A5.pdf
-            out/ARMEMENT-4-A5.pdf
-            out/FRISE-gendarmerie-A5.pdf
-            out/FICHE-organisation-A5.pdf

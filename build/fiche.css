@@ -834,7 +834,7 @@ h2{ margin-bottom:1.5mm; }
    ===================================================================== */
 .ech{ display:flex; flex-direction:column; }
 .ech__row{
-  display:grid; grid-template-columns:23mm 1fr; column-gap:3mm;
+  display:grid; grid-template-columns:26mm 1fr; column-gap:3mm;
   padding:1.5mm 0; border-top:.3mm dashed var(--fam-line);
 }
 .ech__row:first-child{ border-top:none; padding-top:0; }
@@ -844,19 +844,26 @@ h2{ margin-bottom:1.5mm; }
   text-align:center; display:flex; flex-direction:column; justify-content:center;
 }
 .ech__lvl b{
-  display:block; font-size:6.36pt; font-weight:900; letter-spacing:.01em;
-  line-height:1.06; color:var(--fam); text-transform:uppercase;
+  display:block; font-size:7.95pt; font-weight:900; letter-spacing:-.01em;
+  line-height:1.04; color:var(--fam); text-transform:uppercase;
+  overflow-wrap:anywhere;   /* « ARRONDISSEMENT » débordait de sa colonne */
 }
 .ech__lvl span{
-  display:block; font-size:5.19pt; color:var(--ink-3); line-height:1.18; margin-top:.5mm;
+  display:block; font-size:5.44pt; color:var(--ink-3); line-height:1.16; margin-top:.5mm;
 }
 .ech__body{ min-width:0; display:flex; flex-direction:column; justify-content:center; }
+
+/* Cette fiche est un organigramme : les libellés d'unité sont le contenu,
+   pas une légende. Ils priment sur les gloses. */
+.ech .node b{ font-size:8.37pt; line-height:1.08; }
+.ech .node--sm b{ font-size:7.53pt; }
+.ech .node span{ font-size:5.78pt; line-height:1.15; margin-top:.5mm; }
 
 /* Bandeau « sous le commandement direct de … » */
 .cmd{
   background:var(--fam); color:#fff; border-radius:.8mm;
-  padding:.9mm 2mm; text-align:center;
-  font-size:5.02pt; font-weight:900; letter-spacing:.07em;
+  padding:1.1mm 2mm; text-align:center;
+  font-size:5.94pt; font-weight:900; letter-spacing:.06em;
   text-transform:uppercase; line-height:1.14;
 }
 

@@ -27,8 +27,10 @@ source. `build/package.sh` assembles the collections; nothing is built by hand a
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
 | `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 35 cards in order |
 | `out/FICHES-PMG-A4-2up.pdf` | **the release artefact** — 17 A4 sheets, 2 cards each, true size |
-| `out/FICHES-JUSTICE-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`, `ARMEMENT-4-A5.pdf` | per-family collections |
-| `out/*-A4-2up.pdf`, `out/*-sur-A4.pdf` | impositions, true size, with cut frames |
+
+**One deliverable.** Per-family collections and single-card impositions were dropped: they were an
+artefact of the deck being built in waves, and meaningless to whoever receives the PDF. If you add a
+family, add it to the `ORDRE` list in `package.sh` — do not add a new output file.
 
 Source material lives in `content/`, one file per family, each carrying verification tags:
 
@@ -157,7 +159,7 @@ Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or e
 ```
 01 0.858   02 0.900   03 0.856   06 0.924   09 0.848
 11 0.900   12 0.966   13 0.900   organisation 0.89
-route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.933   22 0.854
+route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854
 ```
 
 The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la
