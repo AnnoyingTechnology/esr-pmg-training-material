@@ -27,7 +27,7 @@ source. `build/package.sh` assembles the collections; nothing is built by hand a
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
 | `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 35 cards in order |
 | `out/FICHES-PMG-A4-2up.pdf` | **the release artefact** — 17 A4 sheets, 2 cards each, true size |
-| `out/FICHES-JUSTICE-21-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`, `ARMEMENT-4-A5.pdf` | per-family collections |
+| `out/FICHES-JUSTICE-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`, `ARMEMENT-4-A5.pdf` | per-family collections |
 | `out/*-A4-2up.pdf`, `out/*-sur-A4.pdf` | impositions, true size, with cut frames |
 
 Source material lives in `content/`, one file per family, each carrying verification tags:

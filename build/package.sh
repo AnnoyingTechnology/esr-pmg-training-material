@@ -13,7 +13,7 @@ ROUTE=$(ls route-R[0-9].pdf | sort)
 ARMEMENT=$(ls ip-A[0-9].pdf | sort)
 
 # --- recueils par famille -------------------------------------------------
-pdfunite $JUSTICE                    FICHES-JUSTICE-21-A5.pdf
+pdfunite $JUSTICE                    FICHES-JUSTICE-A5.pdf
 pdfunite $ROUTE                      SECURITE-ROUTIERE-6-A5.pdf
 pdfunite $ARMEMENT                   ARMEMENT-4-A5.pdf
 
@@ -31,7 +31,7 @@ impose2up() {  # $1 = recueil A5, $2 = sortie A4
       --outfile "$2" "$1"
 }
 impose2up FICHES-PMG-A5.pdf          FICHES-PMG-A4-2up.pdf
-impose2up FICHES-JUSTICE-21-A5.pdf   FICHES-A4-paysage-2up.pdf
+impose2up FICHES-JUSTICE-A5.pdf   FICHES-A4-paysage-2up.pdf
 impose2up SECURITE-ROUTIERE-6-A5.pdf SECURITE-ROUTIERE-A4-2up.pdf
 impose2up ARMEMENT-4-A5.pdf          ARMEMENT-A4-2up.pdf
 

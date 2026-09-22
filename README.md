@@ -33,9 +33,9 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 Most people want only the PDFs. They are attached to each [release](../../releases):
 
 - **`FICHES-PMG-A5.pdf`** — all 35 cards, one A5 page each. Read on screen, or print A5.
-- **`FICHES-PMG-A4-2up.pdf`** — 17 A4 landscape sheets, two cards per sheet, **true size** with cut
+- **`FICHES-PMG-A4-2up.pdf`** — 18 A4 landscape sheets, two cards per sheet, **true size** with cut
   frames. This is the one to print and guillotine.
-- Per-family collections: `FICHES-JUSTICE-21-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`,
+- Per-family collections: `FICHES-JUSTICE-A5.pdf`, `SECURITE-ROUTIERE-6-A5.pdf`,
   `ARMEMENT-4-A5.pdf`, and their A4 impositions.
 
 ---
