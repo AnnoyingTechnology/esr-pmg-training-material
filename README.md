@@ -30,34 +30,32 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 
 ## What to download
 
-Most people want only the PDFs. They are attached to each [release](../../releases):
+The deck is a single PDF attached to each [release](../../releases):
 
-- **`FICHES-PMG-A5.pdf`** — the whole deck, one A5 page per card. Read on screen, or print A5.
-- **`FICHES-PMG-A4-2up.pdf`** — the same deck imposed two cards per A4 landscape sheet, **true
-  size**, with cut frames. This is the one to print and guillotine.
+**`FICHES-PMG-A5.pdf`** — every card, one A5 page each. Read it on screen, or print it: A5 is half an
+A4 sheet, so "2 pages per sheet" in any print dialog gives you two cards per side at true size.
 
-Two files, nothing else. The families below describe how the deck is organised internally; they are
-not separate downloads.
+The families below describe how the deck is organised internally. They are not separate downloads.
 
 ---
 
 ## Building locally
 
-No framework. HTML + one stylesheet, rendered by headless Chrome, imposed with `pdfjam`.
+No framework. HTML + one stylesheet, rendered by headless Chrome, concatenated with `pdfunite`.
 
 ```
-HTML + build/fiche.css  ──chrome --print-to-pdf──▶  A5 PDF  ──pdfjam──▶  A4 imposition
+HTML + build/fiche.css  ──chrome --print-to-pdf──▶  A5 PDF  ──pdfunite──▶  FICHES-PMG-A5.pdf
 ```
 
 ```bash
 ./build/render.sh     # all card HTML → out/*.pdf          (one A5 page each)
 ./build/check.sh      # fill ratio per page; non-zero exit if any page overflows
-./build/package.sh    # collections + A4 impositions
+./build/package.sh    # assemble them into out/FICHES-PMG-A5.pdf
 python3 build/fit.py  # re-solve the per-card density factor
 ```
 
-Requirements: `google-chrome-stable`, `pdfjam` (TeX Live), `pdfunite`/`pdfinfo` (poppler),
-Python 3, and the **Lato** font family installed locally. The CSS uses no webfonts — it must render
+Requirements: `google-chrome-stable`, `pdfunite` and `pdfinfo` (poppler), Python 3, and the
+**Lato** font family installed locally. The CSS uses no webfonts — it must render
 offline. Set `CHROME=/path/to/chrome` to use a different binary.
 
 **`check.sh` is not optional.** `.page` has `overflow:hidden`, so a card over 100 % fill silently

@@ -26,11 +26,10 @@ source. `build/package.sh` assembles the collections; nothing is built by hand a
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
 | `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 38 cards in order |
-| `out/FICHES-PMG-A4-2up.pdf` | **the release artefact** — 17 A4 sheets, 2 cards each, true size |
 
-**One deliverable.** Per-family collections and single-card impositions were dropped: they were an
-artefact of the deck being built in waves, and meaningless to whoever receives the PDF. If you add a
-family, add it to the `ORDRE` list in `package.sh` — do not add a new output file.
+**One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
+was removed: A5 is half an A4, so any print dialog does it. If you add a family, add it to the
+`ORDRE` list in `package.sh` — do not add a new output file.
 
 Source material lives in `content/`, one file per family, each carrying verification tags:
 
@@ -71,10 +70,10 @@ workshop, not the deliverable.
 Everything renders through **headless Chrome**; there is no framework.
 
 ```
-HTML + fiche.css  ──chrome --print-to-pdf──▶  A5 PDF  ──pdfjam──▶  A4 imposition
+HTML + fiche.css  ──chrome --print-to-pdf──▶  A5 PDF  ──pdfunite──▶  recueil
 ```
 
-Available and verified on this machine: `google-chrome-stable` (v152), `pdfjam`, `pdfunite`,
+Available and verified on this machine: `google-chrome-stable` (v152), `pdfunite`,
 `pdfinfo`, `pdftoppm`, `mutool`, `inkscape`, `pandoc`, Python 3 with `PIL` + `numpy`.
 **No** `weasyprint`, **no** `pypdf`.
 
@@ -86,7 +85,7 @@ must render offline.
 ```bash
 ./build/render.sh     # all card HTML → out/*.pdf
 ./build/check.sh      # fill ratio per page; exits non-zero if anything is >100 %
-./build/package.sh    # collections + A4 impositions (replaces the old hand-run pdfjam lines)
+./build/package.sh    # assemble every card into out/FICHES-PMG-A5.pdf
 python3 build/fit.py  # auto-solve the per-fiche density factor (see §5)
 ```
 
@@ -95,14 +94,11 @@ python3 build/fit.py  # auto-solve the per-fiche density factor (see §5)
 ### Continuous integration
 
 `.github/workflows/build.yml` runs the three scripts on every push, and on a `v*` tag publishes
-`FICHES-PMG-A5.pdf` + `FICHES-PMG-A4-2up.pdf` + the family collections as a GitHub release.
+`FICHES-PMG-A5.pdf` as a GitHub release.
 
-Two gates fail the build, deliberately:
-- **`check.sh`** — any page over 100 % fill. Runner font metrics are not guaranteed identical to a
-  local machine, so a card sitting at 99 % locally can overflow in CI. That is the gate doing its
-  job: fix the card, do not relax the gate.
-- **imposition check** — measures ink extent on the A4 sheet and requires 294–297 mm, catching a
-  regression to `pdfjam`'s default scaling.
+One gate fails the build, deliberately: **`check.sh`** — any page over 100 % fill. Runner font
+metrics are not guaranteed identical to a local machine, so a card sitting at 99 % locally can
+overflow in CI. That is the gate doing its job: fix the card, do not relax the gate.
 
 To cut a release: `git tag v2026.09.22 && git push --tags`.
 
@@ -177,9 +173,6 @@ known and accepted. If a card needs to go below ~0.85, prefer splitting or re-la
 
 ## 6. Gotchas that cost real time
 
-- **`pdfjam --scale 1.0` does NOT mean true size.** It is relative to the *fitted* size, so an A5
-  input gets blown up to fill A4. Use **`--noautoscale true`**. Verify by measuring ink extent with
-  PIL/numpy, not by eye.
 - **`column-fill:auto` + `column-span:all` fight each other** in Chromium and generate extra column
   banks (horizontal overflow). This is why `.zfull`/`.zcol` exists instead of spanners.
 - **A multi-column block with a definite height overflows horizontally**, not vertically. Give it
