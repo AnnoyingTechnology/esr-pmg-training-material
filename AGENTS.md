@@ -268,8 +268,10 @@ public.** So:
   protects. Use a restricted notice to learn *what matters*, then write the card from the code.
 - **Record the source honestly** in `content/`, including when a card could not be built from public
   sources. A card that cannot be sourced publicly is a card that should not go in a public release.
-- Cards A1 and A3 predate this rule: A1's colour grid comes from a MAAA training document and A3
-  reconstructs instruction 234000. Their release status is **an open decision for the author**.
+- **A1 and A3 ship.** A1's colour grid and A3's safety rules were drafted from the author's own
+  training material; the call was made and it is **settled — do not reopen it**. The rule above
+  governs what gets *committed* (never a restricted document itself) and how new cards are *written*
+  (from the code, not from a notice's structure). It is not a veto on the deck's content.
 
 ---
 

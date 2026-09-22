@@ -960,3 +960,9 @@ h2{ margin-bottom:1.5mm; }
 .page[data-fam="armement"] .vs__bd ul li:last-child{ margin-bottom:0; }
 .page[data-fam="armement"] .vs__bd ul li::before{ display:none; }
 .page[data-fam="armement"] .vs__bd .art--lg{ margin-bottom:.7mm; }
+
+/* Sous-libellé dans la colonne critère d'une matrice (« droit commun », etc.) */
+.matrix tbody td.crit small{
+  display:block; font-size:4.86pt; font-weight:700; letter-spacing:0;
+  text-transform:none; color:var(--ink-3); margin-top:.4mm; line-height:1.15;
+}
