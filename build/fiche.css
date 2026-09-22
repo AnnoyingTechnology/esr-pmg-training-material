@@ -1,0 +1,955 @@
+/* =====================================================================
+   FICHES JUSTICE — feuille de style A5
+   Support de révision — Gendarmerie (réserve)
+   Rendu : Chromium headless --print-to-pdf
+   ===================================================================== */
+
+@page { size: 148mm 210mm; margin: 0; }
+
+:root{
+  /* Encres */
+  --ink:        #11161d;
+  --ink-2:      #39424f;
+  --ink-3:      #6b7683;
+  --rule:       #d8dde4;
+  --rule-2:     #eceff3;
+  --paper:      #ffffff;
+  --wash:       #f6f8fa;
+
+  /* Couleur de famille — surchargée par .page[data-fam] */
+  --fam:        #1b3a5c;
+  --fam-soft:   #eef3f8;
+  --fam-line:   #c3d4e4;
+
+  /* Sémantique des encadrés */
+  --droit:      #1b4f8a;
+  --droit-bg:   #eef4fb;
+  --terrain:    #1d6b4f;
+  --terrain-bg: #ecf6f1;
+  --piege:      #a32b2b;
+  --piege-bg:   #fceeee;
+  --alerte:     #8a5a12;
+  --alerte-bg:  #fdf4e6;
+}
+
+/* Familles thématiques ------------------------------------------------ */
+.page[data-fam="fondations"]{ --fam:#1b3a5c; --fam-soft:#eef3f8; --fam-line:#c3d4e4; }
+.page[data-fam="infraction"]{ --fam:#8c2f39; --fam-soft:#fbeff0; --fam-line:#e8c6ca; }
+.page[data-fam="enquete"]   { --fam:#1d5f4b; --fam-soft:#ecf5f1; --fam-line:#bfdbd0; }
+.page[data-fam="jugement"]  { --fam:#4c3a75; --fam-soft:#f1eff8; --fam-line:#cfc7e4; }
+.page[data-fam="garanties"] { --fam:#8a5a12; --fam-soft:#fdf4e6; --fam-line:#e8d3ac; }
+.page[data-fam="methode"]   { --fam:#37474f; --fam-soft:#eff2f4; --fam-line:#ccd4d8; }
+
+/* ===================================================================== */
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+body{
+  font-family:"Lato","DejaVu Sans",sans-serif;
+  font-size:7.53pt;
+  line-height:1.38;
+  color:var(--ink);
+  background:#5a6270;
+  font-variant-numeric:oldstyle-nums;
+  font-variant-numeric:normal;
+}
+
+/* --- La page A5 ------------------------------------------------------ */
+.page{
+  position:relative;
+  width:148mm; height:210mm;
+  background:var(--paper);
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  display:flex; flex-direction:column;
+}
+.page:last-child{ page-break-after:auto; break-after:auto; }
+
+/* Aperçu écran uniquement */
+@media screen{
+  body{ padding:8mm 0; display:flex; flex-direction:column; align-items:center; gap:6mm; }
+  .page{ box-shadow:0 2mm 6mm rgba(0,0,0,.35); }
+}
+
+.body{
+  flex:1 1 auto;
+  padding:4.5mm 10mm 6mm 10mm;   /* bas : dégage le bandeau .stamp */
+  display:flex; flex-direction:column;
+  justify-content:space-between;   /* répartit l'espace résiduel entre sections */
+  min-height:0;
+}
+.body--top{ justify-content:flex-start; }
+
+/* =====================================================================
+   EN-TÊTE
+   ===================================================================== */
+.hdr{
+  flex:0 0 auto;
+  background:var(--fam);
+  color:#fff;
+  padding:5.5mm 10mm 5mm 10mm;
+  display:flex; align-items:flex-start; gap:4mm;
+}
+.hdr__num{
+  font-size:20.93pt; font-weight:900; line-height:.82;
+  letter-spacing:-.02em;
+  opacity:.9;
+  flex:0 0 auto;
+  padding-top:.3mm;
+}
+.hdr__txt{ flex:1 1 auto; min-width:0; padding-top:.6mm; }
+.hdr__cat{
+  font-size:5.02pt; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+  opacity:.72; margin-bottom:1mm;
+}
+.hdr__title{
+  font-size:10.88pt; font-weight:800; line-height:1.1; letter-spacing:-.01em;
+}
+.hdr__pg{
+  flex:0 0 auto; align-self:flex-end;
+  font-size:5.44pt; font-weight:700; letter-spacing:.08em;
+  opacity:.75; padding-bottom:.4mm;
+}
+
+/* En-tête réduit (pages suivantes) */
+.hdr--slim{
+  padding:2.8mm 10mm;
+  align-items:center;
+}
+.hdr--slim .hdr__num{ font-size:9.21pt; line-height:1; padding-top:0; }
+.hdr--slim .hdr__title{ font-size:7.11pt; font-weight:700; }
+.hdr--slim .hdr__txt{ padding-top:0; }
+.hdr--slim .hdr__cat{ display:none; }
+.hdr--slim .hdr__pg{ align-self:center; }
+
+/* =====================================================================
+   IDÉE-CLEF
+   ===================================================================== */
+.key{
+  background:var(--fam-soft);
+  border-left:1.1mm solid var(--fam);
+  padding:2mm 2.6mm;
+  margin-bottom:2.9mm;
+}
+.key__lbl{
+  font-size:5.02pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--fam); display:block; margin-bottom:.8mm;
+}
+.key p{ font-size:7.2pt; line-height:1.34; color:var(--ink); }
+
+/* =====================================================================
+   TITRES DE SECTION
+   ===================================================================== */
+h2{
+  font-size:5.86pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--fam);
+  display:flex; align-items:center; gap:2.5mm;
+  margin:0 0 2.2mm 0;
+}
+h2::after{
+  content:""; flex:1 1 auto; height:.25mm; background:var(--fam-line);
+}
+h2 + .sub{ margin-top:-1.4mm; }
+
+h3{
+  font-size:6.7pt; font-weight:800; color:var(--ink);
+  margin:0 0 1.4mm 0;
+}
+
+.sec{ margin-bottom:2.9mm; }
+.sec:last-child{ margin-bottom:0; }
+.sec--tight{ margin-bottom:2.4mm; }
+
+p{ margin:0 0 1.6mm 0; }
+p:last-child{ margin-bottom:0; }
+.sub{ font-size:6.19pt; color:var(--ink-3); line-height:1.32; }
+
+strong{ font-weight:800; }
+em{ font-style:italic; }
+
+/* Puces ---------------------------------------------------------------- */
+ul{ list-style:none; }
+ul li{
+  position:relative; padding-left:3.2mm; margin-bottom:1mm; font-size:6.95pt;
+  line-height:1.33;
+}
+ul li:last-child{ margin-bottom:0; }
+ul li::before{
+  content:""; position:absolute; left:.6mm; top:1.55mm;
+  width:1.1mm; height:1.1mm; border-radius:50%; background:var(--fam);
+}
+ol{ list-style:none; counter-reset:n; }
+ol li{
+  position:relative; padding-left:5mm; margin-bottom:1.2mm; font-size:6.95pt;
+  counter-increment:n; line-height:1.33;
+}
+ol li::before{
+  content:counter(n); position:absolute; left:0; top:.15mm;
+  width:3.6mm; height:3.6mm; border-radius:50%;
+  background:var(--fam); color:#fff;
+  font-size:5.02pt; font-weight:900; text-align:center; line-height:3.6mm;
+}
+
+/* =====================================================================
+   TABLEAUX
+   ===================================================================== */
+table{
+  width:100%; border-collapse:collapse; font-size:6.7pt;
+}
+thead th{
+  background:var(--fam); color:#fff;
+  font-size:5.36pt; font-weight:900; letter-spacing:.1em; text-transform:uppercase;
+  text-align:left; padding:1.6mm 2mm; line-height:1.2;
+  vertical-align:middle;
+}
+tbody td{
+  padding:1.7mm 2mm; border-bottom:.22mm solid var(--rule);
+  vertical-align:top; line-height:1.3;
+}
+tbody tr:last-child td{ border-bottom:none; }
+tbody tr:nth-child(even) td{ background:var(--wash); }
+.tbl-wrap{ border:.25mm solid var(--rule); border-radius:1mm; overflow:hidden; }
+
+/* Colonne libellé (tableaux à 2 colonnes question → réponse) */
+td.lbl{
+  font-weight:700; color:var(--ink-2); width:38%;
+}
+
+/* Matrice comparative (contravention / délit / crime) ------------------- */
+.matrix{ font-size:6.11pt; table-layout:fixed; }
+.matrix th.crit{
+  background:var(--ink-2); width:26mm;
+}
+.matrix thead th{ text-align:center; padding:1.5mm 1mm; }
+.matrix thead th.c1{ background:#4a7d3f; }
+.matrix thead th.c2{ background:#b06a15; }
+.matrix thead th.c3{ background:#8c2f39; }
+.matrix tbody td{
+  text-align:center; padding:1.5mm 1.2mm; line-height:1.25;
+}
+.matrix tbody td.crit{
+  text-align:left; font-weight:800; font-size:5.52pt;
+  text-transform:uppercase; letter-spacing:0;
+  vertical-align:middle;
+  color:var(--ink-2); background:var(--rule-2)!important;
+}
+.matrix .big{ font-size:7.53pt; font-weight:900; display:block; }
+
+/* Matrice « héros » : seule pièce maîtresse de la page */
+.matrix--lg{ font-size:6.86pt; }
+.matrix--lg thead th{ font-size:5.86pt; padding:2.2mm 1.2mm; }
+.matrix--lg tbody td{ padding:2.6mm 1.4mm; }
+.matrix--lg tbody td.crit{ font-size:6.03pt; }
+.matrix--lg .big{ font-size:8.79pt; }
+
+/* =====================================================================
+   DIAGRAMMES — briques communes
+   ===================================================================== */
+.dia{ margin:0 0 1mm 0; }
+
+/* Nœud ----------------------------------------------------------------- */
+.node{
+  border:.3mm solid var(--fam-line);
+  background:#fff;
+  border-radius:1.2mm;
+  padding:1.5mm 2.5mm;
+  text-align:center;
+  line-height:1.22;
+}
+.node b{ font-size:6.7pt; font-weight:800; display:block; letter-spacing:.01em; }
+.node span{ font-size:5.52pt; color:var(--ink-3); display:block; margin-top:.4mm; }
+.node--fill{ background:var(--fam); border-color:var(--fam); color:#fff; }
+.node--fill span{ color:rgba(255,255,255,.78); }
+.node--soft{ background:var(--fam-soft); }
+.node--ghost{ border-style:dashed; background:#fff; }
+.node--sm b{ font-size:5.86pt; }
+.node--wide{ padding:1.5mm 3mm; }
+
+/* Connecteur vertical (trait + pointe) ---------------------------------- */
+.arr{
+  height:4.2mm; position:relative;
+}
+.arr::before{
+  content:""; position:absolute; left:50%; top:0; bottom:1.1mm;
+  width:.3mm; margin-left:-.15mm; background:var(--fam-line);
+}
+.arr::after{
+  content:""; position:absolute; left:50%; bottom:0;
+  margin-left:-.9mm;
+  border-left:.9mm solid transparent; border-right:.9mm solid transparent;
+  border-top:1.2mm solid var(--fam-line);
+}
+.arr--sm{ height:3mm; }
+.arr--line::after{ display:none; }
+.arr--line::before{ bottom:0; }
+
+/* Étiquette sur le connecteur */
+.arr__lbl{
+  position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  background:#fff; padding:0 1.2mm;
+  font-size:5.02pt; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+
+/* Chaîne verticale ------------------------------------------------------ */
+.flow{ display:flex; flex-direction:column; }
+.flow > .node{ align-self:center; min-width:46mm; }
+.flow > .node--full{ align-self:stretch; min-width:0; }
+
+/* Fourche : barre horizontale + descentes ------------------------------- */
+.branch{ position:relative; height:5mm; }
+.branch::before{                       /* tige centrale */
+  content:""; position:absolute; left:50%; top:0; height:2.4mm;
+  width:.3mm; margin-left:-.15mm; background:var(--fam-line);
+}
+.branch__bar{
+  position:absolute; top:2.4mm; height:2.6mm;
+  border-top:.3mm solid var(--fam-line);
+}
+.branch__bar::before,
+.branch__bar::after{
+  content:""; position:absolute; top:0; width:.3mm; height:100%;
+  background:var(--fam-line);
+}
+.branch__bar::before{ left:0; }
+.branch__bar::after{ right:0; }
+.branch__bar i{                        /* descente intermédiaire */
+  position:absolute; top:0; left:50%; margin-left:-.15mm;
+  width:.3mm; height:100%; background:var(--fam-line);
+}
+/* largeurs de barre : centre des colonnes extrêmes */
+.branch--2 .branch__bar{ left:25%; right:25%; }
+.branch--3 .branch__bar{ left:16.666%; right:16.666%; }
+.branch--4 .branch__bar{ left:12.5%;  right:12.5%; }
+
+.cols{ display:flex; gap:2mm; align-items:stretch; }
+.cols > *{ flex:1 1 0; min-width:0; }
+.cols--top{ align-items:flex-start; }
+
+/* Ligne de flux horizontale (A → B → C) --------------------------------- */
+.hflow{
+  display:flex; align-items:center; gap:0;
+}
+.hflow > .node{ flex:1 1 0; min-width:0; }
+.harr{
+  flex:0 0 4mm; height:.3mm; background:var(--fam-line);
+  position:relative;
+}
+.harr::after{
+  content:""; position:absolute; right:0; top:50%; margin-top:-.9mm;
+  border-top:.9mm solid transparent; border-bottom:.9mm solid transparent;
+  border-left:1.2mm solid var(--fam-line);
+}
+.harr--sm{ flex-basis:2.6mm; }
+
+/* Étapes numérotées en bande (SÉCURISER → SECOURIR → …) ------------------ */
+.steps{ display:flex; gap:.8mm; }
+.steps > div{
+  flex:1 1 0; min-width:0;
+  background:var(--fam-soft); border:.25mm solid var(--fam-line);
+  padding:1.6mm .6mm; text-align:center;
+  font-size:5.36pt; font-weight:900; letter-spacing:.03em; text-transform:uppercase;
+  color:var(--fam); line-height:1.1;
+}
+
+/* =====================================================================
+   PYRAMIDE DES NORMES
+   ===================================================================== */
+.pyr{ display:flex; flex-direction:column; align-items:center; gap:.7mm; }
+.pyr__lvl{
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  color:#fff; border-radius:.8mm;
+  padding:1.7mm 2mm;
+  line-height:1.15;
+}
+.pyr__lvl b{ font-size:6.36pt; font-weight:900; letter-spacing:.04em; }
+.pyr__lvl span{
+  display:block; font-size:5.11pt; font-weight:600; opacity:.8; margin-top:.3mm;
+  letter-spacing:.02em;
+}
+.pyr__lvl:nth-child(1){ width:46%;  background:#16304d; }
+.pyr__lvl:nth-child(2){ width:60%;  background:#24507c; }
+.pyr__lvl:nth-child(3){ width:74%;  background:#35699b; }
+.pyr__lvl:nth-child(4){ width:88%;  background:#5a8ab5; }
+.pyr__lvl:nth-child(5){ width:100%; background:#89aecb; }
+.pyr__rank{
+  position:absolute; left:1.6mm; top:50%; transform:translateY(-50%);
+  font-size:5.02pt; font-weight:900; opacity:.45;
+}
+
+/* =====================================================================
+   ÉCHELLE / BARÈME (amendes, durées)
+   ===================================================================== */
+.scale{ display:flex; flex-direction:column; gap:.9mm; }
+.scale__row{ display:flex; align-items:center; gap:2mm; }
+.scale__lbl{
+  flex:0 0 22mm; font-size:6.03pt; font-weight:800; color:var(--ink-2);
+  text-align:right;
+}
+.scale__bar{ flex:1 1 auto; height:4.2mm; position:relative; background:var(--rule-2); border-radius:.6mm; }
+.scale__bar i{
+  position:absolute; left:0; top:0; bottom:0; border-radius:.6mm;
+  background:var(--fam); opacity:.85;
+}
+.scale__val{
+  position:absolute; right:1.6mm; top:50%; transform:translateY(-50%);
+  font-size:6.03pt; font-weight:900; color:var(--ink);
+}
+.scale__val--in{ right:auto; left:1.8mm; color:#fff; }
+
+/* =====================================================================
+   PASTILLES / JETONS
+   ===================================================================== */
+.chips{ display:flex; flex-wrap:wrap; gap:1.2mm; }
+.chip{
+  border:.3mm solid var(--fam-line); background:var(--fam-soft);
+  color:var(--fam);
+  border-radius:1mm; padding:1.1mm 2mm;
+  font-size:6.19pt; font-weight:800; white-space:nowrap;
+}
+.chip--strong{ background:var(--fam); border-color:var(--fam); color:#fff; }
+.chip--plain{ background:#fff; color:var(--ink-2); border-color:var(--rule); }
+.chip small{ font-size:5.02pt; font-weight:700; opacity:.7; display:block; text-align:center; }
+
+/* Lexique en ligne : terme + définition --------------------------------- */
+.lex{ font-size:6.53pt; line-height:1.5; color:var(--ink-2); }
+.lex b{ color:var(--ink); font-weight:800; }
+.lex .sep{ color:var(--fam); font-weight:900; padding:0 .6mm; }
+
+/* =====================================================================
+   FRISE / DATES
+   ===================================================================== */
+.tl{ position:relative; padding-top:2.6mm; }
+.tl::before{
+  content:""; position:absolute; left:0; right:0; top:3.9mm;
+  height:.3mm; background:var(--fam-line);
+}
+.tl__row{ display:flex; justify-content:space-between; position:relative; }
+.tl__i{ flex:1 1 0; text-align:center; position:relative; padding-top:3.6mm; }
+.tl__i::before{
+  content:""; position:absolute; left:50%; top:.9mm; margin-left:-.9mm;
+  width:1.8mm; height:1.8mm; border-radius:50%;
+  background:var(--fam); border:.3mm solid #fff;
+}
+.tl__d{ font-size:6.36pt; font-weight:900; color:var(--fam); display:block; }
+.tl__l{ font-size:5.19pt; color:var(--ink-3); display:block; line-height:1.18; margin-top:.3mm; }
+
+/* =====================================================================
+   ENCADRÉS SÉMANTIQUES — DROIT / TERRAIN / PIÈGE
+   ===================================================================== */
+.box{
+  border-radius:1.2mm; padding:2mm 2.6mm 2mm 2.6mm;
+  margin-bottom:2mm; position:relative;
+  font-size:6.61pt; line-height:1.32;
+  border:.25mm solid;
+}
+.box:last-child{ margin-bottom:0; }
+.box__lbl{
+  font-size:4.94pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  display:block; margin-bottom:.9mm;
+}
+.box--piege  { background:var(--piege-bg);   border-color:#e8c2c2; }
+.box--piege   .box__lbl{ color:var(--piege); }
+.box--terrain{ background:var(--terrain-bg); border-color:#c2dfd2; }
+.box--terrain .box__lbl{ color:var(--terrain); }
+.box--droit  { background:var(--droit-bg);   border-color:#c6d8ec; }
+.box--droit   .box__lbl{ color:var(--droit); }
+.box--alerte { background:var(--alerte-bg);  border-color:#e7d2ab; }
+.box--alerte  .box__lbl{ color:var(--alerte); }
+
+/* Encadré « réflexe » pleine largeur, fond sombre ----------------------- */
+.reflex{
+  background:var(--ink); color:#fff;
+  border-radius:1.2mm; padding:2.2mm 3mm;
+  display:flex; align-items:center; gap:2.5mm;
+}
+.reflex__lbl{
+  font-size:4.94pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.55); flex:0 0 auto;
+  writing-mode:horizontal-tb;
+}
+.reflex__txt{
+  font-size:5.94pt; font-weight:800; letter-spacing:.01em; line-height:1.3;
+}
+.reflex__txt em{ font-style:normal; color:#9fb6cd; font-weight:900; padding:0 .3mm; }
+
+/* =====================================================================
+   RÉFÉRENCES D'ARTICLES
+   ===================================================================== */
+.art{
+  display:inline-block;
+  background:var(--ink); color:#fff;
+  font-size:5.36pt; font-weight:900; letter-spacing:.02em;
+  padding:.4mm 1.2mm; border-radius:.6mm;
+  white-space:nowrap;
+  vertical-align:baseline;
+}
+.art--soft{ background:var(--rule-2); color:var(--ink-2); }
+
+.rule-list{ display:flex; flex-direction:column; gap:1.3mm; }
+.rule-list > div{
+  display:flex; gap:2mm; align-items:baseline;
+  font-size:6.61pt; line-height:1.3;
+}
+.rule-list .art{ flex:0 0 auto; margin-top:.2mm; }
+
+/* =====================================================================
+   PIED DE FICHE
+   ===================================================================== */
+.foot{
+  flex:0 0 auto;
+  margin-top:auto;
+  padding:2.2mm 10mm 5.8mm 10mm;
+  border-top:.25mm solid var(--rule);
+  font-size:5.27pt; color:var(--ink-3); line-height:1.35;
+}
+.foot b{ color:var(--ink-2); font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:4.85pt; }
+.foot a{ color:var(--ink-3); text-decoration:none; }
+.foot__line{ margin-bottom:.8mm; }
+.foot__line:last-child{ margin-bottom:0; }
+
+/* Bandeau de bas de page (numérotation) --------------------------------- */
+.stamp{
+  position:absolute; left:10mm; right:10mm; bottom:2.2mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:4.77pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:#aeb6c0;
+}
+.foot + .stamp{ display:flex; }
+
+/* Utilitaires ---------------------------------------------------------- */
+.mt0{ margin-top:0; }  .mb0{ margin-bottom:0!important; }
+.mb1{ margin-bottom:1.4mm; } .mb2{ margin-bottom:2.4mm; } .mb3{ margin-bottom:3.4mm; }
+.center{ text-align:center; }
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:2.4mm; }
+.grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:2mm; }
+.nowrap{ white-space:nowrap; }
+
+/* =====================================================================
+   CONTRÔLE DE LA NORME — objet → moyen → juge
+   ===================================================================== */
+.ctrl{ display:flex; flex-direction:column; gap:1.3mm; }
+.ctrl__row{
+  display:grid; grid-template-columns:33mm 1fr 44mm;
+  align-items:center; gap:0;
+}
+.ctrl__obj{
+  background:var(--ink); color:#fff; border-radius:.8mm;
+  padding:1.5mm 2mm; text-align:center;
+  font-size:5.78pt; font-weight:900; letter-spacing:.04em; line-height:1.12;
+}
+.ctrl__obj small{ display:block; font-size:4.69pt; font-weight:700; opacity:.6; letter-spacing:.06em; }
+.ctrl__mid{ position:relative; height:4.6mm; }
+.ctrl__mid::before{
+  content:""; position:absolute; left:1.5mm; right:2.6mm; top:50%;
+  height:.3mm; background:var(--fam-line);
+}
+.ctrl__mid::after{
+  content:""; position:absolute; right:1.5mm; top:50%; margin-top:-.9mm;
+  border-top:.9mm solid transparent; border-bottom:.9mm solid transparent;
+  border-left:1.2mm solid var(--fam-line);
+}
+.ctrl__mid span{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:0 1.1mm; white-space:nowrap;
+  font-size:5.02pt; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--fam);
+}
+.ctrl__juge{
+  border:.3mm solid var(--fam-line); background:var(--fam-soft);
+  border-radius:.8mm; padding:1.5mm 2mm; text-align:center;
+  font-size:6.03pt; font-weight:800; color:var(--fam); line-height:1.15;
+}
+
+/* Question d'orientation — si … alors … ------------------------------- */
+.orient{ display:flex; flex-direction:column; gap:1mm; }
+.orient__row{
+  display:flex; align-items:center; gap:2mm;
+  border:.25mm solid var(--rule); border-radius:.8mm;
+  padding:1.4mm 2mm; font-size:6.36pt;
+}
+.orient__q{ flex:1 1 auto; color:var(--ink-2); }
+.orient__a{ flex:0 0 auto; font-weight:900; color:var(--fam); font-size:6.19pt; }
+
+/* Famille supplémentaire : culture civile */
+.page[data-fam="civil"]{ --fam:#155e75; --fam-soft:#e9f3f7; --fam-line:#b6d5e1; }
+
+/* =====================================================================
+   FACE-À-FACE (siège/parquet, PA/PJ, action publique/civile…)
+   ===================================================================== */
+.vs{ display:grid; grid-template-columns:1fr 1fr; gap:2mm; }
+.vs--3{ grid-template-columns:1fr 1fr 1fr; }
+.vs__col{ border:.25mm solid var(--rule); border-radius:1mm; overflow:hidden;
+          display:flex; flex-direction:column; }
+.vs__hd{
+  padding:1.5mm 1.6mm; color:#fff; text-align:center;
+  font-size:5.52pt; font-weight:900; letter-spacing:.08em; text-transform:uppercase;
+  line-height:1.15; background:var(--fam);
+}
+.vs__hd small{ display:block; font-size:4.69pt; font-weight:700; opacity:.72; letter-spacing:.04em; }
+.vs__hd--alt{ background:var(--ink-2); }
+.vs__hd--a{ background:#1b4f8a; } .vs__hd--b{ background:#1d6b4f; } .vs__hd--c{ background:#8c2f39; }
+.vs__bd{ padding:1.8mm 2mm; font-size:6.28pt; line-height:1.32; flex:1 1 auto; }
+.vs__bd ul li{ font-size:6.19pt; margin-bottom:.8mm; padding-left:2.8mm; }
+.vs__bd ul li::before{ top:1.35mm; width:.9mm; height:.9mm; }
+
+/* Convergence (deux branches qui se rejoignent) ------------------------ */
+.merge{ position:relative; height:5.4mm; }
+.merge__bar{ position:absolute; top:0; height:2.6mm; border-bottom:.3mm solid var(--fam-line); }
+.merge__bar::before,.merge__bar::after{
+  content:""; position:absolute; top:0; width:.3mm; height:100%; background:var(--fam-line);
+}
+.merge__bar::before{ left:0; } .merge__bar::after{ right:0; }
+.merge--2 .merge__bar{ left:25%; right:25%; }
+.merge::before{
+  content:""; position:absolute; left:50%; top:2.6mm; height:1.6mm;
+  width:.3mm; margin-left:-.15mm; background:var(--fam-line);
+}
+.merge::after{
+  content:""; position:absolute; left:50%; bottom:0; margin-left:-.9mm;
+  border-left:.9mm solid transparent; border-right:.9mm solid transparent;
+  border-top:1.2mm solid var(--fam-line);
+}
+
+/* Addition d'éléments (élément légal + matériel + moral) ---------------- */
+.plus{ height:3.8mm; position:relative; }
+.plus::after{
+  content:"+"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  font-size:8.37pt; font-weight:900; color:var(--fam); line-height:1;
+}
+
+/* Chaîne à nœuds pleine largeur ---------------------------------------- */
+.flow--stretch > .node{ align-self:stretch; min-width:0; }
+
+/* Anatomie d'une référence --------------------------------------------- */
+.anat__ref{
+  text-align:center; font-size:12.56pt; font-weight:900; letter-spacing:.01em;
+  padding:1mm 0 2mm;
+}
+.anat__ref span{ border-bottom:.9mm solid; padding-bottom:.8mm; }
+.anat__ref .a1{ border-color:#1b4f8a; } .anat__ref .a2{ border-color:#1d6b4f; } .anat__ref .a3{ border-color:#a32b2b; }
+.anat__leg{ display:flex; gap:3mm; justify-content:center; }
+.anat__leg div{ font-size:5.86pt; text-align:center; line-height:1.25; }
+.anat__leg b{ display:block; font-size:6.19pt; }
+.anat__leg i{ display:inline-block; width:2.4mm; height:1mm; border-radius:.5mm; margin-bottom:.6mm; }
+
+/* Citation / phrase à retenir ------------------------------------------ */
+.quote{
+  border-left:1.1mm solid var(--fam); background:var(--wash);
+  padding:1.7mm 2.6mm; font-size:6.78pt; font-weight:700; font-style:italic;
+  line-height:1.32; margin-bottom:1.3mm;
+}
+.quote:last-child{ margin-bottom:0; }
+
+/* Étape nommée (le vocabulaire change selon le stade) ------------------- */
+.stage{ display:flex; gap:2mm; align-items:flex-start; margin-bottom:1.3mm; }
+.stage:last-child{ margin-bottom:0; }
+.stage__t{
+  flex:0 0 21mm; font-size:5.19pt; font-weight:900; letter-spacing:.06em;
+  text-transform:uppercase; color:#fff; background:var(--fam);
+  padding:1.1mm 1mm; text-align:center; border-radius:.6mm; line-height:1.1;
+}
+.stage__b{ flex:1 1 auto; font-size:6.28pt; line-height:1.32; padding-top:.3mm; }
+
+/* =====================================================================
+   ZONE DE NOTES — transforme l'espace résiduel en espace d'annotation
+   ===================================================================== */
+.notes{ margin-top:2.4mm; }
+.notes__lbl{
+  font-size:4.77pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  color:#b4bcc6; display:block; margin-bottom:1.6mm;
+}
+.notes__l{
+  background-image:repeating-linear-gradient(to bottom,
+    transparent 0, transparent 5.2mm,
+    var(--rule-2) 5.2mm, var(--rule-2) 5.45mm);
+}
+.notes--3 .notes__l{ height:16.4mm; }
+.notes--4 .notes__l{ height:21.8mm; }
+.notes--5 .notes__l{ height:27.3mm; }
+.notes--6 .notes__l{ height:32.7mm; }
+
+.branch--nostem::before{ display:none; }
+
+/* =====================================================================
+   MISE EN PAGE DEUX COLONNES — une fiche = une page A5
+   ===================================================================== */
+.body--2col{
+  display:block;
+  flex:0 0 auto;        /* hauteur naturelle : le bloc coule, il n'est pas étiré */
+  column-count:2;
+  column-gap:5mm;
+  column-rule:.2mm solid var(--rule-2);
+  column-fill:balance;
+  padding:4mm 8mm 5.5mm 8mm;
+}
+.body--2col > *{ break-inside:avoid; }
+.body--2col .sec{ margin-bottom:2.9mm; }
+
+
+/* Resserrements propres à la colonne étroite */
+.body--2col .node b{ font-size:6.42pt; }
+.body--2col .node span{ font-size:5.49pt; }
+.body--2col .arr{ height:3.4mm; }
+.body--2col .box{ padding:1.6mm 2.1mm; margin-bottom:1.6mm; }
+.body--2col .rule-list{ gap:1mm; }
+.body--2col ul li, .body--2col ol li{ margin-bottom:.7mm; }
+
+/* Chaîne horizontale : étiquette portée par la flèche */
+.harr{ position:relative; }
+.harr span{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:0 .8mm; white-space:nowrap;
+  font-size:5.02pt; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.hflow > .node{ display:flex; flex-direction:column; justify-content:center; }
+.harr--lbl{ flex-basis:9mm; }
+
+/* =====================================================================
+   DENSIFICATION — une fiche = une page A5
+   ===================================================================== */
+.body--2col .sec{ margin-bottom:2.1mm; }
+.body--2col > .sec[style*="column-span"], .body--2col > .sec{ }
+
+/* Nœuds et connecteurs plus ramassés */
+.node{ padding:1mm 1.8mm; border-radius:.9mm; }
+.node span{ margin-top:.2mm; }
+.arr{ height:3mm; }
+.arr--sm{ height:2.4mm; }
+.branch{ height:3.6mm; }
+.branch::before{ height:1.6mm; }
+.branch__bar{ top:1.6mm; height:2mm; }
+.merge{ height:4mm; }
+.merge__bar{ height:2mm; }
+.merge::before{ top:2mm; height:1.1mm; }
+.cols{ gap:1.4mm; }
+
+/* Contrôle de la norme */
+.ctrl{ gap:.9mm; }
+.ctrl__row{ grid-template-columns:30mm 1fr 41mm; }
+.ctrl__obj{ padding:1mm 1.4mm; }
+.ctrl__juge{ padding:1mm 1.4mm; }
+.ctrl__mid{ height:3.6mm; }
+
+/* Face-à-face */
+.vs{ gap:1.4mm; }
+.vs__hd{ padding:1mm 1.2mm; }
+.vs__bd{ padding:1.2mm 1.5mm; }
+
+/* Tableaux */
+tbody td{ padding:1.1mm 1.6mm; }
+thead th{ padding:1.1mm 1.6mm; }
+.matrix tbody td{ padding:1mm 1mm; }
+.matrix thead th{ padding:1mm .8mm; }
+.matrix--lg tbody td{ padding:1.5mm 1.2mm; }
+.matrix--lg thead th{ padding:1.4mm 1.2mm; }
+
+/* Divers */
+.key{ padding:1.6mm 2.2mm; margin-bottom:2.1mm; }
+.box{ padding:1.4mm 1.9mm; margin-bottom:1.4mm; }
+.steps > div{ padding:1.1mm .5mm; }
+.chips{ gap:.9mm; }
+.chip{ padding:.8mm 1.5mm; }
+.reflex{ padding:1.6mm 2.2mm; }
+.tl{ padding-top:2mm; }
+.tl__i{ padding-top:3mm; }
+.pyr__lvl{ padding:1.2mm 1.6mm; }
+.pyr{ gap:.5mm; }
+h2{ margin-bottom:1.5mm; }
+.rule-list{ gap:.9mm; }
+.foot{ padding:1.6mm 8mm 5mm 8mm; }
+
+/* =====================================================================
+   ZONES — diagrammes pleine largeur puis notes en deux colonnes
+   ===================================================================== */
+.body--zones{
+  display:block; flex:0 0 auto;
+  padding:4mm 8mm 5mm 8mm;
+}
+.zfull{ margin-bottom:2.1mm; }
+.zcol{
+  column-count:2; column-gap:5mm;
+  column-rule:.2mm solid var(--rule-2);
+}
+.zcol > *{ break-inside:avoid; }
+.zcol .sec{ margin-bottom:2.1mm; }
+.zcol .node b{ font-size:6.4pt; }
+.zcol .node span{ font-size:5.5pt; }
+
+/* =====================================================================
+   FRISE CENTRALE — axe unique, entrées réparties à gauche et à droite
+   (mise en forme des dates identique à la frise verticale d'origine)
+   ===================================================================== */
+.page[data-fam="histoire"]{ --fam:#16304d; --fam-soft:#eef2f7; --fam-line:#c0cddb; }
+
+.tlc{ position:relative; }
+.tlc::before{
+  content:""; position:absolute; left:50%; top:1.2mm; bottom:1.2mm;
+  width:.3mm; margin-left:-.15mm; background:var(--fam-line);
+}
+.tlc__i{
+  position:relative;
+  display:grid; grid-template-columns:1fr 1fr; column-gap:7mm;
+  margin-bottom:1.15mm;
+}
+.tlc__i:last-child{ margin-bottom:0; }
+
+/* le repère, posé sur l'axe */
+.tlc__i::before{
+  content:""; position:absolute; left:50%; top:.75mm;
+  width:1.7mm; height:1.7mm; margin-left:-.85mm;
+  border-radius:50%; background:var(--fam); box-shadow:0 0 0 .35mm #fff;
+}
+.tlc__i.is-add::before{
+  background:#fff; border:.35mm solid #8d9aa8; box-shadow:0 0 0 .3mm #fff;
+}
+.tlc__i.is-flag::before{
+  background:#B8912F; border-radius:0; transform:rotate(45deg);
+  width:1.9mm; height:1.9mm; margin-left:-.95mm;
+}
+
+.tlc__t{ font-size:6.5pt; line-height:1.24; }
+.tlc__i.l .tlc__t{ grid-column:1; text-align:right; }
+.tlc__i.r .tlc__t{ grid-column:2; text-align:left; }
+
+.tlc__y{ font-weight:900; color:var(--fam); }
+.tlc__i.is-add  .tlc__y{ color:#5c6875; }
+.tlc__i.is-flag .tlc__y{ color:#8a6a15; }
+
+.leg{ display:flex; gap:4.5mm; flex-wrap:wrap; align-items:center; justify-content:center; }
+.leg div{ display:flex; align-items:center; gap:1.6mm; font-size:6.2pt; }
+.leg i{ width:1.9mm; height:1.9mm; border-radius:50%; flex:0 0 auto; }
+.leg .m1{ background:#16304d; }
+.leg .m2{ background:#B8912F; border-radius:0; transform:rotate(45deg); }
+.leg .m3{ background:#fff; border:.35mm solid #8d9aa8; }
+
+/* =====================================================================
+   ÉCHELONS TERRITORIAUX — libellé d'échelon à gauche, chaîne à droite
+   ===================================================================== */
+.ech{ display:flex; flex-direction:column; }
+.ech__row{
+  display:grid; grid-template-columns:23mm 1fr; column-gap:3mm;
+  padding:1.5mm 0; border-top:.3mm dashed var(--fam-line);
+}
+.ech__row:first-child{ border-top:none; padding-top:0; }
+.ech__row:last-child{ padding-bottom:0; }
+.ech__lvl{
+  background:var(--fam-soft); border-radius:1mm; padding:1.4mm 1mm;
+  text-align:center; display:flex; flex-direction:column; justify-content:center;
+}
+.ech__lvl b{
+  display:block; font-size:6.36pt; font-weight:900; letter-spacing:.01em;
+  line-height:1.06; color:var(--fam); text-transform:uppercase;
+}
+.ech__lvl span{
+  display:block; font-size:5.19pt; color:var(--ink-3); line-height:1.18; margin-top:.5mm;
+}
+.ech__body{ min-width:0; display:flex; flex-direction:column; justify-content:center; }
+
+/* Bandeau « sous le commandement direct de … » */
+.cmd{
+  background:var(--fam); color:#fff; border-radius:.8mm;
+  padding:.9mm 2mm; text-align:center;
+  font-size:5.02pt; font-weight:900; letter-spacing:.07em;
+  text-transform:uppercase; line-height:1.14;
+}
+
+/* Famille sécurité routière */
+.page[data-fam="route"]{ --fam:#a04000; --fam-soft:#fdf1e9; --fam-line:#e8c4ab; }
+
+/* Encadré « ce que je peux faire comme APJA » */
+.box--apja{ background:#fff; border-color:var(--fam); border-style:dashed; }
+.box--apja .box__lbl{ color:var(--fam); }
+
+/* =====================================================================
+   FAMILLE INTERVENTION PROFESSIONNELLE / ARMEMENT
+   L'en-tête reste neutre : la couleur est le sujet de la fiche.
+   ===================================================================== */
+.page[data-fam="armement"]{ --fam:#2a2f36; --fam-soft:#eef0f2; --fam-line:#ccd1d6; }
+
+/* Tableau des codes couleurs ------------------------------------------- */
+.cc{ table-layout:fixed; font-size:5.9pt; }
+.cc thead th{ padding:1.1mm 1.4mm; font-size:5.02pt; }
+.cc tbody td{ padding:1.2mm 1.4mm; vertical-align:middle; line-height:1.2; }
+.cc tbody td em{
+  display:block; font-style:normal; color:var(--ink-3);
+  font-size:5.27pt; margin-top:.4mm;
+}
+
+/* Première colonne : la pastille, imprimée dans sa propre couleur */
+.cc tbody td.cc__c{
+  color:#fff; text-align:center; padding:1.3mm .8mm;
+  border-bottom:.3mm solid #fff;
+}
+.cc tbody td.cc__c b{
+  display:block; font-size:6.11pt; font-weight:900; letter-spacing:.04em; line-height:1.04;
+}
+.cc tbody td.cc__c small{
+  display:block; font-size:4.6pt; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; opacity:.88; margin-top:.5mm;
+}
+/* Les pastilles portent le sujet de la fiche : elles doivent primer */
+.cc tbody td.cc__c b{ font-size:7.53pt; letter-spacing:.03em; }
+.cc tbody td.cc__c small{ font-size:5.19pt; margin-top:.6mm; }
+
+.cc tbody td.c-jaune { background:#DFA400; color:#231900; }
+.cc tbody td.c-orange{ background:#C25400; }
+.cc tbody td.c-rouge { background:#B3121B; }
+.cc tbody td.c-surete{
+  background:repeating-linear-gradient(135deg,
+    #B3121B 0, #B3121B 1.1mm, #7C0D13 1.1mm, #7C0D13 2.2mm);
+}
+.cc tbody td.c-feu   { background:#59080D; }
+
+/* =====================================================================
+   PAIRE DE CONDITIONS CUMULATIVES — deux panneaux, un « + », un verdict
+   Pour les cas où il y a exactement DEUX choses et où le fait qu'elles
+   se cumulent est le message.
+   ===================================================================== */
+.duo{ display:flex; align-items:stretch; }
+.duo__c{
+  flex:1 1 0; min-width:0;
+  border:.35mm solid var(--fam); background:var(--fam-soft);
+  border-radius:1.2mm; padding:2mm 2.2mm 2.2mm;
+  text-align:center;
+}
+.duo__n{
+  display:block; width:4.6mm; height:4.6mm; margin:0 auto 1.2mm;
+  border-radius:50%; background:var(--fam); color:#fff;
+  font-size:6.7pt; font-weight:900; line-height:4.6mm;
+}
+.duo__t{
+  display:block; font-size:9.21pt; font-weight:900; line-height:1.08;
+  letter-spacing:-.01em; color:var(--fam); text-transform:uppercase;
+}
+.duo__s{
+  display:block; font-size:6.19pt; color:var(--ink-2); line-height:1.25; margin-top:1mm;
+}
+.duo__op{
+  flex:0 0 auto; align-self:center; padding:0 2.6mm;
+  font-size:13pt; font-weight:900; color:var(--fam); line-height:1;
+}
+.duo__verdict{
+  background:var(--ink); color:#fff; border-radius:1.2mm;
+  margin-top:1.6mm; padding:1.6mm 2.4mm; text-align:center;
+  font-size:6.53pt; font-weight:800; line-height:1.3;
+}
+.duo__verdict b{ color:#ffd479; font-weight:900; letter-spacing:.04em; }
+
+/* Famille armement : les en-têtes de face-à-face et les pastilles
+   d'article portent la structure — les remonter d'un cran. */
+.page[data-fam="armement"] .vs__hd{ font-size:7.53pt; padding:1.7mm 1.4mm; letter-spacing:.05em; }
+.page[data-fam="armement"] .vs__hd small{ font-size:5.44pt; margin-top:.3mm; }
+.art--lg{ font-size:7.11pt; padding:.8mm 1.8mm; border-radius:.8mm; }
+
+/* À côté d'une pastille .art--lg, la puce n'apporte plus rien */
+.page[data-fam="armement"] .vs__bd ul li{ padding-left:0; margin-bottom:1.5mm; }
+.page[data-fam="armement"] .vs__bd ul li:last-child{ margin-bottom:0; }
+.page[data-fam="armement"] .vs__bd ul li::before{ display:none; }
+.page[data-fam="armement"] .vs__bd .art--lg{ margin-bottom:.7mm; }

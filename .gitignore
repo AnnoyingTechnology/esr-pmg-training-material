@@ -1,0 +1,9 @@
+# Sorties de rendu — entièrement reconstruites par build/render.sh + build/package.sh.
+# Rien dans out/ n'est une source : ne jamais versionner ce dossier.
+out/
+
+# Notes manuscrites personnelles servant de source de travail. Hors diffusion.
+scan/
+
+# Réglages locaux de l'outillage
+.claude/

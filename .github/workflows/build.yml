@@ -1,0 +1,85 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write          # nécessaire pour publier la release sur un tag
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Lato est indispensable : la CSS n'utilise aucune webfont et les
+      # métriques de la police déterminent le taux de remplissage des pages.
+      - name: Dépendances système
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            fonts-lato fonts-dejavu-core \
+            poppler-utils ghostscript \
+            texlive-extra-utils texlive-latex-base texlive-latex-recommended
+          fc-cache -f
+          fc-list | grep -qi lato || { echo "Lato absente"; exit 1; }
+          command -v pdflatex >/dev/null || { echo "pdflatex absent — pdjam sortira 69"; exit 1; }
+
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+
+      - name: Rendu des fiches
+        env:
+          CHROME: ${{ steps.chrome.outputs.chrome-path }}
+        run: ./build/render.sh
+
+      # Garde-fou : .page a overflow:hidden. Au-delà de 100 % de remplissage le
+      # contenu est rogné sans avertissement dans le PDF. On casse la build.
+      - name: Contrôle de débordement
+        env:
+          CHROME: ${{ steps.chrome.outputs.chrome-path }}
+        run: ./build/check.sh
+
+      - name: Recueils et impositions A4
+        run: ./build/package.sh
+
+      # Vérifie que l'imposition est à taille réelle : deux A5 de 148 mm côte à
+      # côte doivent couvrir ~296 mm d'encre sur une page A4 paysage de 297 mm.
+      - name: Contrôle de l'imposition
+        run: |
+          python3 -m pip install --quiet pillow numpy
+          pdftoppm -r 150 -png -f 1 -l 1 -singlefile out/FICHES-PMG-A4-2up.pdf /tmp/imp
+          python3 - <<'PY'
+          from PIL import Image; import numpy as np, sys
+          a = np.array(Image.open('/tmp/imp.png').convert('L'))
+          xs = np.where((a < 240).any(axis=0))[0]
+          mm = (xs.max() - xs.min()) / (150/25.4)
+          print(f"largeur d'encre : {mm:.1f} mm")
+          sys.exit(0 if 294 <= mm <= 297 else 1)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fiches-pdf
+          path: out/*.pdf
+          retention-days: 30
+
+      - name: Publication de la release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            out/FICHES-PMG-A5.pdf
+            out/FICHES-PMG-A4-2up.pdf
+            out/FICHES-JUSTICE-21-A5.pdf
+            out/SECURITE-ROUTIERE-6-A5.pdf
+            out/ARMEMENT-4-A5.pdf
+            out/FRISE-gendarmerie-A5.pdf
+            out/FICHE-organisation-A5.pdf
