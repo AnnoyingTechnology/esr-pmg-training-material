@@ -15,13 +15,14 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 > the date of the release that contains them, and no later — **law changes, and so does doctrine**.
 > Check anything that matters against Légifrance and your own instructors.
 
-**38 A5 cards** across five families:
+**48 A5 cards** across five families:
 
 | Family | Cards | Subject |
 |---|---|---|
-| Justice | `fiche-01` … `fiche-25` | French criminal justice: sources, infraction, enquête, jugement, garanties |
+| Justice | `fiche-01` … `fiche-34` | French criminal justice: sources, infraction, enquête, jugement, garanties, mandats, fouilles, the APJA's powers, flagrance, arrest — and a lexique |
 | Organisation | `FICHE-organisation-A5` | subdivisions, formations, units |
 | Organisation | `FICHE-territoriale-A5` | territorial echelons, national → local |
+| Organisation | `FICHE-galons-A5` | rank insignia and forms of address |
 | Histoire | `FRISE-gendarmerie-A5` | gendarmerie chronology |
 | Sécurité routière | `route-R1` … `route-R6` | road policing as an APJA |
 | Armement | `ip-A1` … `ip-A4` | colour codes, usage des armes, weapon safety |
@@ -67,10 +68,11 @@ loses content that the PDF will not show you. CI fails the build on it.
 
 ```
 build/          fiche.css, check.js, the shell scripts, fit.py
-build/fiches/   the 25 justice cards
+build/fiches/   the 34 justice cards
 build/route/    the 6 sécurité routière cards
 build/ip/       the 4 armement cards
-build/*.html    the standalone cards (timeline, organisation, territoriale)
+build/*.html    the standalone cards (timeline, organisation, territoriale, galons)
+build/img/      imported vector artwork (the galons chart)
 content/        source material and provenance notes, one file per family
 out/            generated — gitignored, never a source
 ```

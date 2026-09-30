@@ -22,18 +22,19 @@ Nothing about the PMG exam itself has ever been supplied.
 
 ## 1. What this repo produces
 
-**38 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
+**48 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-25.pdf` | the 25 justice cards, one A5 page each |
+| `out/fiche-01.pdf` … `fiche-34.pdf` | the 34 justice cards, one A5 page each |
 | `out/route-R1.pdf` … `route-R6.pdf` | sécurité routière (APJA) |
 | `out/ip-A1.pdf` … `ip-A4.pdf` | armement / intervention professionnelle |
 | `out/FRISE-gendarmerie-A5.pdf` | gendarmerie chronology (central-axis timeline) |
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
-| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 38 cards in order |
+| `out/FICHE-galons-A5.pdf` | rank insignia and forms of address (imported vector chart) |
+| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 48 cards in order |
 
 **One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
 was removed: A5 is half an A4, so any print dialog does it. If you add a family, add it to the
@@ -49,13 +50,18 @@ Source material lives in `content/`, one file per family, each carrying verifica
 | `content/ORGANISATION_TERRITORIALE.md` | territoriale | redrawn from a raster chart |
 | `content/SECURITE_ROUTIERE.md` | R1-R6 | revised after external legal review |
 | `content/ARMEMENT_IP.md` | A1-A4 | the author's MAAA table + course notes + sourcing tags |
+| `content/MANDATS.md` | fiches 26-27 | Légifrance only; reviewed 30 Sept 2026, corrections applied |
+| `content/FOUILLES.md` | fiches 28-29 | code + case law + one circulaire; reviewed 30 Sept 2026, corrections applied |
+| `content/APJA.md` | fiche 30 | Légifrance + décret 2013-874 (oath); reviewed 30 Sept 2026, corrections applied |
+| `content/FLAGRANCE.md` | fiches 31-32 | Légifrance + one Cass. decision; reviewed 30 Sept 2026, split in two at build |
+| `content/APPREHENDER.md` | fiche 33 | Légifrance + Cass. decisions; reviewed 30 Sept 2026, corrections applied |
+| `content/LEXIQUE.md` | fiche 34 | standard definitions anchored to articles; reviewed 30 Sept 2026, corrections applied |
+| `content/GALONS.md` | galons | imported vector chart; **not reviewed** — claims list ready |
 
 Proposed cards wait in `draft/` before any of that:
 
 | File | Covers | Status |
 |---|---|---|
-| `draft/MANDATS.md` | fiches 26-27 | **pending a strong fact-check by `gpt-6-astra` or `fable-5.1`** |
-| `draft/FOUILLES.md` | fiche 28 | **pending a strong fact-check by `gpt-6-astra` or `fable-5.1`** |
 | `draft/PROGRAMME-APJA.md` | — | coverage map against the APJA module outline; orientation only, not a card and not a source |
 
 **Nothing in `draft/` has been reviewed.** Each file carries the card text, a numbered claims list
@@ -79,7 +85,7 @@ workshop, not the deliverable.
    about typography, and the one with consequences outside this repo.
 2. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
    notebook. An earlier 2-page-per-fiche version was rejected. The original ~23-page cap applied to
-   the justice deck alone; the set is now 38 pages across five families, and grows by family.
+   the justice deck alone; the set is now 48 pages across five families, and grows by family.
 3. **Never drop content to make things fit.** Densify instead. This was explicit.
 4. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
    `build/check.sh` after editing. A card at >100% is losing material you cannot see in the PDF.
@@ -130,14 +136,14 @@ To cut a release: `git tag v2026.09.22 && git push --tags`.
 
 ---
 
-## 4. Layout system (`build/fiche.css`, ~830 lines)
+## 4. Layout system (`build/fiche.css`, ~990 lines)
 
 A card is one `<section class="page" data-fam="…">` containing `.hdr`, `.body`, optional `.foot`,
 and `.stamp`.
 
 **Family colours** via `data-fam`: `fondations` (01-05, navy) · `infraction` (06-08, bordeaux) ·
-`enquete` (09-13, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
-cyan) · `methode` (20-21, slate) · `histoire` (the two gendarmerie cards, dark navy) · `route`
+`enquete` (09-13 and 26-33, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
+cyan) · `methode` (20-21 and 34, slate) · `histoire` (the gendarmerie cards — frise, organisation, galons — dark navy) · `route`
 (R1-R6, burnt orange) · `armement` (A1-A4, anthracite — deliberately neutral, because the colour
 codes *are* the subject of A1 and a coloured header would compete with them).
 
@@ -159,6 +165,13 @@ panels joined by `+` over a verdict bar — for when the *cumulation* is the mes
 
 The ASCII diagrams in the source `.md` are **redrawn as CSS**, never pasted as monospace text.
 That is the main quality lever of this project.
+
+**One exception: the galons card** (`build/galons.html`) embeds a supplied vector chart,
+`build/img/galons.svg`, cropped through its `viewBox`. The insignia *are* drawings, and the author
+wants them as large as possible: slim header, no idée-clef, footnotes in the footer, chart at 105 % of
+its original size. Because a full-width image does not shrink under `zoom`, that card sizes the chart
+with `--gw` (a width in mm on the `<img>`) instead of a density factor; `fit.py` leaves it at 1.00.
+Re-search `--gw` by hand if the footer text changes.
 
 ---
 
@@ -183,6 +196,7 @@ Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or e
 01 0.858   02 0.900   03 0.856   06 0.924   09 0.848
 11 0.900   12 0.966   13 0.900   organisation 0.89
 route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854   23 0.888   25 0.935
+26 0.851   28 0.867   29 0.868   30 0.854   32 0.895   33 0.850   34 0.867
 ```
 
 The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la
@@ -312,20 +326,22 @@ public.** So:
 - **Mark provenance when mixing sources.** The frise distinguishes his course dates (navy) from
   battle honours (gold) from context I added (hollow) — he asked for this explicitly.
 - Corrections to his notes are **applied silently on the card** and **reported in chat**.
+- **Memorable first, exact always.** The reader is a reservist on the ground, not a magistrate.
+  Lead with the operational rule (« contrôle d'identité : sur ordre · visite de véhicule : avec
+  l'officier »), then add a legal qualifier **only where leaving it out would make the card wrong**.
+  A reviewer's finer distinctions go into the `content/` claims list when the card stays true
+  without them. Never trade accuracy for simplicity: a simplification that is false is a defect.
+  Where the law is unsettled, say so plainly on the card (*par prudence*) rather than presenting a
+  precaution as a rule.
 
 ---
 
 ## 10. Known open items
 
-- **~30 terms are used but never defined** across the 21 cards: commission rogatoire (4 cards),
-  saisine, juges du fond, conventionalité, mise en accusation, réquisitoire introductif,
-  signification vs notification, bloc de constitutionnalité, plein contentieux, quantum,
-  jour-amende, intime conviction, force probante, scellés, opportunité des poursuites, renvoi
-  préjudiciel, the three "chose jugée" variants, connexité, assignation, mise en état, fait
-  générateur, texte consolidé… Cards at ≤91% fill have room for inline glosses; the rest would need
-  a 22nd page. **No approach has been chosen yet.**
-- Fiche 14's list of seven orientations (ordonnance pénale, CRPC, comparution immédiate…) is bare
-  names with no gloss — opaque to a beginner.
+- **Undefined terms — resolved by fiche 34 (Lexique).** The ~30 terms listed here before, and the
+  seven orientations fiche 14 names without gloss, are defined once on fiche 34, each with the cards
+  that use it. Optional additions the reviewer suggested and that were not made: prescription,
+  contradictoire, suspect / prévenu / accusé, réquisition.
 - `content/justice_france_21_fiches.md` claims currency to 21 Sept 2026 and cites a Cass. crim. ruling of
   9 April 2026 and the CPP rewrite effective 1 Jan 2029. **Not independently verified.**
 - The organisation card is dense (0.89). Splitting the UNPJ block onto its own card is the natural

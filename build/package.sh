@@ -11,6 +11,7 @@ $(ls route-R[0-9].pdf | sort)
 $(ls ip-A[0-9].pdf | sort)
 FICHE-organisation-A5.pdf
 FICHE-territoriale-A5.pdf
+FICHE-galons-A5.pdf
 FRISE-gendarmerie-A5.pdf"
 
 pdfunite $ORDRE FICHES-PMG-A5.pdf

@@ -23,7 +23,7 @@ def set_zoom(path, z):
 CARDS = (sorted(glob.glob('build/fiches/fiche-*.html'))
          + sorted(glob.glob('build/route/route-*.html'))
          + sorted(glob.glob('build/ip/ip-*.html'))
-         + ['build/organisation.html', 'build/territoriale.html'])
+         + ['build/organisation.html', 'build/territoriale.html', 'build/galons.html'])
 
 for f in CARDS:
     n = os.path.basename(f).replace('.html', '')

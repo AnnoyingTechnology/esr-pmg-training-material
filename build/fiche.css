@@ -966,3 +966,33 @@ h2{ margin-bottom:1.5mm; }
   display:block; font-size:4.86pt; font-weight:700; letter-spacing:0;
   text-transform:none; color:var(--ink-3); margin-top:.4mm; line-height:1.15;
 }
+
+/* =====================================================================
+   FICHES 26-29 — mandats, fouilles
+   ===================================================================== */
+/* Tableau des mandats : cinq colonnes de texte, la première en libellé */
+.mandats{ font-size:5.94pt; }
+.mandats thead th{ text-align:left; }
+.mandats tbody td{ text-align:left; }
+.mandats th.crit{ width:17mm; }
+.mandats tbody td.crit{ font-size:5.86pt; }
+.mandats__span{ vertical-align:middle!important; background:var(--fam-soft)!important; }
+
+/* Face-à-face à quatre panneaux (positions de l'agent adjoint) */
+.vs--4{ grid-template-columns:repeat(4,1fr); }
+.vs__hd--ok  { background:#1d6b4f; }
+.vs__hd--ord { background:#1b4f8a; }
+.vs__hd--opj { background:#8a5a12; }
+.vs__hd--no  { background:#a32b2b; }
+.vs__bd p{ margin-bottom:1mm; }
+
+/* Lexique : terme — définition — (article) → fiches */
+.lx{ font-size:6.45pt; line-height:1.28; margin:0 0 1mm 0; break-inside:avoid; }
+.lx b{ color:var(--fam); font-weight:900; }
+.lx__c{ display:inline-block; margin-left:.8mm; font-size:5.2pt; font-weight:800;
+        color:var(--ink-3); letter-spacing:.02em; white-space:nowrap; }
+.zcol h2{ break-after:avoid; }
+
+/* Fiche galons : tableau vectoriel importé (build/img/galons.svg), pleine largeur */
+.galons{ display:block; width:var(--gw,120mm); height:auto; margin:0 auto; }
+.galons__n{ font-size:6.3pt; color:var(--ink-2); margin-bottom:0; }

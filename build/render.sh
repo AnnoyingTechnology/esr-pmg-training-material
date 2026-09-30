@@ -15,4 +15,5 @@ for f in build/ip/ip-*.html;        do render "$f" "$(basename "$f" .html)"; don
 render build/timeline.html     FRISE-gendarmerie-A5
 render build/organisation.html FICHE-organisation-A5
 render build/territoriale.html  FICHE-territoriale-A5
+render build/galons.html       FICHE-galons-A5
 echo "Rendu : $(ls out/*.pdf | wc -l) pages A5"

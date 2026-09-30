@@ -41,9 +41,9 @@
 | Item | Deck | Note |
 |---|---|---|
 | Autorités de la police judiciaire | ✓ | fiches 05, 10 |
-| **L'essentiel sur l'APJA** | ~ | one row in fiche 10; R1 covers the road only. Missing: who is APJA (CPP 21), the 20-1 route to APJ for reservists, serment and affectation, the full art. 21 missions, **territorial competence** (21-1, 18), **responsibility and subordination**, APJ vs APJA |
-| **Cadre légal du droit d'arrestation** | ~ | one row in R1 (art. 73). Missing: conditions in full, **menottes (803)**, proportionate force, the mandats (draft 26) |
-| Types d'enquêtes | ~ | fiche 11 has flagrance, préliminaire, commission rogatoire. Missing: **74** (découverte de cadavre, personne grièvement blessée), **74-1** (disparition inquiétante), **74-2** (recherche d'une personne en fuite) |
+| **L'essentiel sur l'APJA** | ✓ | **fiche 30** — who is APJA (21), the 20-1 routes to APJ, the oath, the art. 21 missions, territorial competence (21-1, 18), authority and 122-4, APJ vs APJA |
+| **Cadre légal du droit d'arrestation** | ✓ | **fiche 33** — 73 in full, 73 al. 2, menottes (803), proportionate force (R434-18, Cass. 2005); mandats on fiches 26-27 |
+| Types d'enquêtes | ✓ | fiche 11 (the three frames) · **fiche 32** for 74, 74-1, 74-2 |
 | **L'enquête de voisinage** | **excluded** | **Deliberately not carded — see § "Deliberate exclusion" below.** Module read in full (`bloc1-reference/54668-enquete-voisinage.txt`); it carries no law at all |
 | Approfondir : fiche 62-10 | — | the APJ/APJA reference document |
 
@@ -51,11 +51,11 @@
 
 | Item | Deck | Note |
 |---|---|---|
-| Recueil et transmission de l'alerte | ~ | « Rendre compte » in fiche 11; fiche 14 covers the compte rendu au parquet. Missing the legal chain: **54**, 19, and the APJA's report to superiors (21) |
-| Transport et constatations | ✗ | **art. 54 is on no card** |
-| **Gel des lieux** | ~ | fiche 11 has « Figer » as a priority, with no legal basis. Missing: **D7, D15-5-1-1** (preserve the scene, the traces and the indices), **55**, **61** |
-| Rôle de l'APJA en garde à vue | ~ | fiches 10, 11 give the decision and conditions. Missing: an APJA neither decides a garde à vue nor notifies rights (an APJ may, under 63-1); security measures are in `draft/FOUILLES.md` |
-| Rôle de l'APJA en perquisition | ~ | fiche 11 by legal frame; `draft/FOUILLES.md` for seconding and the witness bar. Missing: **56, 57, 59** basics (presence, 6 h–21 h) |
+| Recueil et transmission de l'alerte | ✓ | **fiche 31** — the chain 21 → 54, 19 → procureur; fiche 14 for the compte rendu au parquet |
+| Transport et constatations | ✓ | **fiche 32** — 54 (APJ under OPJ control since loi 2026-798), 60, 61 |
+| **Gel des lieux** | ✓ | **fiche 32** — D7, D15-5-1-1, 55 (+ 67), 61; 55 vs code pénal 434-4 |
+| Rôle de l'APJA en garde à vue | ✓ | fiches 10, 11 give the decision and conditions. **fiche 33** (who decides, notifies, executes, guards); fiche 28 (security measures, fouille intégrale); fiche 26 (garde à vue after a mandat de recherche) |
+| Rôle de l'APJA en perquisition | ✓ | fiche 11 by legal frame; fiche 28 for seconding and the witness bar; **fiche 32** for 56, 57, 59 (presence, witnesses, 6 h–21 h *start*) |
 | Aide matérielle aux enquêteurs | ✓ | fiches 09, 11, 13, 14 |
 | Moments forts d'une enquête | ✓ | fiche 09 |
 
@@ -81,15 +81,16 @@ in force by 1 January 2029 at the latest. **Fiche 22 may need an update.**
 Done 30 September 2026 against F61-02, F61-03 and F62-10 as supplied. The comparison is topic-level:
 where the two differ, **the code decides**, not the training document.
 
-### One apparent contradiction — fiche 24, appeal against a crime
+### One apparent contradiction — fiche 24, appeal against a crime — **resolved: the card is right**
 
 - **Fiche 24 says:** « Appel devant une cour d'assises — le cas échéant la même, autrement composée ».
-- **CPP art. 380-1 says:** the appeal « est porté devant **une autre cour d'assises désignée par la
-  chambre criminelle de la Cour de cassation** ». The training document says the same.
-- **Assessment:** the card looks **wrong**, or at best is describing the appeal route from a *cour
-  criminelle départementale* while the row is about crimes generally. `[???]` — verify art. 380-1
-  in its current version, and the CCD appeal route, then correct the card. It is a shipped card, so
-  the correction goes through the review gate (§ 8).
+- **External review, 30 September 2026:** correct. Since the **July 2026 reform**, CPP 380-1 expressly
+  allows the appeal to go to another cour d'assises **or the same one, differently composed**. Under
+  380-14 the designation normally belongs to the first president of the cour d'appel; the chambre
+  criminelle intervenes only in the specified referral cases. An appeal from a cour criminelle
+  départementale goes to the cour d'assises (380-21). Transitional provisions cover pending cases.
+- The training document (F61-03) quoted the **pre-reform** text — another instance of teaching
+  material lagging the code. **No change to the card.**
 
 ### Places where the cards are *more* precise than the training document — keep them
 
@@ -98,7 +99,7 @@ the cards downwards.
 
 | Point | Training document | Card (fiche 24) |
 |---|---|---|
-| Flagrance for délits | « Oui » | only if the délit is **punishable by imprisonment** (CPP 53, 67) |
+| Enquête de flagrance for délits | « Oui » | only if the délit is **punishable by imprisonment** (CPP 67 — 53 itself sets no threshold) |
 | Complicité, contraventions | provocation or instructions only | …**unless a special text punishes aide ou assistance** |
 | Concours | « principe de non-cumul des peines » | one penalty **of each kind**, within the highest maximum; confusion possible |
 | Sursis probatoire | ≤ 5 ans | ≤ 5 ans, **≤ 10 en récidive légale**; does not cover réclusion |
@@ -115,7 +116,7 @@ confidence but is **not** a legal source: still to be confirmed on CPP art. 380-
 
 | Missing | Where it belongs | Note |
 |---|---|---|
-| **Definition of flagrance (CPP art. 53)** — offence being committed or just committed · person pursued by **clameur publique** shortly after · person found with objects, traces or indices | fiche 11, or a new "premier sur les lieux" card | **The biggest gap.** The word *clameur* appears nowhere in the deck. Fiche 11 uses flagrance as a *cadre* without ever saying what makes an offence flagrant — precisely what an APJA must recognise on the ground |
+| **Definition of flagrance (CPP art. 53)** — offence being committed or just committed · person pursued by **clameur publique** shortly after · person found with objects, traces or indices | **done — fiche 31** | **The biggest gap.** The word *clameur* appears nowhere in the deck. Fiche 11 uses flagrance as a *cadre* without ever saying what makes an offence flagrant — precisely what an APJA must recognise on the ground |
 | **Infraction flagrante / non flagrante** as a classification of the élément matériel | fiche 25 | the only 61-03 classification family the card omits |
 | **Peines des personnes morales** — fine at **five times** the natural-person rate (CP 131-38, 131-41); **1 000 000 €** for a crime carrying no fine for natural persons (CP 131-37) | fiche 06 or 24 | present only as a footer reference on fiche 22 |
 | **Réhabilitation** (CP 133-12) | fiche 24 | a row of the tripartition table, absent from the card |
@@ -183,6 +184,9 @@ Never set `newattempt`; the SCO then runs `mode=review` and writes no new attemp
 
 ## Candidate cards this suggests
 
+**Built 30 September 2026 after external review:** 1 → fiche 30 · 2 → fiches 31 and 32 · 3 → fiche 33 ·
+plus the lexique, fiche 34. Sources in `content/APJA.md`, `FLAGRANCE.md`, `APPREHENDER.md`, `LEXIQUE.md`.
+
 Each splits along a real seam, and each is subject to the review gate (§ 8) like any other:
 
 1. **L'APJA : qualité, missions, limites** — identity, art. 21 missions including RIPOST, territorial
@@ -191,5 +195,5 @@ Each splits along a real seam, and each is subject to the review gate (§ 8) lik
 2. **Premier sur les lieux** — alert and reporting chain, 54, 55, 61, D7, D15-5-1-1, the enquêtes of
    74 / 74-1 / 74-2. **Not** the enquête de voisinage — see the exclusion above.
 3. **Appréhender, conduire, garder** — 73, 803 (menottes), proportionate force, the APJA's place in
-   garde à vue and perquisition. Could absorb the garde à vue block of `draft/FOUILLES.md` if fiche
-   28 has to split.
+   garde à vue and perquisition. Fiche 28 kept its garde à vue block when the fouilles split into 28 (persons)
+   and 29 (vehicles); this card would link to it, not repeat it.
