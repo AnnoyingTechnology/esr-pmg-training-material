@@ -218,6 +218,11 @@ Articles are Code de procédure pénale unless stated.
   mandat de comparution survives.
 - **Art. 127 history:** the change from procureur to JLD is believed to follow *Moulin c. France*
   (CEDH, 23 novembre 2010). Not verified — not on the card.
+- **Who executes the mandats — missing from the card.** Art. 123 has the mandat notified by an OPJ,
+  an APJ or an agent de la force publique. The regulatory part (CPP D13, D14, D14-1) is reported to
+  give APJ **and APJA** the notification and execution of mandats de comparution, d'amener,
+  d'arrêt and ordonnances de prise de corps. To verify on Légifrance, then add a line — it is the
+  APJA-relevant fact on this card.
 - **FPR handling on the ground:** what a gendarme does when a check hits an FPR entry is not drafted —
   no public source.
 

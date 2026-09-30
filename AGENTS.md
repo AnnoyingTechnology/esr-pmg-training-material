@@ -4,11 +4,19 @@ Printable A5 revision cards for a candidate preparing the *Préparation Militair
 (PMG 2026) and serving as a **gendarme de réserve**. Cards are in **French**; talk to the author in
 **English**.
 
-**The deck does not follow the PMG syllabus.** No official programme has ever been supplied. The 21
-justice cards in particular are *culture générale juridique* — the author's own selection of useful legal
-background, **not** examined content. Never write or imply on a card, in the README, or in chat that
-something "is on the programme": nothing here is known to be. The repo is public, so this
-misunderstanding would be inherited by every other candidate who downloads it.
+**The deck does not follow the PMG syllabus.** The 21 justice cards in particular are *culture
+générale juridique* — the author's own selection of useful legal background, **not** examined
+content. Never write or imply on a card or in the README that something "is on the programme". The
+repo is public, so this misunderstanding would be inherited by every other candidate who downloads
+it.
+
+**One exception, for orientation only.** Since 30 September 2026 the author has supplied the module
+outline of the *réserve* training on the **agent de police judiciaire adjoint** (GendForm2 bloc 1,
+« RES_FORT_prealable »): objectives, three sections (l'infraction · cadre global et APJA · alerte,
+transport, gel des lieux), and the *fiches de documentation* it points to (61-02, 61-03, 62-10). It
+is recorded in `draft/PROGRAMME-APJA.md` and is used **to choose what to cover**, never as a claim
+about what is examined, and never as a source — cards are still written from the code (§ 8 bis).
+Nothing about the PMG exam itself has ever been supplied.
 
 ---
 
@@ -41,6 +49,19 @@ Source material lives in `content/`, one file per family, each carrying verifica
 | `content/ORGANISATION_TERRITORIALE.md` | territoriale | redrawn from a raster chart |
 | `content/SECURITE_ROUTIERE.md` | R1-R6 | revised after external legal review |
 | `content/ARMEMENT_IP.md` | A1-A4 | the author's MAAA table + course notes + sourcing tags |
+
+Proposed cards wait in `draft/` before any of that:
+
+| File | Covers | Status |
+|---|---|---|
+| `draft/MANDATS.md` | fiches 26-27 | **pending a strong fact-check by `gpt-6-astra` or `fable-5.1`** |
+| `draft/FOUILLES.md` | fiche 28 | **pending a strong fact-check by `gpt-6-astra` or `fable-5.1`** |
+| `draft/PROGRAMME-APJA.md` | — | coverage map against the APJA module outline; orientation only, not a card and not a source |
+
+**Nothing in `draft/` has been reviewed.** Each file carries the card text, a numbered claims list
+with verification tags, and a brief for the reviewer. No draft is built, rendered or packaged until
+every claim has a verdict and the corrections are applied (§ 8); only then does its content move to
+`content/` and into HTML.
 
 Only the **PDFs** are shared with other candidates, via GitHub releases. The repo itself is the
 workshop, not the deliverable.
@@ -235,7 +256,9 @@ output now reaches other PMG candidates. Every review round so far has caught so
 
 How to run it:
 
-- Give the reviewer the **rendered PDF** plus the **claims list**, not the HTML.
+- For a card still in `draft/`, give the reviewer **the draft file itself** — it already holds the
+  card text, the claims list and the reviewer brief. Review happens there, before anything is built.
+- For a built card, give the reviewer the **rendered PDF** plus the **claims list**, not the HTML.
 - Ask for a verdict per claim — correct / incomplete / wrong / unverifiable — **with a source**.
 - Tell it explicitly that **"I cannot verify this" is an acceptable and preferred answer** for
   restricted documents, and that revision decks are not a source.
@@ -270,6 +293,15 @@ public.** So:
   training material; the call was made and it is **settled — do not reopen it**. The rule above
   governs what gets *committed* (never a restricted document itself) and how new cards are *written*
   (from the code, not from a notice's structure). It is not a veto on the deck's content.
+- **L'enquête de voisinage is deliberately excluded — settled, do not reopen.** The training module
+  on it was read in full and carries **no legal citation whatsoever**: 11 chapters of pure
+  operational method. There is no public law underneath to re-derive a card from, so any card would
+  be a paraphrase of a restricted document in a public repo. This is the rule above biting for the
+  first time: *a card that cannot be sourced publicly is a card that should not go in a public
+  release.* The reasoning is in `draft/PROGRAMME-APJA.md` § "Deliberate exclusion"; the source text
+  and the question-list image stay gitignored in `bloc1-reference/` and `scan/`. The *legal* points
+  nearby — the APJA's power to gather information and take statements by PV under an OPJ's control
+  (CPP art. 21) — are public and remain cardable.
 
 ---
 

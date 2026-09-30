@@ -10,3 +10,10 @@ scan/
 
 # Fiches de documentation CPMGN — diffusion interdite hors Gendarmerie nationale.
 61-*.txt
+
+# Attestation personnelle — hors diffusion.
+Attestation_de_russite.pdf
+
+# Matériel de formation GendForm2 — © CPMGN, diffusion interdite hors Gendarmerie nationale.
+# Référence de travail uniquement. Ne jamais versionner.
+bloc1-reference/
