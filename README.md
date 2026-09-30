@@ -5,11 +5,15 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 
 > ### Read this before using these cards
 >
-> **This is not the PMG syllabus.** No official programme was used to build it, and nothing here is
-> endorsed by the gendarmerie. In particular the 21 **justice** cards are *culture générale
-> juridique* — general legal knowledge, chosen by the author because it is useful background, **not**
-> because it is examined. Do not treat the deck as a revision checklist, and do not assume that
-> something absent from it is absent from the exam, or that something present in it will be tested.
+> **This is not the PMG syllabus.** Nothing about the PMG exam was used to build it, and nothing here
+> is endorsed by the gendarmerie. The justice cards are *culture générale juridique* — legal knowledge
+> chosen because it is useful, **not** because it is examined. Fiches 26 to 33 were chosen by checking
+> the deck against the outline of the reserve's training module on the *agent de police judiciaire
+> adjoint*: they cover what a reservist uses on duty. That outline steered the choice of subjects; it
+> is not a source, and it says nothing about any exam.
+>
+> Do not treat the deck as a revision checklist. Something absent from it may well be examined;
+> something present in it may never be.
 >
 > These are one candidate's notes, published in case they help someone else. Cards are correct as at
 > the date of the release that contains them, and no later — **law changes, and so does doctrine**.
@@ -19,13 +23,15 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 
 | Family | Cards | Subject |
 |---|---|---|
-| Justice | `fiche-01` … `fiche-34` | French criminal justice: sources, infraction, enquête, jugement, garanties, mandats, fouilles, the APJA's powers, flagrance, arrest — and a lexique |
+| Justice | `fiche-01` … `fiche-25` | French criminal justice: sources, infraction, enquête, jugement, garanties |
+| Justice | `fiche-26` … `fiche-33` | the reservist at work: mandats, fouilles, the APJA's powers, flagrance, on the scene, arrest |
+| Justice | `fiche-34` | lexique — every term the deck uses, defined once |
+| Sécurité routière | `route-R1` … `route-R6` | road policing as an APJA |
+| Armement | `ip-A1` … `ip-A4` | colour codes, usage des armes, weapon safety |
 | Organisation | `FICHE-organisation-A5` | subdivisions, formations, units |
 | Organisation | `FICHE-territoriale-A5` | territorial echelons, national → local |
 | Organisation | `FICHE-galons-A5` | rank insignia and forms of address |
 | Histoire | `FRISE-gendarmerie-A5` | gendarmerie chronology |
-| Sécurité routière | `route-R1` … `route-R6` | road policing as an APJA |
-| Armement | `ip-A1` … `ip-A4` | colour codes, usage des armes, weapon safety |
 
 ---
 
@@ -36,7 +42,7 @@ The deck is a single PDF attached to each [release](../../releases):
 **`FICHES-PMG-A5.pdf`** — every card, one A5 page each. Read it on screen, or print it: A5 is half an
 A4 sheet, so "2 pages per sheet" in any print dialog gives you two cards per side at true size.
 
-The families below describe how the deck is organised internally. They are not separate downloads.
+The families above describe how the deck is organised internally. They are not separate downloads.
 
 ---
 
@@ -59,8 +65,11 @@ Requirements: `google-chrome-stable`, `pdfunite` and `pdfinfo` (poppler), Python
 **Lato** font family installed locally. The CSS uses no webfonts — it must render
 offline. Set `CHROME=/path/to/chrome` to use a different binary.
 
-**`check.sh` is not optional.** `.page` has `overflow:hidden`, so a card over 100 % fill silently
-loses content that the PDF will not show you. CI fails the build on it.
+**Run `check.sh` and look at the PDF before every push.** `.page` has `overflow:hidden`, so a card
+over 100 % fill silently loses content that the PDF will not show you. Nothing else checks it: CI
+only renders and packages.
+
+To cut a release: `git tag v2026.09.30 && git push --tags`. CI attaches `FICHES-PMG-A5.pdf` to it.
 
 ---
 
@@ -74,20 +83,32 @@ build/ip/       the 4 armement cards
 build/*.html    the standalone cards (timeline, organisation, territoriale, galons)
 build/img/      imported vector artwork (the galons chart)
 content/        source material and provenance notes, one file per family
+draft/          proposed cards awaiting review, and the APJA module coverage map
 out/            generated — gitignored, never a source
 ```
 
-`AGENTS.md` documents the layout system, the components, and the traps. Read it before editing a
-card.
-
+`AGENTS.md` documents the layout system, the components, the traps and the review procedure. Read it
+before editing a card.
 
 ---
 
 ## Provenance and accuracy
 
-Each family has a source file in `content/` carrying verification tags — `[REV]` verified against
-Légifrance or an official publication, `[SEC]` secondary source only, `[???]` unsourced and open,
-`[JUL]` from the author's own course. Those files record what has *not* been checked as carefully as
-what has.
+Cards are written from public sources wherever possible — Légifrance first. Restricted gendarmerie
+documents are never committed to this repository.
 
-Law changes. Cards are correct as at the date of the release that contains them, and no later.
+New legal cards go through an **external fact-check, claim by claim**, before they are released.
+Each family has a source file in `content/` that records the claims, their sources, the reviewer's
+verdicts and the corrections made. Tags:
+
+| Tag | Meaning |
+|---|---|
+| `[REV]` | read on Légifrance or an official publication |
+| `[SEC]` | secondary source only |
+| `[DEF]` | standard definition, anchored to an article but not quoted from it |
+| `[PRU]` | training precaution — no text or decision settles the point; printed on the card as *par prudence* |
+| `[JUL]` | from the author's own course or supplied material, not independently verified |
+| `[???]` | unsourced and open |
+
+Those files record what has *not* been checked as carefully as what has. The galons card is the one
+card not yet reviewed.

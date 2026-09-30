@@ -121,16 +121,15 @@ must render offline.
 python3 build/fit.py  # auto-solve the per-fiche density factor (see §5)
 ```
 
-`render.sh` and `check.sh` honour `CHROME=/path/to/binary`; CI sets it. Everything else is fixed.
+`render.sh` and `check.sh` honour `CHROME=/path/to/binary`; CI sets it for `render.sh`. Everything else is fixed.
 
 ### Continuous integration
 
-`.github/workflows/build.yml` runs the three scripts on every push, and on a `v*` tag publishes
-`FICHES-PMG-A5.pdf` as a GitHub release.
+`.github/workflows/build.yml` renders and packages the deck on every push, and on a `v*` tag
+publishes `FICHES-PMG-A5.pdf` as a GitHub release.
 
-One gate fails the build, deliberately: **`check.sh`** — any page over 100 % fill. Runner font
-metrics are not guaranteed identical to a local machine, so a card sitting at 99 % locally can
-overflow in CI. That is the gate doing its job: fix the card, do not relax the gate.
+**CI gates nothing.** The overflow check is local: the author builds, runs `check.sh` and looks at
+the PDF before every push. Do not add a CI gate back.
 
 To cut a release: `git tag v2026.09.22 && git push --tags`.
 

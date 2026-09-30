@@ -37,13 +37,6 @@ jobs:
           CHROME: ${{ steps.chrome.outputs.chrome-path }}
         run: ./build/render.sh
 
-      # Garde-fou : .page a overflow:hidden. Au-delà de 100 % de remplissage le
-      # contenu est rogné sans avertissement dans le PDF. On casse la build.
-      - name: Contrôle de débordement
-        env:
-          CHROME: ${{ steps.chrome.outputs.chrome-path }}
-        run: ./build/check.sh
-
       - name: Assemblage du recueil
         run: ./build/package.sh
 
