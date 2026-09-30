@@ -22,19 +22,19 @@ Nothing about the PMG exam itself has ever been supplied.
 
 ## 1. What this repo produces
 
-**48 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
+**50 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-34.pdf` | the 34 justice cards, one A5 page each |
+| `out/fiche-01.pdf` … `fiche-36.pdf` | the 36 justice cards, one A5 page each |
 | `out/route-R1.pdf` … `route-R6.pdf` | sécurité routière (APJA) |
 | `out/ip-A1.pdf` … `ip-A4.pdf` | armement / intervention professionnelle |
 | `out/FRISE-gendarmerie-A5.pdf` | gendarmerie chronology (central-axis timeline) |
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
 | `out/FICHE-galons-A5.pdf` | rank insignia and forms of address (imported vector chart) |
-| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 48 cards in order |
+| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 50 cards in order |
 
 **One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
 was removed: A5 is half an A4, so any print dialog does it. If you add a family, add it to the
@@ -57,6 +57,7 @@ Source material lives in `content/`, one file per family, each carrying verifica
 | `content/APPREHENDER.md` | fiche 33 | Légifrance + Cass. decisions; reviewed 30 Sept 2026, corrections applied |
 | `content/LEXIQUE.md` | fiche 34 | standard definitions anchored to articles; reviewed 30 Sept 2026, corrections applied |
 | `content/GALONS.md` | galons | imported vector chart; **not reviewed** — claims list ready |
+| `content/VOISINAGE.md` | fiches 35-36 | public sources only (UK/US doctrine, circular, code); reviewed 30 Sept 2026, split in two at build |
 
 Proposed cards wait in `draft/` before any of that:
 
@@ -85,7 +86,7 @@ workshop, not the deliverable.
    about typography, and the one with consequences outside this repo.
 2. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
    notebook. An earlier 2-page-per-fiche version was rejected. The original ~23-page cap applied to
-   the justice deck alone; the set is now 48 pages across five families, and grows by family.
+   the justice deck alone; the set is now 50 pages across five families, and grows by family.
 3. **Never drop content to make things fit.** Densify instead. This was explicit.
 4. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
    `build/check.sh` after editing. A card at >100% is losing material you cannot see in the PDF.
@@ -141,7 +142,7 @@ A card is one `<section class="page" data-fam="…">` containing `.hdr`, `.body`
 and `.stamp`.
 
 **Family colours** via `data-fam`: `fondations` (01-05, navy) · `infraction` (06-08, bordeaux) ·
-`enquete` (09-13 and 26-33, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
+`enquete` (09-13, 26-33 and 35-36, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
 cyan) · `methode` (20-21 and 34, slate) · `histoire` (the gendarmerie cards — frise, organisation, galons — dark navy) · `route`
 (R1-R6, burnt orange) · `armement` (A1-A4, anthracite — deliberately neutral, because the colour
 codes *are* the subject of A1 and a coloured header would compete with them).
@@ -306,15 +307,24 @@ public.** So:
   training material; the call was made and it is **settled — do not reopen it**. The rule above
   governs what gets *committed* (never a restricted document itself) and how new cards are *written*
   (from the code, not from a notice's structure). It is not a veto on the deck's content.
-- **L'enquête de voisinage is deliberately excluded — settled, do not reopen.** The training module
-  on it was read in full and carries **no legal citation whatsoever**: 11 chapters of pure
-  operational method. There is no public law underneath to re-derive a card from, so any card would
-  be a paraphrase of a restricted document in a public repo. This is the rule above biting for the
-  first time: *a card that cannot be sourced publicly is a card that should not go in a public
-  release.* The reasoning is in `draft/PROGRAMME-APJA.md` § "Deliberate exclusion"; the source text
-  and the question-list image stay gitignored in `bloc1-reference/` and `scan/`. The *legal* points
-  nearby — the APJA's power to gather information and take statements by PV under an OPJ's control
-  (CPP art. 21) — are public and remain cardable.
+- **L'enquête de voisinage — excluded, then reopened by the author on 30 September 2026 through
+  public sources.** The CPMGN module carries no legal citation, so a card written from it would have
+  paraphrased a restricted document; that exclusion was right. A deliberate search then found
+  **independent public sources for every method point but one**: UK national police doctrine (ACPO
+  2006 *Practice Advice on House-to-House Enquiries*, College of Policing APP, the MIR/4
+  questionnaire), US material (FBI Law Enforcement Bulletin, AMBER Advocate canvass form), a 2025
+  article by a gendarmerie officer, the 2018 DGGN/DGPN/DACG circular on procès-verbaux, plus the code.
+  Fiches 35-36 (`content/VOISINAGE.md`) are written **only** from those. The module was used for one thing: a private
+  point-by-point alignment check, kept gitignored in `bloc1-reference/`. The one point with no public
+  source (usually-parked vehicles now absent) stays off the card.
+- **The drafting method this establishes** — and its limit. A topic taught only in restricted
+  material can be carded when **independent public sources** carry the same information: write
+  from those sources, cite them, check alignment privately, and leave off anything only the
+  restricted document says. **This is a drafting method, not an exemption.** The external review of
+  30 September 2026 corrected an earlier wording here: public availability of similar information
+  does **not**, by itself, lift the military duty of discretion (code de la défense L4121-2), which
+  keeps its own scope, nor authorise reproducing or authenticating the internal document. Never
+  publish the internal document, its structure, or the comparison with it.
 
 ---
 

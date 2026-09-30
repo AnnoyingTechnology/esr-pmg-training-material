@@ -44,7 +44,7 @@
 | **L'essentiel sur l'APJA** | ✓ | **fiche 30** — who is APJA (21), the 20-1 routes to APJ, the oath, the art. 21 missions, territorial competence (21-1, 18), authority and 122-4, APJ vs APJA |
 | **Cadre légal du droit d'arrestation** | ✓ | **fiche 33** — 73 in full, 73 al. 2, menottes (803), proportionate force (R434-18, Cass. 2005); mandats on fiches 26-27 |
 | Types d'enquêtes | ✓ | fiche 11 (the three frames) · **fiche 32** for 74, 74-1, 74-2 |
-| **L'enquête de voisinage** | **excluded** | **Deliberately not carded — see § "Deliberate exclusion" below.** Module read in full (`bloc1-reference/54668-enquete-voisinage.txt`); it carries no law at all |
+| **L'enquête de voisinage** | ✓ | **fiches 35 (method) and 36 (legal frame)**, written only from public sources after the exclusion was lifted — see § "Deliberate exclusion" below and `content/VOISINAGE.md` |
 | Approfondir : fiche 62-10 | — | the APJ/APJA reference document |
 
 ### 1.3 Alerte, transport, gel des lieux, rôle de l'APJA
@@ -126,8 +126,17 @@ confidence but is **not** a legal source: still to be confirmed on CPP art. 380-
 
 ## Deliberate exclusion — l'enquête de voisinage
 
-**There will be no card on the enquête de voisinage. This is a decision, not an oversight, and it
-should not be revisited without re-reading this section.**
+> **Superseded 30 September 2026.** At the author's request, a real search for **public** documents
+> was made. It found independent public sources for every method point but one — UK police doctrine
+> (ACPO 2006, College of Policing APP, MIR/4), US material (FBI LEB, AMBER Advocate), a 2025 article
+> by a gendarmerie officer (Village de la Justice), the circulaire JUSD1831298C, plus the code. A card
+> is now built **from those sources only**: fiches 35 and 36, source `content/VOISINAGE.md`. The module served only for a
+> private alignment check (`bloc1-reference/`, gitignored). The reasoning below stays true for the
+> module itself — it is still never paraphrased — and is kept for the record.
+
+**Original decision (30 September 2026, morning):** there will be no card on the enquête de
+voisinage. This is a decision, not an oversight, and it should not be revisited without re-reading
+this section.
 
 The module (`mod/book`, id 54668, 11 chapters) was read in full on 30 September 2026. It contains
 **not one legal citation** — no CPP article, no CP article, nothing. Across all 11 chapters it is
@@ -161,6 +170,17 @@ go in a public release."* This is the first concrete instance of it biting.
   information and to take statements by PV under an OPJ's control (CPP art. 21, as amended by loi
   n° 2026-798), with its exclusions. That is public law and goes on the APJA card, without the
   canvassing method around it.
+
+## The other exclusions — public sources found (30 September 2026)
+
+| Excluded | Public layer found | Cardable |
+|---|---|---|
+| **FPR — conduct on a hit** | Décret n° 2010-569 art. 3 (each entry records the « conduite à tenir en cas de découverte »); Assemblée nationale rapport n° 1335 (2018); Sénat rapport n° 219 (2018) — categories, fiches S defined by the conduct to hold, not by dangerousness; CNIL FPR page (≈ 120 motifs, each with a conduct); justice.fr | **The framework, yes.** The conduct written in a given entry stays operational |
+| **Mémento numérique** | NATINF nomenclature as open data (data.gouv.fr); Gendinfo articles on the NATINF tool on NEO phones and PredNatinf (2023) | **The public layer, yes** (NATINF, the open nomenclature, Légifrance); the internal tool itself, no |
+
+Not excluded, just not carded yet: sections 1-4 of the module inventory (déontologie, droits et
+devoirs du réserviste, récompenses et sanctions, SST, médias sociaux, emploi de la force). All sit on
+public texts (CSI R434-1 s., code de la défense).
 
 ## Retrieval note — what can and cannot be read from the platform
 

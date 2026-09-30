@@ -7,8 +7,8 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 >
 > **This is not the PMG syllabus.** Nothing about the PMG exam was used to build it, and nothing here
 > is endorsed by the gendarmerie. The justice cards are *culture générale juridique* — legal knowledge
-> chosen because it is useful, **not** because it is examined. Fiches 26 to 33 were chosen by checking
-> the deck against the outline of the reserve's training module on the *agent de police judiciaire
+> chosen because it is useful, **not** because it is examined. Fiches 26 to 33, 35 and 36 were chosen by
+> checking the deck against the outline of the reserve's training module on the *agent de police judiciaire
 > adjoint*: they cover what a reservist uses on duty. That outline steered the choice of subjects; it
 > is not a source, and it says nothing about any exam.
 >
@@ -19,13 +19,14 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 > the date of the release that contains them, and no later — **law changes, and so does doctrine**.
 > Check anything that matters against Légifrance and your own instructors.
 
-**48 A5 cards** across five families:
+**50 A5 cards** across five families:
 
 | Family | Cards | Subject |
 |---|---|---|
 | Justice | `fiche-01` … `fiche-25` | French criminal justice: sources, infraction, enquête, jugement, garanties |
 | Justice | `fiche-26` … `fiche-33` | the reservist at work: mandats, fouilles, the APJA's powers, flagrance, on the scene, arrest |
 | Justice | `fiche-34` | lexique — every term the deck uses, defined once |
+| Justice | `fiche-35` … `fiche-36` | l'enquête de voisinage: the method, and the legal frame for witnesses |
 | Sécurité routière | `route-R1` … `route-R6` | road policing as an APJA |
 | Armement | `ip-A1` … `ip-A4` | colour codes, usage des armes, weapon safety |
 | Organisation | `FICHE-organisation-A5` | subdivisions, formations, units |
@@ -77,7 +78,7 @@ To cut a release: `git tag v2026.09.30 && git push --tags`. CI attaches `FICHES-
 
 ```
 build/          fiche.css, check.js, the shell scripts, fit.py
-build/fiches/   the 34 justice cards
+build/fiches/   the 36 justice cards
 build/route/    the 6 sécurité routière cards
 build/ip/       the 4 armement cards
 build/*.html    the standalone cards (timeline, organisation, territoriale, galons)
