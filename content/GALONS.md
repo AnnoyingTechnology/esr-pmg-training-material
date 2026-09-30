@@ -1,8 +1,9 @@
 # Galons et appellations — source de la fiche G
 
-**Status: imported 30 September 2026 from a vector chart supplied by the author. Not reviewed — every
-claim below is carried on the chart's authority. Must pass the review gate (`AGENTS.md` § 8) before a
-release.**
+**Status: imported 30 September 2026 from a vector chart supplied by the author. Released in
+v2026.09.30 on the author's own validation — his explicit decision, an exception to the review gate
+(`AGENTS.md` § 8). The external claim-by-claim review below has not been done yet; every claim is
+still carried on the chart's authority.**
 
 ## Provenance — read this before editing
 
