@@ -38,7 +38,9 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 
 ## What to download
 
-The deck is a single PDF attached to each [release](../../releases):
+The deck is a single PDF attached to each [release](../../releases). The
+[current build](../../releases/download/courant/FICHES-PMG-A5.pdf) tracks the latest commit; dated
+releases are fixed editions.
 
 **`FICHES-PMG-A5.pdf`** — every card, one A5 page each. Read it on screen, or print it: A5 is half an
 A4 sheet, so "2 pages per sheet" in any print dialog gives you two cards per side at true size.
@@ -70,7 +72,8 @@ offline. Set `CHROME=/path/to/chrome` to use a different binary.
 over 100 % fill silently loses content that the PDF will not show you. Nothing else checks it: CI
 only renders and packages.
 
-To cut a release: `git tag v2026.09.30 && git push --tags`. CI attaches `FICHES-PMG-A5.pdf` to it.
+Every push to `main` replaces the `courant` pre-release with the freshly built PDF. To cut a dated
+release: `git tag v2026.09.30 && git push --tags`. CI attaches `FICHES-PMG-A5.pdf` to it.
 
 ---
 

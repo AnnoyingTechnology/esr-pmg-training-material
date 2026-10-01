@@ -7,7 +7,8 @@ still carried on the chart's authority.**
 
 ## Provenance — read this before editing
 
-- **Input:** `gendarmerie_galons_A5_vector_color_final_corrected.pdf` (repo root, untracked). One A5
+- **Input:** `gendarmerie_galons_A5_vector_color_final_corrected.pdf` (never committed; deleted from
+  the working tree on 1 October 2026 — `build/img/galons.svg` is now the only copy). One A5
   page, pure vector, generated with ReportLab. PDF metadata: *Author: « OpenAI - vector redrawing from
   Gendarmerie nationale reference »*, created 20 September 2026. The chart's own footer cites
   **Gendarmerie nationale, « Les grades en gendarmerie », éd. 2026, p. 166**.

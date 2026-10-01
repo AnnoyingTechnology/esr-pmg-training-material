@@ -126,8 +126,9 @@ python3 build/fit.py  # auto-solve the per-fiche density factor (see §5)
 
 ### Continuous integration
 
-`.github/workflows/build.yml` renders and packages the deck on every push, and on a `v*` tag
-publishes `FICHES-PMG-A5.pdf` as a GitHub release.
+`.github/workflows/build.yml` renders and packages the deck on every push. Every push to `main`
+replaces the **`courant`** pre-release with that commit's `FICHES-PMG-A5.pdf` (stable link:
+`releases/download/courant/FICHES-PMG-A5.pdf`); a `v*` tag publishes a dated release.
 
 **CI gates nothing.** The overflow check is local: the author builds, runs `check.sh` and looks at
 the PDF before every push. Do not add a CI gate back.
@@ -281,7 +282,8 @@ How to run it:
 - Disagreements are usually scope, not fact: his course and the reviewer can both be right about
   different sentences. Work out which sentence each is talking about before changing anything.
 
-**Do not publish a release containing an unreviewed card.**
+**Do not publish a release containing an unreviewed card.** Every push to `main` publishes the
+`courant` pre-release, so this means: never push an unreviewed card to `main`.
 
 ---
 
