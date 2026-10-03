@@ -22,13 +22,13 @@ Nothing about the PMG exam itself has ever been supplied.
 
 ## 1. What this repo produces
 
-**69 A5 cards** in six families. Everything in `out/` is generated and gitignored — it is never a
+**72 A5 cards** in six families. Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-38.pdf`, `fiche-22bis.pdf`, `fiche-33bis.pdf` | the 40 justice cards, one A5 page each |
-| `out/route-R1.pdf` … `route-R6.pdf` | sécurité routière (APJA) |
+| `out/fiche-01.pdf` … `fiche-39.pdf`, `fiche-22bis.pdf`, `fiche-33bis.pdf` | the 41 justice cards, one A5 page each |
+| `out/route-R1.pdf` … `route-R8.pdf` | sécurité routière (APJA) |
 | `out/ip-A1.pdf` … `ip-A5.pdf` | armement / intervention professionnelle |
 | `out/statut-D1.pdf` … `statut-D11.pdf` | statut militaire, déontologie, discipline, récompenses |
 | `out/gend-G1.pdf` … `gend-G3.pdf` | the gendarmerie: missions and authorities, units, traditions |
@@ -36,7 +36,7 @@ source. `build/package.sh` assembles the collections; nothing is built by hand a
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
 | `out/FICHE-galons-A5.pdf` | rank insignia and forms of address (imported vector chart) |
-| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 69 cards in order |
+| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 72 cards in order |
 
 **One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
 was removed: A5 is half an A4, so any print dialog does it. If you add a family, add it to the
@@ -88,6 +88,8 @@ per claim) and the claims list as sent:
 | `content/UNITES.md` | G2 | who does what, from the Cour des comptes report of Feb 2026 |
 | `content/TRADITIONS.md` | G3 | symbols · présentation (author's course, marked ◇) · tenue |
 | `content/SCENE.md` | 37-38 | first responder · documenting the scene; public-sources method (UNODC, NIJ). Drafted as M1-M2 |
+| `content/BAREME-ROUTE.md` | R7-R8 | rain speed limits (R413-2) and jeune-conducteur limits (R413-5, R413-6) · barème of everyday infractions; reviewed 3 Oct 2026, built as two cards |
+| `content/ARTICLE-73-DELITS.md` | 39 | the common délits punished by imprisonment, for article 73; reviewed 3 Oct 2026, corrections applied |
 | `content/IP-A5-FORCE.md` | A5 | graduated force, from Assemblée nationale documents |
 | `content/AMENDE-PAIEMENT.md` | 22 bis | AF deadlines, contestation, B2, NATINF open data |
 | `content/RETENIR-HORS-73.md` | 33 bis | 78-3, IPM, CESEDA, désertion |
@@ -173,9 +175,9 @@ A card is one `<section class="page" data-fam="…">` containing `.hdr`, `.body`
 and `.stamp`.
 
 **Family colours** via `data-fam`: `fondations` (01-05, navy) · `infraction` (06-08, 22-25 and 22 bis, bordeaux) ·
-`enquete` (09-13, 26-33, 33 bis and 35-38, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
+`enquete` (09-13, 26-33, 33 bis and 35-39, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
 cyan) · `methode` (20-21 and 34, slate) · `histoire` (the gendarmerie cards — frise, organisation, territoriale, galons, G1-G3 — dark navy) · `route`
-(R1-R6, burnt orange) · `armement` (A1-A5, anthracite — deliberately neutral, because the colour
+(R1-R8, burnt orange) · `armement` (A1-A5, anthracite — deliberately neutral, because the colour
 codes *are* the subject of A1 and a coloured header would compete with them) · `statut` (D1-D11,
 olive — statut militaire, déontologie, discipline, récompenses).
 
@@ -233,7 +235,7 @@ Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or e
 11 0.900   12 0.915   13 0.900   organisation 0.89
 route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854   22bis 0.929   23 0.888   25 0.935
 26 0.851   28 0.867   29 0.868   30 0.840   32 0.895   33 0.850   34 0.867
-statut-D1 0.904   statut-D2 0.870   statut-D5 0.840   statut-D7 0.929   statut-D8 0.970   gend-G1 0.928
+route-R3 0.900   route-R7 0.900   route-R8 0.820   statut-D1 0.904   statut-D2 0.870   statut-D5 0.840   statut-D7 0.929   statut-D8 0.970   gend-G1 0.928
 ```
 
 The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la

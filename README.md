@@ -23,15 +23,15 @@ Revision cards written while preparing the **Préparation Militaire Gendarmerie*
 > the date of the release that contains them, and no later — **law changes, and so does doctrine**.
 > Check anything that matters against Légifrance and your own instructors.
 
-**69 A5 cards** across six families:
+**72 A5 cards** across six families:
 
 | Family | Cards | Subject |
 |---|---|---|
 | Justice | `fiche-01` … `fiche-25`, `fiche-22bis` | French criminal justice: sources, infraction, enquête, jugement, garanties; paying and contesting a fine |
 | Justice | `fiche-26` … `fiche-33`, `fiche-33bis` | the reservist at work: mandats, fouilles, the APJA's powers, flagrance, on the scene, arrest, other holds |
 | Justice | `fiche-34` | lexique — every term the deck uses, defined once |
-| Justice | `fiche-35` … `fiche-38` | l'enquête de voisinage; first on the scene; documenting the scene |
-| Sécurité routière | `route-R1` … `route-R6` | road policing as an APJA |
+| Justice | `fiche-35` … `fiche-39` | l'enquête de voisinage; first on the scene; documenting the scene; article 73 délits |
+| Sécurité routière | `route-R1` … `route-R8` | road policing as an APJA |
 | Armement | `ip-A1` … `ip-A5` | colour codes, usage des armes, weapon safety, graduated force |
 | Statut & déontologie | `statut-D1` … `statut-D11` | statut militaire, the reservist, code de déontologie, oversight, discipline, récompenses, probité, discriminations, secrecy, image, online speech |
 | Gendarmerie | `gend-G1` … `gend-G3` | missions and authorities, units, symbols and presentation |
@@ -87,8 +87,8 @@ release: `git tag v2026.09.30 && git push --tags`. CI attaches `FICHES-PMG-A5.pd
 
 ```
 build/          fiche.css, check.js, the shell scripts, fit.py
-build/fiches/   the 40 justice cards
-build/route/    the 6 sécurité routière cards
+build/fiches/   the 41 justice cards
+build/route/    the 8 sécurité routière cards
 build/ip/       the 5 armement cards
 build/statut/   the 11 statut & déontologie cards
 build/gend/     the 3 gendarmerie cards (missions, units, traditions)

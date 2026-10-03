@@ -21,8 +21,8 @@ statut-D3 statut-D4 statut-D9 statut-D10 statut-D7 statut-D8 statut-D11
 ip-A5 ip-A1 ip-A2 ip-A3 ip-A4
 fiche-07 fiche-23 fiche-06 fiche-24 fiche-25 fiche-22 fiche-22bis
 fiche-04 fiche-10 fiche-30
-route-R1 route-R2 route-R3 route-R4 route-R5 route-R6
-fiche-31 fiche-32 fiche-33 fiche-33bis fiche-26 fiche-27 fiche-09 fiche-14 fiche-11 fiche-12
+route-R1 route-R2 route-R3 route-R4 route-R5 route-R6 route-R7 route-R8
+fiche-31 fiche-32 fiche-33 fiche-39 fiche-33bis fiche-26 fiche-27 fiche-09 fiche-14 fiche-11 fiche-12
 fiche-35 fiche-36 fiche-37 fiche-38 fiche-13 fiche-28 fiche-29
 fiche-01 fiche-02 fiche-03 fiche-05 fiche-08
 fiche-15 fiche-16 fiche-17 fiche-18 fiche-19 fiche-20 fiche-21
