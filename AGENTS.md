@@ -395,6 +395,15 @@ public.** So:
 
 ---
 
+## 9 ter. Known overflows — to address
+
+Cards that overflow slightly since the density factors were dropped, identified by the author by
+**page number in `out/FICHES-PMG-A5.pdf`** (as of 3 Oct 2026): **9, 11, 20, 21, 29, 33, 38, 40, 41, 43,
+44, 47, 49, 58**. Not yet addressed. They are to be fixed by splitting or re-laying-out, never by
+shrinking (§5). Page numbers will shift if the recueil order changes; re-identify the cards then.
+
+---
+
 ## 9 bis. Next step — rework categories, numbering and headers
 
 Planned, **not started**. The headers are a mashup: card numbers, family names, `hdr__cat` lines and
