@@ -168,9 +168,10 @@ h3{
 
 p{ margin:0 0 1.6mm 0; }
 p:last-child{ margin-bottom:0; }
-.sub{ font-size:6.19pt; color:var(--ink-3); line-height:1.32; }
+.sub{ font-size:6.19pt; color:var(--ink-3); line-height:1.05; }   /* note secondaire : interligne serré */
 
 strong{ font-weight:800; }
+sup{ line-height:0; }   /* « 1er » n'écarte pas les lignes */
 em{ font-style:italic; }
 
 /* Puces ---------------------------------------------------------------- */
@@ -184,6 +185,11 @@ ul li::before{
   content:""; position:absolute; left:.6mm; top:1.55mm;
   width:1.1mm; height:1.1mm; border-radius:50%; background:var(--fam);
 }
+/* Listes dans un encadré ou un panneau : même interligne que l'encadré */
+.box li, .vs__bd li{ line-height:1.12; }
+/* Liste pleine largeur en deux colonnes */
+ul.ul--2{ column-count:2; column-gap:5mm; }
+ul.ul--2 li{ break-inside:avoid; }
 ol{ list-style:none; counter-reset:n; }
 ol li{
   position:relative; padding-left:5mm; margin-bottom:1.2mm; font-size:6.95pt;
@@ -449,7 +455,7 @@ td.lbl{
 .box{
   border-radius:1.2mm; padding:2mm 2.6mm 2mm 2.6mm;
   margin-bottom:2mm; position:relative;
-  font-size:6.61pt; line-height:1.32;
+  font-size:6.61pt; line-height:1.12;   /* encadrés mémo : interligne réduit */
   border:.25mm solid;
 }
 .box:last-child{ margin-bottom:0; }
@@ -597,7 +603,7 @@ td.lbl{
 .vs__hd small{ display:block; font-size:5.25pt; font-weight:700; opacity:.72; }
 .vs__hd--alt{ background:var(--ink-2); }
 .vs__hd--a{ background:#1b4f8a; } .vs__hd--b{ background:#1d6b4f; } .vs__hd--c{ background:#8c2f39; }
-.vs__bd{ padding:1.8mm 2mm; font-size:6.28pt; line-height:1.32; flex:1 1 auto; }
+.vs__bd{ padding:1.8mm 2mm; font-size:6.28pt; line-height:1.12; flex:1 1 auto; }
 .vs__bd ul li{ font-size:6.19pt; margin-bottom:.8mm; padding-left:2.8mm; }
 .vs__bd ul li::before{ top:1.35mm; width:.9mm; height:.9mm; }
 
@@ -758,7 +764,7 @@ thead th{ padding:1.1mm 1.6mm; }
 .box{ padding:1.4mm 1.9mm; margin-bottom:1.4mm; }
 .steps > div{ padding:1.1mm .5mm; }
 .chips{ gap:.9mm; }
-.chip{ padding:.8mm 1.5mm; }
+.chip{ padding:.8mm 1.2mm; }
 .reflex{ padding:1.6mm 2.2mm; }
 .tl{ padding-top:2mm; }
 .tl__i{ padding-top:3mm; }
@@ -835,7 +841,7 @@ h2{ margin-bottom:1.5mm; }
    ===================================================================== */
 .ech{ display:flex; flex-direction:column; }
 .ech__row{
-  display:grid; grid-template-columns:26mm 1fr; column-gap:3mm;
+  display:grid; grid-template-columns:30mm 1fr; column-gap:3mm;
   padding:1.5mm 0; border-top:.3mm dashed var(--fam-line);
 }
 .ech__row:first-child{ border-top:none; padding-top:0; }
@@ -883,7 +889,7 @@ h2{ margin-bottom:1.5mm; }
 .cc thead th{ padding:1.1mm 1.4mm; font-size:5.5pt; }
 .cc tbody td{ padding:1.2mm 1.4mm; vertical-align:middle; line-height:1.2; }
 .cc tbody td em{
-  display:block; font-style:normal; color:var(--ink-3);
+  display:block; font-style:normal; color:var(--ink-3); line-height:1.05;
   font-size:5.27pt; margin-top:.4mm;
 }
 
@@ -943,7 +949,7 @@ h2{ margin-bottom:1.5mm; }
 .duo__verdict{
   background:var(--ink); color:#fff; border-radius:1.2mm;
   margin-top:1.6mm; padding:1.6mm 2.4mm; text-align:center;
-  font-size:6.53pt; font-weight:800; line-height:1.3;
+  font-size:6.53pt; font-weight:800; line-height:1.15;
 }
 .duo__verdict b{ color:#ffd479; font-weight:900; }
 
@@ -985,7 +991,7 @@ h2{ margin-bottom:1.5mm; }
 .vs__bd p{ margin-bottom:1mm; }
 
 /* Lexique : terme — définition — (article) → fiches */
-.lx{ font-size:6.45pt; line-height:1.28; margin:0 0 1mm 0; break-inside:avoid; }
+.lx{ font-size:6.45pt; line-height:1.12; margin:0 0 1mm 0; break-inside:avoid; }
 .lx b{ color:var(--fam); font-weight:900; }
 .lx__c{ display:inline-block; margin-left:.8mm; font-size:5.2pt; font-weight:800;
         color:var(--ink-3); white-space:nowrap; }

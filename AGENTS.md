@@ -216,7 +216,7 @@ banks everywhere (fiche 03, now J3, was at 146% with its second column barely us
 
 **Components:** `.node`/`.arr`/`.branch`/`.merge`/`.flow`/`.hflow` (diagrams) · `.ctrl` (object →
 means → judge) · `.vs` (face-à-face panels) · `.matrix` (+`--lg` hero variant) · `.chips` · `.scale`
-(proportional bars) · `.tl` (horizontal dates) · `.tlc` (central-axis timeline) · `.box--droit/
+(proportional bars) · `ul.ul--2` (full-width list in two columns) · `.tl` (horizontal dates) · `.tlc` (central-axis timeline) · `.box--droit/
 terrain/piege/alerte` · `.ech` (territorial echelons) · `.cmd` (command bar) · `.reflex` (dark banner) · `.art` (article chip, `--lg` enlarged) · `.notes`
 (ruled lines) · `.cc` (colour-code table, chip cell printed in its own colour) · `.duo` (exactly two
 panels joined by `+` over a verdict bar — for when the *cumulation* is the message).
@@ -224,12 +224,17 @@ panels joined by `+` over a verdict bar — for when the *cumulation* is the mes
 The ASCII diagrams in the source `.md` are **redrawn as CSS**, never pasted as monospace text.
 That is the main quality lever of this project.
 
-**One exception: the galons card** (`build/galons.html`) embeds a supplied vector chart,
+**One exception: the galons card** (G6, `build/fiches/G6.html`) embeds a supplied vector chart,
 `build/img/galons.svg`, cropped through its `viewBox`. The insignia *are* drawings, and the author
-wants them as large as possible: slim header, no idée-clef, footnotes in the footer, chart at 105 % of
-its original size. Because a full-width image does not shrink under `zoom`, that card sizes the chart
-with `--gw` (a width in mm on the `<img>`) instead of a density factor; `fit.py` leaves it at 1.00.
-Re-search `--gw` by hand if the footer text changes.
+wants them as large as possible: no idée-clef, chart at 105 % of its original size, sized with `--gw`
+(a width in mm on the `<img>`). Since 3 Oct 2026 it has the standard header, and its notes (forms of
+address, the `*GR` footnote, GD/GM/GR/GAV) sit under the chart. Re-search `--gw` by hand if they grow.
+
+**Interline tiers** (3 Oct 2026, the author's call — keep them uniform, never per card):
+titles and headers 1.1 · memo boxes (`.box`), panel bodies (`.vs__bd`), lists inside them, lexique
+entries (`.lx`) 1.12 · secondary notes (`.sub`, table sub-notes) 1.05 · dark verdict bars 1.15 ·
+running lists, tables and the idée-clef keep their looser interline. `sup` has `line-height:0` so a
+« 1<sup>er</sup> » does not push its line apart. Footers and stamps stay hidden.
 
 ---
 
@@ -245,7 +250,13 @@ data-fill = 100 × used / avail
 
 `check.sh` reads it via `chrome --dump-dom`. **>100 % means content is being clipped.**
 
-Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or enlarge a hero table.
+Target 90–98 %. Below ~70 % the page looks empty — enlarge a hero table or re-lay out. **Never add a
+`.notes` block**: the author does not want note space on the cards (the old ones were removed).
+
+`check.sh` measures the screen render, which wraps slightly more than the printed PDF: a card at
+≤ 100 % is safe, and one at 101-102 % may still print inside its margin. The ground truth is the PDF:
+rasterise it and check that the lowest ink on every page sits ≥ 5 mm above the bottom edge (the
+print margin when two A5 pages go on one A4 sheet).
 
 **No density factors any more (3 Oct 2026).** Every card renders at the same type sizes: there is no
 `zoom` on `.body`, and `build/fit.py`, which set a per-card zoom, was deleted — do not bring it back:
@@ -415,15 +426,6 @@ public.** So:
 
 ---
 
-## 9 ter. Known overflows — to address
-
-Cards that overflow slightly since the density factors were dropped, identified by the author by
-**page number in `out/FICHES-PMG-A5.pdf`** (as of 3 Oct 2026): **9, 11, 20, 21, 29, 33, 38, 40, 41, 43,
-44, 47, 49, 58**. Not yet addressed. They are to be fixed by splitting or re-laying-out, never by
-shrinking (§5). Page numbers will shift if the recueil order changes; re-identify the cards then.
-
----
-
 ## 9 bis. Categories and numbering — done 3 October 2026
 
 The headers used to be a mashup (numbers, family names, `hdr__cat` lines and colours inherited from the
@@ -431,6 +433,28 @@ order in which families were added). They were rebuilt in the planned order: cat
 defined first (§4), cross-references mapped to page positions **before** renaming, then everything
 renamed without moving a page, and the references rewritten from the map. The map and the old → new
 table are in `content/NUMEROTATION.md`.
+
+---
+
+## 9 ter. Overflows after the density factors were dropped — fixed 3 October 2026
+
+Seventeen cards overflowed once every card rendered at the same type sizes. They were fixed **without
+dropping any content and without per-card scaling**, in this order of preference:
+
+1. **Uniform interline tiers** (§4) on secondary blocks — the author's suggestion, and the biggest lever.
+2. **Layout moves**: column order rebalanced (S4, F2, E6, P3), table column widths (F2, E2, E6, E8, P3,
+   R8 — R8's first column alone saved 14 %), a list as a full-width two-column strip (S4's « Les
+   arrêts »), a box turned into a table row (P3's compétence territoriale), a diagram node widened
+   (E6), chip padding (S2), the territorial level column widened (G5, which also fixed
+   « ARRONDISSEME/NT »).
+3. **Synonym-level rewording, last resort, every fact kept**: S4 « d’abord consulté », « pour toute la
+   procédure » · E6 « dès la notification » · E3 « le strict temps de conduire ou d’attendre
+   l’officier », « article 73 exclu ».
+
+Hiding the footers had also hidden content that was not a source: G1's mottos, G5's diagram legend
+and the EDCF date, G6's forms of address and footnote, J12's « opposables ». All moved into the body.
+The footers still hold the *Repères* — including, on twelve cards, « numérotation du code de procédure
+pénale en vigueur jusqu’au 31 décembre 2028 » — which no longer reach the page.
 
 ---
 
