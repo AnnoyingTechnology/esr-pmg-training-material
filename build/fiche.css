@@ -75,7 +75,7 @@ body{
 
 .body{
   flex:1 1 auto;
-  padding:4.5mm 10mm 6mm 10mm;   /* bas : dégage le bandeau .stamp */
+  padding:4.5mm 10mm 4.5mm 10mm;
   display:flex; flex-direction:column;
   justify-content:space-between;   /* répartit l'espace résiduel entre sections */
   min-height:0;
@@ -89,27 +89,27 @@ body{
   flex:0 0 auto;
   background:var(--fam);
   color:#fff;
-  padding:5.5mm 10mm 5mm 10mm;
-  display:flex; align-items:flex-start; gap:4mm;
+  padding:2.2mm 10mm 2.2mm 10mm;
+  display:flex; align-items:center; gap:4mm;
 }
 .hdr__num{
-  font-size:20.93pt; font-weight:900; line-height:.82;
-  letter-spacing:-.02em;
+  font-size:20.93pt; font-weight:900; line-height:1;
+
   opacity:.9;
   flex:0 0 auto;
-  padding-top:.3mm;
+  padding-top:0;
 }
-.hdr__txt{ flex:1 1 auto; min-width:0; padding-top:.6mm; }
+.hdr__txt{ flex:1 1 auto; min-width:0; padding-top:0; }
 .hdr__cat{
-  font-size:5.02pt; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
-  opacity:.72; margin-bottom:1mm;
+  font-size:5.02pt; font-weight:800; text-transform:uppercase;
+  opacity:.72; margin-bottom:0;
 }
 .hdr__title{
-  font-size:10.88pt; font-weight:800; line-height:1.1; letter-spacing:-.01em;
+  font-size:10.88pt; font-weight:800; line-height:1.1;
 }
 .hdr__pg{
   flex:0 0 auto; align-self:flex-end;
-  font-size:5.44pt; font-weight:700; letter-spacing:.08em;
+  font-size:5.44pt; font-weight:700;
   opacity:.75; padding-bottom:.4mm;
 }
 
@@ -134,7 +134,7 @@ body{
   margin-bottom:2.9mm;
 }
 .key__lbl{
-  font-size:5.02pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  font-size:5.02pt; font-weight:900; text-transform:uppercase;
   color:var(--fam); display:block; margin-bottom:.8mm;
 }
 .key p{ font-size:7.2pt; line-height:1.34; color:var(--ink); }
@@ -143,7 +143,7 @@ body{
    TITRES DE SECTION
    ===================================================================== */
 h2{
-  font-size:5.86pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  font-size:5.86pt; font-weight:900; text-transform:uppercase;
   color:var(--fam);
   display:flex; align-items:center; gap:2.5mm;
   margin:0 0 2.2mm 0;
@@ -200,7 +200,7 @@ table{
 }
 thead th{
   background:var(--fam); color:#fff;
-  font-size:5.36pt; font-weight:900; letter-spacing:.1em; text-transform:uppercase;
+  font-size:6pt; font-weight:900; text-transform:uppercase;
   text-align:left; padding:1.6mm 2mm; line-height:1.2;
   vertical-align:middle;
 }
@@ -231,7 +231,7 @@ td.lbl{
 }
 .matrix tbody td.crit{
   text-align:left; font-weight:800; font-size:5.52pt;
-  text-transform:uppercase; letter-spacing:0;
+  text-transform:uppercase;
   vertical-align:middle;
   color:var(--ink-2); background:var(--rule-2)!important;
 }
@@ -239,7 +239,7 @@ td.lbl{
 
 /* Matrice « héros » : seule pièce maîtresse de la page */
 .matrix--lg{ font-size:6.86pt; }
-.matrix--lg thead th{ font-size:5.86pt; padding:2.2mm 1.2mm; }
+.matrix--lg thead th{ font-size:6.75pt; padding:2.2mm 1.2mm; }
 .matrix--lg tbody td{ padding:2.6mm 1.4mm; }
 .matrix--lg tbody td.crit{ font-size:6.03pt; }
 .matrix--lg .big{ font-size:8.79pt; }
@@ -258,7 +258,7 @@ td.lbl{
   text-align:center;
   line-height:1.22;
 }
-.node b{ font-size:6.7pt; font-weight:800; display:block; letter-spacing:.01em; }
+.node b{ font-size:6.7pt; font-weight:800; display:block; }
 .node span{ font-size:5.52pt; color:var(--ink-3); display:block; margin-top:.4mm; }
 .node--fill{ background:var(--fam); border-color:transparent; color:#fff; }
 .node--fill span{ color:rgba(255,255,255,.78); }
@@ -290,7 +290,7 @@ td.lbl{
   position:absolute; left:50%; top:50%;
   transform:translate(-50%,-50%);
   background:#fff; padding:0 1.2mm;
-  font-size:5.02pt; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  font-size:5.02pt; font-weight:800; text-transform:uppercase;
   color:var(--ink-3);
 }
 
@@ -351,7 +351,7 @@ td.lbl{
   flex:1 1 0; min-width:0;
   background:var(--fam-soft); border:.25mm solid transparent;
   padding:1.6mm .6mm; text-align:center;
-  font-size:5.36pt; font-weight:900; letter-spacing:.03em; text-transform:uppercase;
+  font-size:5.36pt; font-weight:900; text-transform:uppercase;
   color:var(--fam); line-height:1.1;
 }
 
@@ -367,10 +367,10 @@ td.lbl{
   padding:1.7mm 2mm;
   line-height:1.15;
 }
-.pyr__lvl b{ font-size:6.36pt; font-weight:900; letter-spacing:.04em; }
+.pyr__lvl b{ font-size:6.36pt; font-weight:900; }
 .pyr__lvl span{
   display:block; font-size:5.11pt; font-weight:600; opacity:.8; margin-top:.3mm;
-  letter-spacing:.02em;
+
 }
 .pyr__lvl:nth-child(1){ width:46%;  background:#16304d; }
 .pyr__lvl:nth-child(2){ width:60%;  background:#24507c; }
@@ -450,7 +450,7 @@ td.lbl{
 }
 .box:last-child{ margin-bottom:0; }
 .box__lbl{
-  font-size:4.94pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  font-size:7.5pt; font-weight:900; text-transform:uppercase;
   display:block; margin-bottom:.9mm;
 }
 .box--piege  { background:var(--piege-bg);   border-color:transparent; }
@@ -469,12 +469,12 @@ td.lbl{
   display:flex; align-items:center; gap:2.5mm;
 }
 .reflex__lbl{
-  font-size:4.94pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  font-size:4.94pt; font-weight:900; text-transform:uppercase;
   color:rgba(255,255,255,.55); flex:0 0 auto;
   writing-mode:horizontal-tb;
 }
 .reflex__txt{
-  font-size:5.94pt; font-weight:800; letter-spacing:.01em; line-height:1.3;
+  font-size:5.94pt; font-weight:800; line-height:1.3;
 }
 .reflex__txt em{ font-style:normal; color:#9fb6cd; font-weight:900; padding:0 .3mm; }
 
@@ -484,7 +484,7 @@ td.lbl{
 .art{
   display:inline-block;
   background:var(--ink); color:#fff;
-  font-size:5.36pt; font-weight:900; letter-spacing:.02em;
+  font-size:5.36pt; font-weight:900;
   padding:.4mm 1.2mm; border-radius:.6mm;
   white-space:nowrap;
   vertical-align:baseline;
@@ -508,7 +508,7 @@ td.lbl{
   border-top:.25mm solid var(--rule);
   font-size:5.27pt; color:var(--ink-3); line-height:1.35;
 }
-.foot b{ color:var(--ink-2); font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:4.85pt; }
+.foot b{ color:var(--ink-2); font-weight:900; text-transform:uppercase; font-size:4.85pt; }
 .foot a{ color:var(--ink-3); text-decoration:none; }
 .foot__line{ margin-bottom:.8mm; }
 .foot__line:last-child{ margin-bottom:0; }
@@ -517,10 +517,11 @@ td.lbl{
 .stamp{
   position:absolute; left:10mm; right:10mm; bottom:2.2mm;
   display:flex; justify-content:space-between; align-items:center;
-  font-size:4.77pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  font-size:4.77pt; font-weight:700; text-transform:uppercase;
   color:#aeb6c0;
 }
-.foot + .stamp{ display:flex; }
+/* Pieds de fiche et bandeau : masqués */
+.foot, .stamp{ display:none !important; }
 
 /* Utilitaires ---------------------------------------------------------- */
 .mt0{ margin-top:0; }  .mb0{ margin-bottom:0!important; }
@@ -541,9 +542,9 @@ td.lbl{
 .ctrl__obj{
   background:var(--ink); color:#fff; border-radius:.8mm;
   padding:1.5mm 2mm; text-align:center;
-  font-size:5.78pt; font-weight:900; letter-spacing:.04em; line-height:1.12;
+  font-size:5.78pt; font-weight:900; line-height:1.12;
 }
-.ctrl__obj small{ display:block; font-size:4.69pt; font-weight:700; opacity:.6; letter-spacing:.06em; }
+.ctrl__obj small{ display:block; font-size:4.69pt; font-weight:700; opacity:.6; }
 .ctrl__mid{ position:relative; height:4.6mm; }
 .ctrl__mid::before{
   content:""; position:absolute; left:1.5mm; right:2.6mm; top:50%;
@@ -557,7 +558,7 @@ td.lbl{
 .ctrl__mid span{
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
   background:#fff; padding:0 1.1mm; white-space:nowrap;
-  font-size:5.02pt; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+  font-size:5.02pt; font-weight:800; text-transform:uppercase;
   color:var(--fam);
 }
 .ctrl__juge{
@@ -588,10 +589,10 @@ td.lbl{
           display:flex; flex-direction:column; }
 .vs__hd{
   padding:1.5mm 1.6mm; color:#fff; text-align:center;
-  font-size:5.52pt; font-weight:900; letter-spacing:.08em; text-transform:uppercase;
+  font-size:6.5pt; font-weight:900; text-transform:uppercase;
   line-height:1.15; background:var(--fam);
 }
-.vs__hd small{ display:block; font-size:4.69pt; font-weight:700; opacity:.72; letter-spacing:.04em; }
+.vs__hd small{ display:block; font-size:5.25pt; font-weight:700; opacity:.72; }
 .vs__hd--alt{ background:var(--ink-2); }
 .vs__hd--a{ background:#1b4f8a; } .vs__hd--b{ background:#1d6b4f; } .vs__hd--c{ background:#8c2f39; }
 .vs__bd{ padding:1.8mm 2mm; font-size:6.28pt; line-height:1.32; flex:1 1 auto; }
@@ -628,7 +629,7 @@ td.lbl{
 
 /* Anatomie d'une référence --------------------------------------------- */
 .anat__ref{
-  text-align:center; font-size:12.56pt; font-weight:900; letter-spacing:.01em;
+  text-align:center; font-size:12.56pt; font-weight:900;
   padding:1mm 0 2mm;
 }
 .anat__ref span{ border-bottom:.9mm solid; padding-bottom:.8mm; }
@@ -650,7 +651,7 @@ td.lbl{
 .stage{ display:flex; gap:2mm; align-items:flex-start; margin-bottom:1.3mm; }
 .stage:last-child{ margin-bottom:0; }
 .stage__t{
-  flex:0 0 21mm; font-size:5.19pt; font-weight:900; letter-spacing:.06em;
+  flex:0 0 21mm; font-size:5.19pt; font-weight:900;
   text-transform:uppercase; color:#fff; background:var(--fam);
   padding:1.1mm 1mm; text-align:center; border-radius:.6mm; line-height:1.1;
 }
@@ -661,7 +662,7 @@ td.lbl{
    ===================================================================== */
 .notes{ margin-top:2.4mm; }
 .notes__lbl{
-  font-size:4.77pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+  font-size:4.77pt; font-weight:900; text-transform:uppercase;
   color:#b4bcc6; display:block; margin-bottom:1.6mm;
 }
 .notes__l{
@@ -705,7 +706,7 @@ td.lbl{
 .harr span{
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
   background:#fff; padding:0 .8mm; white-space:nowrap;
-  font-size:5.02pt; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+  font-size:5.02pt; font-weight:800; text-transform:uppercase;
   color:var(--ink-3);
 }
 .hflow > .node{ display:flex; flex-direction:column; justify-content:center; }
@@ -844,7 +845,7 @@ h2{ margin-bottom:1.5mm; }
   text-align:center; display:flex; flex-direction:column; justify-content:center;
 }
 .ech__lvl b{
-  display:block; font-size:7.95pt; font-weight:900; letter-spacing:-.01em;
+  display:block; font-size:7.95pt; font-weight:900;
   line-height:1.04; color:var(--fam); text-transform:uppercase;
   overflow-wrap:anywhere;   /* « ARRONDISSEMENT » débordait de sa colonne */
 }
@@ -863,7 +864,7 @@ h2{ margin-bottom:1.5mm; }
 .cmd{
   background:var(--fam); color:#fff; border-radius:.8mm;
   padding:1.1mm 2mm; text-align:center;
-  font-size:5.94pt; font-weight:900; letter-spacing:.06em;
+  font-size:5.94pt; font-weight:900;
   text-transform:uppercase; line-height:1.14;
 }
 
@@ -882,7 +883,7 @@ h2{ margin-bottom:1.5mm; }
 
 /* Tableau des codes couleurs ------------------------------------------- */
 .cc{ table-layout:fixed; font-size:5.9pt; }
-.cc thead th{ padding:1.1mm 1.4mm; font-size:5.02pt; }
+.cc thead th{ padding:1.1mm 1.4mm; font-size:5.5pt; }
 .cc tbody td{ padding:1.2mm 1.4mm; vertical-align:middle; line-height:1.2; }
 .cc tbody td em{
   display:block; font-style:normal; color:var(--ink-3);
@@ -895,14 +896,14 @@ h2{ margin-bottom:1.5mm; }
   border-bottom:.3mm solid #fff;
 }
 .cc tbody td.cc__c b{
-  display:block; font-size:6.11pt; font-weight:900; letter-spacing:.04em; line-height:1.04;
+  display:block; font-size:6.11pt; font-weight:900; line-height:1.04;
 }
 .cc tbody td.cc__c small{
-  display:block; font-size:4.6pt; font-weight:700; letter-spacing:.09em;
+  display:block; font-size:4.6pt; font-weight:700;
   text-transform:uppercase; opacity:.88; margin-top:.5mm;
 }
 /* Les pastilles portent le sujet de la fiche : elles doivent primer */
-.cc tbody td.cc__c b{ font-size:7.53pt; letter-spacing:.03em; }
+.cc tbody td.cc__c b{ font-size:7.53pt; }
 .cc tbody td.cc__c small{ font-size:5.19pt; margin-top:.6mm; }
 
 .cc tbody td.c-jaune { background:#DFA400; color:#231900; }
@@ -933,7 +934,7 @@ h2{ margin-bottom:1.5mm; }
 }
 .duo__t{
   display:block; font-size:9.21pt; font-weight:900; line-height:1.08;
-  letter-spacing:-.01em; color:var(--fam); text-transform:uppercase;
+ color:var(--fam); text-transform:uppercase;
 }
 .duo__s{
   display:block; font-size:6.19pt; color:var(--ink-2); line-height:1.25; margin-top:1mm;
@@ -947,12 +948,12 @@ h2{ margin-bottom:1.5mm; }
   margin-top:1.6mm; padding:1.6mm 2.4mm; text-align:center;
   font-size:6.53pt; font-weight:800; line-height:1.3;
 }
-.duo__verdict b{ color:#ffd479; font-weight:900; letter-spacing:.04em; }
+.duo__verdict b{ color:#ffd479; font-weight:900; }
 
 /* Famille armement : les en-têtes de face-à-face et les pastilles
    d'article portent la structure — les remonter d'un cran. */
-.page[data-fam="armement"] .vs__hd{ font-size:7.53pt; padding:1.7mm 1.4mm; letter-spacing:.05em; }
-.page[data-fam="armement"] .vs__hd small{ font-size:5.44pt; margin-top:.3mm; }
+.page[data-fam="armement"] .vs__hd{ padding:1.7mm 1.4mm; }
+.page[data-fam="armement"] .vs__hd small{ margin-top:.3mm; }
 .art--lg{ font-size:7.11pt; padding:.8mm 1.8mm; border-radius:.8mm; }
 
 /* À côté d'une pastille .art--lg, la puce n'apporte plus rien */
@@ -963,7 +964,7 @@ h2{ margin-bottom:1.5mm; }
 
 /* Sous-libellé dans la colonne critère d'une matrice (« droit commun », etc.) */
 .matrix tbody td.crit small{
-  display:block; font-size:4.86pt; font-weight:700; letter-spacing:0;
+  display:block; font-size:4.86pt; font-weight:700;
   text-transform:none; color:var(--ink-3); margin-top:.4mm; line-height:1.15;
 }
 
@@ -990,7 +991,7 @@ h2{ margin-bottom:1.5mm; }
 .lx{ font-size:6.45pt; line-height:1.28; margin:0 0 1mm 0; break-inside:avoid; }
 .lx b{ color:var(--fam); font-weight:900; }
 .lx__c{ display:inline-block; margin-left:.8mm; font-size:5.2pt; font-weight:800;
-        color:var(--ink-3); letter-spacing:.02em; white-space:nowrap; }
+        color:var(--ink-3); white-space:nowrap; }
 .zcol h2{ break-after:avoid; }
 
 /* Fiche galons : tableau vectoriel importé (build/img/galons.svg), pleine largeur */
@@ -1004,7 +1005,7 @@ h2{ margin-bottom:1.5mm; }
 .page[data-fam="statut"]{ --fam:#4d5a1e; --fam-soft:#f3f5e8; --fam-line:#d2d9b0; }
 
 /* Numéro « bis » dans l'en-tête */
-.hdr__num small{ font-size:9.21pt; font-weight:800; letter-spacing:0; margin-left:.4mm; }
+.hdr__num small{ font-size:9.21pt; font-weight:800; margin-left:.4mm; }
 
 /* Serment, charte : texte cité intégralement */
 .oath{
@@ -1016,3 +1017,8 @@ h2{ margin-bottom:1.5mm; }
 /* Provenance d'un point : ● source publique · ◇ usage enseigné */
 .prov{ font-style:normal; font-weight:900; color:var(--fam); margin-right:.8mm; }
 .prov--jul{ color:#8a5a12; }
+
+/* Titres, en-têtes et étiquettes : interligne serré, uniforme */
+.hdr__cat, .hdr__title, h2, h3, .key__lbl, .box__lbl, .node b, .tl__d,
+thead th, .matrix thead th, .cc thead th, .vs__hd, .vs__hd small,
+.ctrl__juge, .stage__t, .ech__lvl b, .duo__c b{ line-height:1.1; }

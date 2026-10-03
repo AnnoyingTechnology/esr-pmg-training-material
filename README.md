@@ -67,7 +67,7 @@ HTML + build/fiche.css  ──chrome --print-to-pdf──▶  A5 PDF  ──pdfu
 ./build/render.sh     # all card HTML → out/*.pdf          (one A5 page each)
 ./build/check.sh      # fill ratio per page; non-zero exit if any page overflows
 ./build/package.sh    # assemble them into out/FICHES-PMG-A5.pdf
-python3 build/fit.py  # re-solve the per-card density factor
+# (fit.py is retired: no per-card density factor)
 ```
 
 Requirements: `google-chrome-stable`, `pdfunite` and `pdfinfo` (poppler), Python 3, and the

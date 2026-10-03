@@ -14,10 +14,10 @@ def fill(path):
 
 def set_zoom(path, z):
     s = open(path, encoding='utf-8').read()
-    s = re.sub(r'(<div class="body body--zones")(?: style="zoom:[0-9.]+")?', r'\1', s)
+    s = re.sub(r'(<div class="body body--zones")(?: style="zoom:[0-9.]+;--z:[0-9.]+")?', r'\1', s)
     if z < 0.999:
         s = s.replace('<div class="body body--zones"',
-                      '<div class="body body--zones" style="zoom:%.3f"' % z, 1)
+                      '<div class="body body--zones" style="zoom:%.3f;--z:%.3f"' % (z, z), 1)
     open(path, 'w', encoding='utf-8').write(s)
 
 CARDS = (sorted(glob.glob('build/fiches/fiche-*.html'))

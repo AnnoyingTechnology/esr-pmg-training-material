@@ -151,7 +151,7 @@ must render offline.
 ./build/render.sh     # all card HTML → out/*.pdf
 ./build/check.sh      # fill ratio per page; exits non-zero if anything is >100 %
 ./build/package.sh    # assemble every card into out/FICHES-PMG-A5.pdf
-python3 build/fit.py  # auto-solve the per-fiche density factor (see §5)
+# build/fit.py is retired: no per-card density factor (see §5)
 ```
 
 `render.sh` and `check.sh` honour `CHROME=/path/to/binary`; CI sets it for `render.sh`. Everything else is fixed.
@@ -227,32 +227,10 @@ data-fill = 100 × used / avail
 
 Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or enlarge a hero table.
 
-`build/fit.py` binary-searches a per-card density factor (`style="zoom:…"` on `.body`) until fill
-≤ 99 %. Current factors — cards not listed are at 1.00:
-
-```
-01 0.858   02 0.900   03 0.856   06 0.924   09 0.848   10 0.900
-11 0.900   12 0.915   13 0.900   organisation 0.89
-route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854   22bis 0.929   23 0.888   25 0.935
-26 0.851   28 0.867   29 0.868   30 0.840   32 0.895   33 0.850   34 0.867
-route-R3 0.900   route-R7 0.900   route-R8 0.820   statut-D1 0.904   statut-D2 0.870   statut-D5 0.840   statut-D7 0.929   statut-D8 0.970   gend-G1 0.928
-```
-
-The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la
-défense → A4). New legal material should open A5 rather than push A1/A2 below ~0.86 — on A1 and A2
-the type size *is* the message, since the colour chips and the article badges carry the structure.
-
-`fit.py` covers every card family and the organisation card, and honours `CHROME`. It rewrites the
-`zoom:` attribute in place — commit before running it if you want a clean diff. **Pass paths to fit
-only those cards** (`python3 build/fit.py build/statut/statut-D5.html`); with no argument it refits the
-whole deck.
-
-`fit.py` only ever shrinks. Cards that came out short were filled with a `.notes` block sized to the
-space left (D4, D9, D10, G3, A5, 33 bis, 37, 38), and D9, D10, A5 and 38 carry a card-level `<style>`
-that enlarges their hero text — refitting them will not undo either.
-
-So type size is **not uniform** across the deck; the densest cards read noticeably smaller. This is
-known and accepted. If a card needs to go below ~0.85, prefer splitting or re-laying-out.
+**No density factors any more (3 Oct 2026).** Every card renders at the same type sizes: there is no
+`zoom` on `.body`, and `build/fit.py` is retired — **do not run it**, it would put the per-card zoom back
+and break the consistency. A card that overflows is split or re-laid out, never shrunk.
+`check.sh` still reports the fill ratio.
 
 ---
 
@@ -394,6 +372,27 @@ public.** So:
   without them. Never trade accuracy for simplicity: a simplification that is false is a defect.
   Where the law is unsettled, say so plainly on the card (*par prudence*) rather than presenting a
   precaution as a rule.
+
+---
+
+## 9 bis. Next step — rework categories, numbering and headers
+
+Planned, **not started**. The headers are a mashup: card numbers, family names, `hdr__cat` lines and
+colours come from the order in which the families were added, and read as shuffled in the recueil.
+The aim is one consistent header system. In this order:
+
+1. **Define the categories.** Decide how the 72 cards are grouped, define each category, give each its
+   own colour. Today's `data-fam` values (fondations, infraction, enquete, … route, armement, statut,
+   histoire) are historical, not a design.
+2. **Rename everything** — numbers, category lines, titles — **keeping the exact chronology of the
+   recueil** (`ORDRE` in `build/package.sh`, set by `content/CHRONOLOGIE_PMG.md`). Renaming must not
+   reorder a single page.
+3. **Before renaming, map the internal cross-references.** Find every « fiche 10 », « fiche D5 »,
+   « voir R3 »… in the cards and in `content/`, and record the page position each one points to.
+   After renaming, replace them from that map so the cross-referencing survives. Do this *first*:
+   once the old numbers are gone the references cannot be reconstructed reliably.
+
+Until then, keep the current numbers and do not add new cross-references that depend on them.
 
 ---
 
