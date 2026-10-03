@@ -260,9 +260,9 @@ td.lbl{
 }
 .node b{ font-size:6.7pt; font-weight:800; display:block; letter-spacing:.01em; }
 .node span{ font-size:5.52pt; color:var(--ink-3); display:block; margin-top:.4mm; }
-.node--fill{ background:var(--fam); border-color:var(--fam); color:#fff; }
+.node--fill{ background:var(--fam); border-color:transparent; color:#fff; }
 .node--fill span{ color:rgba(255,255,255,.78); }
-.node--soft{ background:var(--fam-soft); }
+.node--soft{ background:var(--fam-soft); border-color:transparent; }
 .node--ghost{ border-style:dashed; background:#fff; }
 .node--sm b{ font-size:5.86pt; }
 .node--wide{ padding:1.5mm 3mm; }
@@ -349,7 +349,7 @@ td.lbl{
 .steps{ display:flex; gap:.8mm; }
 .steps > div{
   flex:1 1 0; min-width:0;
-  background:var(--fam-soft); border:.25mm solid var(--fam-line);
+  background:var(--fam-soft); border:.25mm solid transparent;
   padding:1.6mm .6mm; text-align:center;
   font-size:5.36pt; font-weight:900; letter-spacing:.03em; text-transform:uppercase;
   color:var(--fam); line-height:1.1;
@@ -407,12 +407,12 @@ td.lbl{
    ===================================================================== */
 .chips{ display:flex; flex-wrap:wrap; gap:1.2mm; }
 .chip{
-  border:.3mm solid var(--fam-line); background:var(--fam-soft);
+  border:.3mm solid transparent; background:var(--fam-soft);
   color:var(--fam);
   border-radius:1mm; padding:1.1mm 2mm;
   font-size:6.19pt; font-weight:800; white-space:nowrap;
 }
-.chip--strong{ background:var(--fam); border-color:var(--fam); color:#fff; }
+.chip--strong{ background:var(--fam); border-color:transparent; color:#fff; }
 .chip--plain{ background:#fff; color:var(--ink-2); border-color:var(--rule); }
 .chip small{ font-size:5.02pt; font-weight:700; opacity:.7; display:block; text-align:center; }
 
@@ -453,13 +453,13 @@ td.lbl{
   font-size:4.94pt; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
   display:block; margin-bottom:.9mm;
 }
-.box--piege  { background:var(--piege-bg);   border-color:#e8c2c2; }
+.box--piege  { background:var(--piege-bg);   border-color:transparent; }
 .box--piege   .box__lbl{ color:var(--piege); }
-.box--terrain{ background:var(--terrain-bg); border-color:#c2dfd2; }
+.box--terrain{ background:var(--terrain-bg); border-color:transparent; }
 .box--terrain .box__lbl{ color:var(--terrain); }
-.box--droit  { background:var(--droit-bg);   border-color:#c6d8ec; }
+.box--droit  { background:var(--droit-bg);   border-color:transparent; }
 .box--droit   .box__lbl{ color:var(--droit); }
-.box--alerte { background:var(--alerte-bg);  border-color:#e7d2ab; }
+.box--alerte { background:var(--alerte-bg);  border-color:transparent; }
 .box--alerte  .box__lbl{ color:var(--alerte); }
 
 /* Encadré « réflexe » pleine largeur, fond sombre ----------------------- */
@@ -561,7 +561,7 @@ td.lbl{
   color:var(--fam);
 }
 .ctrl__juge{
-  border:.3mm solid var(--fam-line); background:var(--fam-soft);
+  border:.3mm solid transparent; background:var(--fam-soft);
   border-radius:.8mm; padding:1.5mm 2mm; text-align:center;
   font-size:6.03pt; font-weight:800; color:var(--fam); line-height:1.15;
 }
@@ -922,7 +922,7 @@ h2{ margin-bottom:1.5mm; }
 .duo{ display:flex; align-items:stretch; }
 .duo__c{
   flex:1 1 0; min-width:0;
-  border:.35mm solid var(--fam); background:var(--fam-soft);
+  border:.35mm solid transparent; background:var(--fam-soft);
   border-radius:1.2mm; padding:2mm 2.2mm 2.2mm;
   text-align:center;
 }

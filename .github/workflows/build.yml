@@ -11,7 +11,7 @@ permissions:
   contents: write          # nécessaire pour publier les releases
 
 # Un seul run à la fois par ref : sans cela, deux pushes rapprochés peuvent
-# finir dans le désordre et la pré-release « courant » pointer sur l'ancien.
+# finir dans le désordre et la release « courant » pointer sur l'ancien.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
@@ -53,7 +53,7 @@ jobs:
           path: out/*.pdf
           retention-days: 30
 
-      # Chaque push sur main remplace la pré-release « courant » : un lien
+      # Chaque push sur main remplace la release « courant » : un lien
       # stable vers le PDF du dernier commit, sans attendre un tag v*.
       # Le tag est recréé par l'API avec GITHUB_TOKEN, ce qui ne relance
       # aucun workflow (et « courant » ne correspond pas à v*).
@@ -64,7 +64,7 @@ jobs:
         run: |
           gh release delete courant --cleanup-tag --yes || true
           gh release create courant out/FICHES-PMG-A5.pdf \
-            --target "$GITHUB_SHA" --prerelease \
+            --target "$GITHUB_SHA" --latest \
             --title "Current build (main)" \
             --notes "Rebuilt on every push to main — commit ${GITHUB_SHA::7}, $(date -u +%F). Dated releases (v…) are the reference editions."
 

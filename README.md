@@ -78,7 +78,7 @@ offline. Set `CHROME=/path/to/chrome` to use a different binary.
 over 100 % fill silently loses content that the PDF will not show you. Nothing else checks it: CI
 only renders and packages.
 
-Every push to `main` replaces the `courant` pre-release with the freshly built PDF. To cut a dated
+Every push to `main` replaces the `courant` release with the freshly built PDF. To cut a dated
 release: `git tag v2026.09.30 && git push --tags`. CI attaches `FICHES-PMG-A5.pdf` to it.
 
 ---
