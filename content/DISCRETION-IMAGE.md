@@ -1,6 +1,6 @@
 # Discrétion, fichiers, image et parole — draft for fiches D9 and D10
 
-> **BUILT 3 October 2026** — `build/statut/statut-D9.html`, `statut-D10.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
+> **BUILT 3 October 2026** — `build/fiches/S7.html`, `S8.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
 > text below is the reviewed text the HTML was built from; **the HTML is now the reference.**
 
 **Status: drafted 2 October 2026 · reviewed by `gpt-6-astra` 3 October 2026 · corrections applied to the card

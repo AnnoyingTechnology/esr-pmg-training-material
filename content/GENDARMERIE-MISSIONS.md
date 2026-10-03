@@ -1,6 +1,6 @@
 # La gendarmerie : missions, autorités, direction — draft for fiche G1
 
-> **BUILT 3 October 2026** — `build/gend/gend-G1.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
+> **BUILT 3 October 2026** — `build/fiches/G2.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
 > text below is the reviewed text the HTML was built from; **the HTML is now the reference.**
 
 **Status: drafted 2 October 2026 · reviewed by `gpt-6-astra` 3 October 2026 · corrections applied to the card

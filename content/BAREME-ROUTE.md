@@ -1,7 +1,7 @@
 # Barème des infractions courantes + vitesse par temps de pluie — draft for card R7
 
-> **BUILT 3 October 2026** as two cards — `build/route/route-R7.html` (vitesse par temps de pluie) and
-> `route-R8.html` (barème des infractions courantes). Reviewed by `gpt-6-astra` (high), corrections applied.
+> **BUILT 3 October 2026** as two cards — `build/fiches/R7.html` (vitesse par temps de pluie) and
+> `R8.html` (barème des infractions courantes). Reviewed by `gpt-6-astra` (high), corrections applied.
 > **The HTML is now the reference**; § 2 below is the pre-review draft.
 
 **Status: drafted and reviewed 3 October 2026.** Split in two at build: R8 alone at 0.82 density was the smaller
@@ -282,7 +282,7 @@ The relevant reform is the change to **grand excès de vitesse**, not décret 20
 
 3. **Correct the table:** R415-6 **and R415-7**; overtaking on the right **R414-6**; screen **€200** with its field-of-vision exception; emergency-lane stopping **2nd/€35/0**; speeding **R413-14 + L413-1**, including zero-point excesses.
 
-4. **Fix the speeding cross-reference to R3.** The built [R3 card](/home/julien/Downloads/fiches_justice/build/route/route-R3.html:5) contains the speed scale; [R6](/home/julien/Downloads/fiches_justice/build/route/route-R6.html:5) covers délits and injury accidents.
+4. **Fix the speeding cross-reference to R3.** The built [R3 card](build/fiches/R3.html:5) contains the speed scale; [R6](build/fiches/R6.html:5) covers délits and injury accidents.
 
 5. **Replace “la classe fixe l’amende” with “la classe détermine le forfait applicable”.** State that the figures are ordinary fixed fines where that procedure applies. R49 contains exceptions; class alone does not describe every possible financial consequence.
 

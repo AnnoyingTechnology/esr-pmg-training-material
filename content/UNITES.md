@@ -1,6 +1,6 @@
 # Qui fait quoi : les unités — draft for fiche G2
 
-> **BUILT 3 October 2026** — `build/gend/gend-G2.html` (and the EDCF label on `build/organisation.html`). Reviewed by `gpt-6-astra`, corrections applied. The card
+> **BUILT 3 October 2026** — `build/fiches/G4.html` (and the EDCF label on `build/fiches/G3.html`). Reviewed by `gpt-6-astra`, corrections applied. The card
 > text below is the reviewed text the HTML was built from; **the HTML is now the reference.**
 
 **Status: drafted 2 October 2026 · reviewed by `gpt-6-astra` 3 October 2026 · corrections applied to the card

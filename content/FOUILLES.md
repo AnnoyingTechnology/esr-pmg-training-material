@@ -67,7 +67,7 @@ Every correction below was applied on the cards.
 
 ## The cards as built
 
-The card text lives in `build/fiches/fiche-28.html` and `fiche-29.html` — it is not duplicated here,
+The card text lives in `build/fiches/E17.html` and `E18.html` — it is not duplicated here,
 so the two cannot drift. What each card asserts is in the claims list below; a reviewer gets the
 rendered PDFs plus that list (`AGENTS.md` § 8).
 

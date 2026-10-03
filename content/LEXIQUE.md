@@ -41,7 +41,7 @@ suites de l'enquête »** (the nine entries of family B, which gloss fiche 14).
 
 ## 2. The card as built
 
-Card text lives in `build/fiches/fiche-34.html` (density 0.867, after tightening the entry spacing) — not duplicated here. Four families in two columns; each entry is *terme — définition (article) → fiches*. The card numbers were re-run against the built deck on 30 September 2026.
+Card text lives in `build/fiches/L.html` (density 0.867, after tightening the entry spacing) — not duplicated here. Four families in two columns; each entry is *terme — définition (article) → fiches*. The card numbers were re-run against the built deck on 30 September 2026.
 
 ---
 

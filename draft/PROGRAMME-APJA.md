@@ -3,6 +3,9 @@
 **Supplied by the author on 30 September 2026.** GendForm2, bloc 1 « RES_FORT_prealable », module 5
 *Agent de Police Judiciaire Adjoint*, 3 h.
 
+> Card numbers below are those used before 3 October 2026 (« fiche 30 », « R1 », « A2 »…). The cards
+> have since been renamed by category — `content/NUMEROTATION.md` gives the new ID of each.
+
 ## What this file is, and is not
 
 - It is an **orientation aid**: it records what the reserve training module covers, so the deck can

@@ -32,13 +32,17 @@
   --alerte-bg:  #fdf4e6;
 }
 
-/* Familles thématiques ------------------------------------------------ */
-.page[data-fam="fondations"]{ --fam:#1b3a5c; --fam-soft:#eef3f8; --fam-line:#c3d4e4; }
-.page[data-fam="infraction"]{ --fam:#8c2f39; --fam-soft:#fbeff0; --fam-line:#e8c6ca; }
-.page[data-fam="enquete"]   { --fam:#1d5f4b; --fam-soft:#ecf5f1; --fam-line:#bfdbd0; }
-.page[data-fam="jugement"]  { --fam:#4c3a75; --fam-soft:#f1eff8; --fam-line:#cfc7e4; }
-.page[data-fam="garanties"] { --fam:#8a5a12; --fam-soft:#fdf4e6; --fam-line:#e8d3ac; }
-.page[data-fam="methode"]   { --fam:#37474f; --fam-soft:#eff2f4; --fam-line:#ccd4d8; }
+/* Catégories -----------------------------------------------------------
+   Une couleur par catégorie, dans l'ordre du recueil (lettre de la fiche). */
+.page[data-fam="gendarmerie"]{ --fam:#16304d; --fam-soft:#eef2f7; --fam-line:#c0cddb; } /* G */
+.page[data-fam="statut"]     { --fam:#4d5a1e; --fam-soft:#f3f5e8; --fam-line:#d2d9b0; } /* S */
+.page[data-fam="force"]      { --fam:#2a2f36; --fam-soft:#eef0f2; --fam-line:#ccd1d6; } /* F */
+.page[data-fam="infraction"] { --fam:#8c2f39; --fam-soft:#fbeff0; --fam-line:#e8c6ca; } /* I */
+.page[data-fam="pj"]         { --fam:#155e75; --fam-soft:#e9f3f7; --fam-line:#b6d5e1; } /* P */
+.page[data-fam="route"]      { --fam:#a04000; --fam-soft:#fdf1e9; --fam-line:#e8c4ab; } /* R */
+.page[data-fam="enquete"]    { --fam:#1d5f4b; --fam-soft:#ecf5f1; --fam-line:#bfdbd0; } /* E */
+.page[data-fam="culture"]    { --fam:#4c3a75; --fam-soft:#f1eff8; --fam-line:#cfc7e4; } /* J */
+.page[data-fam="lexique"]    { --fam:#37474f; --fam-soft:#eff2f4; --fam-line:#ccd4d8; } /* L */
 
 /* ===================================================================== */
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -96,7 +100,7 @@ body{
   font-size:20.93pt; font-weight:900; line-height:1;
 
   opacity:.9;
-  flex:0 0 auto;
+  flex:0 0 13mm;   /* largeur fixe (« E18 ») : les titres s'alignent d'une fiche à l'autre */
   padding-top:0;
 }
 .hdr__txt{ flex:1 1 auto; min-width:0; padding-top:0; }
@@ -577,8 +581,6 @@ td.lbl{
 .orient__q{ flex:1 1 auto; color:var(--ink-2); }
 .orient__a{ flex:0 0 auto; font-weight:900; color:var(--fam); font-size:6.19pt; }
 
-/* Famille supplémentaire : culture civile */
-.page[data-fam="civil"]{ --fam:#155e75; --fam-soft:#e9f3f7; --fam-line:#b6d5e1; }
 
 /* =====================================================================
    FACE-À-FACE (siège/parquet, PA/PJ, action publique/civile…)
@@ -787,8 +789,6 @@ h2{ margin-bottom:1.5mm; }
    FRISE CENTRALE — axe unique, entrées réparties à gauche et à droite
    (mise en forme des dates identique à la frise verticale d'origine)
    ===================================================================== */
-.page[data-fam="histoire"]{ --fam:#16304d; --fam-soft:#eef2f7; --fam-line:#c0cddb; }
-
 .tlc{ position:relative; }
 .tlc::before{
   content:""; position:absolute; left:50%; top:1.2mm; bottom:1.2mm;
@@ -868,18 +868,15 @@ h2{ margin-bottom:1.5mm; }
   text-transform:uppercase; line-height:1.14;
 }
 
-/* Famille sécurité routière */
-.page[data-fam="route"]{ --fam:#a04000; --fam-soft:#fdf1e9; --fam-line:#e8c4ab; }
-
+/* Sécurité routière */
 /* Encadré « ce que je peux faire comme APJA » */
 .box--apja{ background:#fff; border-color:var(--fam); border-style:dashed; }
 .box--apja .box__lbl{ color:var(--fam); }
 
 /* =====================================================================
-   FAMILLE INTERVENTION PROFESSIONNELLE / ARMEMENT
+   CATÉGORIE FORCE & ARMES (F)
    L'en-tête reste neutre : la couleur est le sujet de la fiche.
    ===================================================================== */
-.page[data-fam="armement"]{ --fam:#2a2f36; --fam-soft:#eef0f2; --fam-line:#ccd1d6; }
 
 /* Tableau des codes couleurs ------------------------------------------- */
 .cc{ table-layout:fixed; font-size:5.9pt; }
@@ -950,17 +947,17 @@ h2{ margin-bottom:1.5mm; }
 }
 .duo__verdict b{ color:#ffd479; font-weight:900; }
 
-/* Famille armement : les en-têtes de face-à-face et les pastilles
+/* Force & armes : les en-têtes de face-à-face et les pastilles
    d'article portent la structure — les remonter d'un cran. */
-.page[data-fam="armement"] .vs__hd{ padding:1.7mm 1.4mm; }
-.page[data-fam="armement"] .vs__hd small{ margin-top:.3mm; }
+.page[data-fam="force"] .vs__hd{ padding:1.7mm 1.4mm; }
+.page[data-fam="force"] .vs__hd small{ margin-top:.3mm; }
 .art--lg{ font-size:7.11pt; padding:.8mm 1.8mm; border-radius:.8mm; }
 
 /* À côté d'une pastille .art--lg, la puce n'apporte plus rien */
-.page[data-fam="armement"] .vs__bd ul li{ padding-left:0; margin-bottom:1.5mm; }
-.page[data-fam="armement"] .vs__bd ul li:last-child{ margin-bottom:0; }
-.page[data-fam="armement"] .vs__bd ul li::before{ display:none; }
-.page[data-fam="armement"] .vs__bd .art--lg{ margin-bottom:.7mm; }
+.page[data-fam="force"] .vs__bd ul li{ padding-left:0; margin-bottom:1.5mm; }
+.page[data-fam="force"] .vs__bd ul li:last-child{ margin-bottom:0; }
+.page[data-fam="force"] .vs__bd ul li::before{ display:none; }
+.page[data-fam="force"] .vs__bd .art--lg{ margin-bottom:.7mm; }
 
 /* Sous-libellé dans la colonne critère d'une matrice (« droit commun », etc.) */
 .matrix tbody td.crit small{
@@ -999,13 +996,8 @@ h2{ margin-bottom:1.5mm; }
 .galons__n{ font-size:6.3pt; color:var(--ink-2); margin-bottom:0; }
 
 /* =====================================================================
-   FAMILLE STATUT — statut militaire, déontologie, récompenses (série D)
-   Olive : aucune autre famille ne l'emploie.
+   CATÉGORIE STATUT & DÉONTOLOGIE (S)
    ===================================================================== */
-.page[data-fam="statut"]{ --fam:#4d5a1e; --fam-soft:#f3f5e8; --fam-line:#d2d9b0; }
-
-/* Numéro « bis » dans l'en-tête */
-.hdr__num small{ font-size:9.21pt; font-weight:800; margin-left:.4mm; }
 
 /* Serment, charte : texte cité intégralement */
 .oath{

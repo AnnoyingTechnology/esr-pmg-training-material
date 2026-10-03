@@ -1,6 +1,6 @@
 # Premier sur les lieux, documenter la scène — draft for fiches M1 and M2
 
-> **BUILT 3 October 2026** — `build/fiches/fiche-37.html` (M1) and `fiche-38.html` (M2). Reviewed by `gpt-6-astra`, corrections applied. The card
+> **BUILT 3 October 2026** — `build/fiches/E14.html` (M1) and `E15.html` (M2). Reviewed by `gpt-6-astra`, corrections applied. The card
 > text below is the reviewed text the HTML was built from; **the HTML is now the reference.**
 
 **Status: drafted 2 October 2026 · reviewed by `gpt-6-astra` 3 October 2026 · corrections applied to the card

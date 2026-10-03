@@ -41,7 +41,7 @@ vue security measures and the fouille intégrale; fiche 11 keeps the garde à vu
 
 ## 2. The card as built
 
-Card text lives in `build/fiches/fiche-33.html` (density 0.850) — not duplicated here. Layout: idée-clef · art. 73 in three panels + verdict bar (APJA acts on this basis and remains force publique) · handcuffs « DANGEREUX ou FUITE » (803) · « Devant l'officier » (73 al. 2, two panels) · garde à vue table (63-6 and 63-7 on separate rows) · la force et la personne (R434-17, R434-18) · pièges. **The perquisition basics (56, 57, 59) moved to fiche 32** to fit; AP17-AP20 are now carried there.
+Card text lives in `build/fiches/E3.html` (density 0.850) — not duplicated here. Layout: idée-clef · art. 73 in three panels + verdict bar (APJA acts on this basis and remains force publique) · handcuffs « DANGEREUX ou FUITE » (803) · « Devant l'officier » (73 al. 2, two panels) · garde à vue table (63-6 and 63-7 on separate rows) · la force et la personne (R434-17, R434-18) · pièges. **The perquisition basics (56, 57, 59) moved to fiche 32** to fit; AP17-AP20 are now carried there.
 
 ---
 

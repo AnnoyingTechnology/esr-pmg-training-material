@@ -25,10 +25,10 @@ Sources:
 
 | Card | Title | Density | Fill |
 |---|---|---|---|
-| `build/ip/ip-A1.html` → `out/ip-A1.pdf` | Les codes couleurs | 0.861 | 99 % |
-| `build/ip/ip-A2.html` → `out/ip-A2.pdf` | Usage des armes : les deux cadres légaux | 0.859 | 99 % |
-| `build/ip/ip-A3.html` → `out/ip-A3.pdf` | Sécurité de l'armement | 1.00 | 91 % |
-| `build/ip/ip-A4.html` → `out/ip-A4.pdf` | Le régime du code de la défense | 1.00 | 87 % |
+| `build/fiches/F2.html` → `out/F2.pdf` | Les codes couleurs | 0.861 | 99 % |
+| `build/fiches/F3.html` → `out/F3.pdf` | Usage des armes : les deux cadres légaux | 0.859 | 99 % |
+| `build/fiches/F4.html` → `out/F4.pdf` | Sécurité de l'armement | 1.00 | 91 % |
+| `build/fiches/F5.html` → `out/F5.pdf` | Le régime du code de la défense | 1.00 | 87 % |
 
 Combined: `out/ARMEMENT-4-A5.pdf`; imposed: `out/ARMEMENT-A4-2up.pdf`.
 

@@ -1,4 +1,4 @@
-# Organisation territoriale — source de la fiche `FICHE-territoriale-A5`
+# Organisation territoriale — source de la fiche `G5`
 
 **Status: built 22 September 2026.** Replaces a raster chart (`IMAGE-A5-sur-A4.pdf`) that was an
 AI-generated PNG in a handwriting face. Redrawn as vector CSS in the deck's house style; the page

@@ -1,6 +1,6 @@
 # Additions to fiches 10, 12 and 30 — draft amendments
 
-> **BUILT 3 October 2026** — `build/fiches/fiche-10.html`, `fiche-12.html`, `fiche-30.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
+> **BUILT 3 October 2026** — `build/fiches/P2.html`, `E11.html`, `P3.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
 > text below is the reviewed text the HTML was built from; **the HTML is now the reference.**
 
 **Status: drafted 2 October 2026 · reviewed by `gpt-6-astra` 3 October 2026 · corrections applied to the

@@ -43,7 +43,7 @@ the reference they point back to.
 
 ## 2. The card as built
 
-The card text lives in `build/fiches/fiche-30.html` (density 0.854) — not duplicated here, so the two cannot drift. Layout: idée-clef · missions table (art. 21, conditions folded into the text column) · « Ce que fait l'agent de police judiciaire — pas moi » · qui est agent adjoint (with the **oath**, added after the review) · devenir agent de police judiciaire (20-1) · compétence territoriale (21-1, 18) · autorité (12, 41, 122-4) · pièges.
+The card text lives in `build/fiches/P3.html` (density 0.854) — not duplicated here, so the two cannot drift. Layout: idée-clef · missions table (art. 21, conditions folded into the text column) · « Ce que fait l'agent de police judiciaire — pas moi » · qui est agent adjoint (with the **oath**, added after the review) · devenir agent de police judiciaire (20-1) · compétence territoriale (21-1, 18) · autorité (12, 41, 122-4) · pièges.
 
 ---
 

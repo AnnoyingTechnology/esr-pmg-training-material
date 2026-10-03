@@ -1,6 +1,6 @@
 # Sanctions disciplinaires militaires — draft for fiche D5
 
-> **BUILT 3 October 2026** — `build/statut/statut-D5.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
+> **BUILT 3 October 2026** — `build/fiches/S4.html`. Reviewed by `gpt-6-astra`, corrections applied. The card
 > text below is the reviewed text the HTML was built from; **the HTML is now the reference.**
 
 **Status: drafted 2 October 2026 (replaces the empty placeholder of 1 October) · reviewed by `gpt-6-astra`

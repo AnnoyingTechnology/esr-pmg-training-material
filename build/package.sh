@@ -6,27 +6,18 @@ cd "$(dirname "$0")/.."
 cd out
 
 # Ordre de lecture : la chronologie du carnet PMG de l'auteur (content/CHRONOLOGIE_PMG.md),
-# puis la culture générale juridique, puis le lexique. Le numéro d'une fiche ne change pas
-# avec sa place dans le recueil.
+# puis la culture générale juridique, puis le lexique. Chaque fiche porte la lettre de sa
+# catégorie et son rang dans la catégorie : l'ordre ci-dessous est celui des identifiants.
 ORDRE="
-FRISE-gendarmerie-A5
-gend-G1
-FICHE-organisation-A5
-gend-G2
-FICHE-territoriale-A5
-FICHE-galons-A5
-gend-G3
-statut-D1 statut-D2 statut-D6 statut-D5
-statut-D3 statut-D4 statut-D9 statut-D10 statut-D7 statut-D8 statut-D11
-ip-A5 ip-A1 ip-A2 ip-A3 ip-A4
-fiche-07 fiche-23 fiche-06 fiche-24 fiche-25 fiche-22 fiche-22bis
-fiche-04 fiche-10 fiche-30
-route-R1 route-R2 route-R3 route-R4 route-R5 route-R6 route-R7 route-R8
-fiche-31 fiche-32 fiche-33 fiche-39 fiche-33bis fiche-26 fiche-27 fiche-09 fiche-14 fiche-11 fiche-12
-fiche-35 fiche-36 fiche-37 fiche-38 fiche-13 fiche-28 fiche-29
-fiche-01 fiche-02 fiche-03 fiche-05 fiche-08
-fiche-15 fiche-16 fiche-17 fiche-18 fiche-19 fiche-20 fiche-21
-fiche-34
+G1 G2 G3 G4 G5 G6 G7
+S1 S2 S3 S4 S5 S6 S7 S8 S9 S10 S11
+F1 F2 F3 F4 F5
+I1 I2 I3 I4 I5 I6 I7
+P1 P2 P3
+R1 R2 R3 R4 R5 R6 R7 R8
+E1 E2 E3 E4 E5 E6 E7 E8 E9 E10 E11 E12 E13 E14 E15 E16 E17 E18
+J1 J2 J3 J4 J5 J6 J7 J8 J9 J10 J11 J12
+L
 "
 
 # Garde-fou : chaque fiche rendue figure une fois et une seule dans l'ordre.

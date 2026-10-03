@@ -58,7 +58,7 @@ than a panel on them.
 
 ## 2. The cards as built
 
-The card text lives in `build/fiches/fiche-35.html` and `fiche-36.html`. It follows the reviewer's
+The card text lives in `build/fiches/E12.html` and `E13.html`. It follows the reviewer's
 corrected text word for word, except for three things written at build time, all restating reviewed
 statements:
 

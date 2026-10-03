@@ -41,7 +41,7 @@ the frame comparison. **Density risk:** if it runs below ~0.85, the three neighb
 
 ## 2. The card as built
 
-Card text lives in `build/fiches/fiche-31.html` and `fiche-32.html` — not duplicated here.
+Card text lives in `build/fiches/E1.html` and `E2.html` — not duplicated here.
 
 **Why the split.** As one card it only fitted at 0.78. Moving just 74/74-1/74-2 away (the draft's fallback) would have left one card nearly empty, so the seam is *recognising* flagrance versus *acting* on the scene:
 

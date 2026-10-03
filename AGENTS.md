@@ -22,52 +22,55 @@ Nothing about the PMG exam itself has ever been supplied.
 
 ## 1. What this repo produces
 
-**72 A5 cards** in six families. Everything in `out/` is generated and gitignored — it is never a
+**72 A5 cards** in nine categories (§4). Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-39.pdf`, `fiche-22bis.pdf`, `fiche-33bis.pdf` | the 41 justice cards, one A5 page each |
-| `out/route-R1.pdf` … `route-R8.pdf` | sécurité routière (APJA) |
-| `out/ip-A1.pdf` … `ip-A5.pdf` | armement / intervention professionnelle |
-| `out/statut-D1.pdf` … `statut-D11.pdf` | statut militaire, déontologie, discipline, récompenses |
-| `out/gend-G1.pdf` … `gend-G3.pdf` | the gendarmerie: missions and authorities, units, traditions |
-| `out/FRISE-gendarmerie-A5.pdf` | gendarmerie chronology (central-axis timeline) |
-| `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
-| `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
-| `out/FICHE-galons-A5.pdf` | rank insignia and forms of address (imported vector chart) |
+| `out/G1.pdf` … `out/G7.pdf` | gendarmerie: chronology, missions, organisation, units, territorial echelons, galons, traditions |
+| `out/S1.pdf` … `out/S11.pdf` | statut militaire, the reservist, récompenses, discipline, déontologie, oversight, secrecy, image, probité, discriminations, online speech |
+| `out/F1.pdf` … `out/F5.pdf` | force & armes: graduated force, colour codes, usage des armes, safety, code de la défense |
+| `out/I1.pdf` … `out/I7.pdf` | l'infraction: elements, responsibility, classifications, amende forfaitaire |
+| `out/P1.pdf` … `out/P3.pdf` | police judiciaire: PA / PJ, qualités judiciaires, the APJA |
+| `out/R1.pdf` … `out/R8.pdf` | sécurité routière (APJA) |
+| `out/E1.pdf` … `out/E18.pdf` | enquête: flagrance, arrest, mandats, procedure, witnesses, the scene, evidence, fouilles |
+| `out/J1.pdf` … `out/J12.pdf` | culture juridique: sources, institutions, peine, jugement, recours, libertés, mineurs, civil, method |
+| `out/L.pdf` | the lexique |
 | `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 72 cards in order |
 
 **One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
-was removed: A5 is half an A4, so any print dialog does it. If you add a family, add it to the
+was removed: A5 is half an A4, so any print dialog does it. If you add a card, add it to the
 `ORDRE` list in `package.sh` — do not add a new output file. `package.sh` refuses to build if a rendered
 card is missing from `ORDRE` or listed twice.
 
 **The order of the recueil** follows the chronology of the author's PMG notebook, recorded publicly in
 `content/CHRONOLOGIE_PMG.md` (topic titles only — the notebook stays private): the notebook's 31 pages
-in order, then the *culture générale* cards the notebook does not cover, then the lexique. A card keeps
-its number wherever it sits, so numbers no longer run in sequence through the PDF. The same caution
+in order, then the *culture générale* cards the notebook does not cover, then the lexique. Since
+3 October 2026 the card IDs follow that order: category letter, then rank in the category (§4). The same caution
 applies as for the module outline above: the chronology orders the pages, it says nothing about what
 is examined.
 
-Source material lives in `content/`, one file per family, each carrying verification tags:
+Source material lives in `content/`, one file per subject, each carrying verification tags. The files
+predate the renumbering of 3 October 2026 and use the **old** card numbers in their text (they are the
+record of what was reviewed); the new ID is given in brackets below, and `content/NUMEROTATION.md` maps
+every old number to its new ID and page:
 
 | File | Covers | Note |
 |---|---|---|
-| `content/justice_france_21_fiches.md` | fiches 01-21 | **do not edit** — it is the reference |
-| `content/AMENDE_FORFAITAIRE.md` | fiche 22 | Légifrance only; fact-checked 22 Sept 2026 |
-| `content/INFRACTION_61-02_61-03.md` | fiches 23-25 | coverage from restricted notices, written from the code |
-| `content/ORGANISATION_TERRITORIALE.md` | territoriale | redrawn from a raster chart |
-| `content/SECURITE_ROUTIERE.md` | R1-R6 | revised after external legal review |
-| `content/ARMEMENT_IP.md` | A1-A4 | the author's MAAA table + course notes + sourcing tags |
-| `content/MANDATS.md` | fiches 26-27 | Légifrance only; reviewed 30 Sept 2026, corrections applied |
-| `content/FOUILLES.md` | fiches 28-29 | code + case law + one circulaire; reviewed 30 Sept 2026, corrections applied |
-| `content/APJA.md` | fiche 30 | Légifrance + décret 2013-874 (oath); reviewed 30 Sept 2026, corrections applied |
-| `content/FLAGRANCE.md` | fiches 31-32 | Légifrance + one Cass. decision; reviewed 30 Sept 2026, split in two at build |
-| `content/APPREHENDER.md` | fiche 33 | Légifrance + Cass. decisions; reviewed 30 Sept 2026, corrections applied |
-| `content/LEXIQUE.md` | fiche 34 | standard definitions anchored to articles; reviewed 30 Sept 2026, corrections applied |
-| `content/GALONS.md` | galons | imported vector chart; **not reviewed** — claims list ready |
-| `content/VOISINAGE.md` | fiches 35-36 | public sources only (UK/US doctrine, circular, code); reviewed 30 Sept 2026, split in two at build |
+| `content/justice_france_21_fiches.md` | fiches 01-21 [I1, I3, P1, P2, E8-E11, E16, J1-J12] | **do not edit** — it is the reference |
+| `content/AMENDE_FORFAITAIRE.md` | fiche 22 [I6] | Légifrance only; fact-checked 22 Sept 2026 |
+| `content/INFRACTION_61-02_61-03.md` | fiches 23-25 [I2, I4, I5] | coverage from restricted notices, written from the code |
+| `content/ORGANISATION_TERRITORIALE.md` | territoriale [G5] | redrawn from a raster chart |
+| `content/SECURITE_ROUTIERE.md` | R1-R6 [R1-R6] | revised after external legal review |
+| `content/ARMEMENT_IP.md` | A1-A4 [F2-F5] | the author's MAAA table + course notes + sourcing tags |
+| `content/MANDATS.md` | fiches 26-27 [E6, E7] | Légifrance only; reviewed 30 Sept 2026, corrections applied |
+| `content/FOUILLES.md` | fiches 28-29 [E17, E18] | code + case law + one circulaire; reviewed 30 Sept 2026, corrections applied |
+| `content/APJA.md` | fiche 30 [P3] | Légifrance + décret 2013-874 (oath); reviewed 30 Sept 2026, corrections applied |
+| `content/FLAGRANCE.md` | fiches 31-32 [E1, E2] | Légifrance + one Cass. decision; reviewed 30 Sept 2026, split in two at build |
+| `content/APPREHENDER.md` | fiche 33 [E3] | Légifrance + Cass. decisions; reviewed 30 Sept 2026, corrections applied |
+| `content/LEXIQUE.md` | fiche 34 [L] | standard definitions anchored to articles; reviewed 30 Sept 2026, corrections applied |
+| `content/GALONS.md` | galons [G6] | imported vector chart; **not reviewed** — claims list ready |
+| `content/VOISINAGE.md` | fiches 35-36 [E12, E13] | public sources only (UK/US doctrine, circular, code); reviewed 30 Sept 2026, split in two at build |
 
 Built from the drafts of 2 October, **reviewed by `gpt-6-astra` on 3 October 2026** (329 claims:
 239 correct · 69 incomplete · 10 wrong · 11 unverifiable) and built the same day. Each file carries the
@@ -76,27 +79,28 @@ per claim) and the claims list as sent:
 
 | File | Covers | Note |
 |---|---|---|
-| `content/STATUT.md` | D1-D2 | statut militaire · réserviste (engagement, serment, chartes) |
-| `content/DEONTOLOGIE.md` | D3-D4 | code de déontologie R434 · qui contrôle le gendarme |
-| `content/SANCTIONS-DISCIPLINAIRES.md` | D5 | three groups, AM1-AM3, effacement; arrêté du 18 mars 2026 |
-| `content/DECORATIONS-RECOMPENSES.md` | D6 | récompenses D4137 · six medals |
-| `content/PROBITE.md` | D7 | R434-9, conflits d'intérêts, lanceur d'alerte, CP 432-10 s. |
-| `content/DISCRIMINATIONS.md` | D8 | CP 225-1, 432-7, 132-76/77, harcèlement |
-| `content/DISCRETION-IMAGE.md` | D9-D10 | secret, fichiers · filmé, réseaux, réserve |
-| `content/HAINE-EN-LIGNE.md` | D11 | loi de 1881 · fausses informations |
-| `content/GENDARMERIE-MISSIONS.md` | G1 | missions, autorités, DGGN, doctrine (public *Orientations* 2020) |
-| `content/UNITES.md` | G2 | who does what, from the Cour des comptes report of Feb 2026 |
-| `content/TRADITIONS.md` | G3 | symbols · présentation (author's course, marked ◇) · tenue |
-| `content/SCENE.md` | 37-38 | first responder · documenting the scene; public-sources method (UNODC, NIJ). Drafted as M1-M2 |
-| `content/BAREME-ROUTE.md` | R7-R8 | rain speed limits (R413-2) and jeune-conducteur limits (R413-5, R413-6) · barème of everyday infractions; reviewed 3 Oct 2026, built as two cards |
-| `content/ARTICLE-73-DELITS.md` | 39 | the common délits punished by imprisonment, for article 73; reviewed 3 Oct 2026, corrections applied |
-| `content/IP-A5-FORCE.md` | A5 | graduated force, from Assemblée nationale documents |
-| `content/AMENDE-PAIEMENT.md` | 22 bis | AF deadlines, contestation, B2, NATINF open data |
-| `content/RETENIR-HORS-73.md` | 33 bis | 78-3, IPM, CESEDA, désertion |
-| `content/AJOUTS-FICHES-10-12-30.md` | 10, 12, 30 | amendments to reviewed cards (CPP 16, 151-154, 15-3) |
+| `content/STATUT.md` | D1-D2 [S1, S2] | statut militaire · réserviste (engagement, serment, chartes) |
+| `content/DEONTOLOGIE.md` | D3-D4 [S5, S6] | code de déontologie R434 · qui contrôle le gendarme |
+| `content/SANCTIONS-DISCIPLINAIRES.md` | D5 [S4] | three groups, AM1-AM3, effacement; arrêté du 18 mars 2026 |
+| `content/DECORATIONS-RECOMPENSES.md` | D6 [S3] | récompenses D4137 · six medals |
+| `content/PROBITE.md` | D7 [S9] | R434-9, conflits d'intérêts, lanceur d'alerte, CP 432-10 s. |
+| `content/DISCRIMINATIONS.md` | D8 [S10] | CP 225-1, 432-7, 132-76/77, harcèlement |
+| `content/DISCRETION-IMAGE.md` | D9-D10 [S7, S8] | secret, fichiers · filmé, réseaux, réserve |
+| `content/HAINE-EN-LIGNE.md` | D11 [S11] | loi de 1881 · fausses informations |
+| `content/GENDARMERIE-MISSIONS.md` | G1 [G2] | missions, autorités, DGGN, doctrine (public *Orientations* 2020) |
+| `content/UNITES.md` | G2 [G4] | who does what, from the Cour des comptes report of Feb 2026 |
+| `content/TRADITIONS.md` | G3 [G7] | symbols · présentation (author's course, marked ◇) · tenue |
+| `content/SCENE.md` | 37-38 [E14, E15] | first responder · documenting the scene; public-sources method (UNODC, NIJ). Drafted as M1-M2 |
+| `content/BAREME-ROUTE.md` | R7-R8 [R7, R8] | rain speed limits (R413-2) and jeune-conducteur limits (R413-5, R413-6) · barème of everyday infractions; reviewed 3 Oct 2026, built as two cards |
+| `content/ARTICLE-73-DELITS.md` | 39 [E4] | the common délits punished by imprisonment, for article 73; reviewed 3 Oct 2026, corrections applied |
+| `content/IP-A5-FORCE.md` | A5 [F1] | graduated force, from Assemblée nationale documents |
+| `content/AMENDE-PAIEMENT.md` | 22 bis [I7] | AF deadlines, contestation, B2, NATINF open data |
+| `content/RETENIR-HORS-73.md` | 33 bis [E5] | 78-3, IPM, CESEDA, désertion |
+| `content/AJOUTS-FICHES-10-12-30.md` | 10, 12, 30 [P2, E11, P3] | amendments to reviewed cards (CPP 16, 151-154, 15-3) |
 | `content/CHRONOLOGIE_PMG.md` | — | the notebook's chapter order, which sets the order of the recueil; not a source |
+| `content/NUMEROTATION.md` | — | old card number → new ID → page, and every cross-reference rewritten on 3 Oct 2026 |
 
-Open items for the author are flagged in each Review intro — notably G3's course-only ◇ items, which
+Open items for the author are flagged in each Review intro — notably G7's (old G3) course-only ◇ items, which
 rest on the author's course alone.
 
 Proposed cards wait in `draft/` before any of that. It holds only `draft/PROGRAMME-APJA.md` — the
@@ -118,7 +122,7 @@ workshop, not the deliverable.
    about typography, and the one with consequences outside this repo.
 2. **One fiche = exactly one A5 page** (148 × 210 mm). These are printed and pasted into a
    notebook. An earlier 2-page-per-fiche version was rejected. The original ~23-page cap applied to
-   the justice deck alone; the set is now 50 pages across five families, and grows by family.
+   the justice deck alone; the set is now 72 pages in nine categories.
 3. **Never drop content to make things fit.** Densify instead. This was explicit.
 4. **`.page` has `overflow:hidden`** — overflowing content is silently clipped. *Always* run
    `build/check.sh` after editing. A card at >100% is losing material you cannot see in the PDF.
@@ -151,7 +155,6 @@ must render offline.
 ./build/render.sh     # all card HTML → out/*.pdf
 ./build/check.sh      # fill ratio per page; exits non-zero if anything is >100 %
 ./build/package.sh    # assemble every card into out/FICHES-PMG-A5.pdf
-# build/fit.py is retired: no per-card density factor (see §5)
 ```
 
 `render.sh` and `check.sh` honour `CHROME=/path/to/binary`; CI sets it for `render.sh`. Everything else is fixed.
@@ -169,21 +172,38 @@ To cut a release: `git tag v2026.09.22 && git push --tags`.
 
 ---
 
-## 4. Layout system (`build/fiche.css`, ~990 lines)
+## 4. Layout system (`build/fiche.css`, ~1000 lines)
 
 A card is one `<section class="page" data-fam="…">` containing `.hdr`, `.body`, optional `.foot`,
-and `.stamp`.
+and `.stamp`. **Footers and stamps are hidden** (`display:none`, since 3 Oct 2026): they still hold
+the *Repères* (articles and sources) for whoever reads the HTML, but nothing in them reaches the
+page. Anything the reader needs — a legend, a footnote, a caveat — goes in the body.
 
-**Family colours** via `data-fam`: `fondations` (01-05, navy) · `infraction` (06-08, 22-25 and 22 bis, bordeaux) ·
-`enquete` (09-13, 26-33, 33 bis and 35-39, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
-cyan) · `methode` (20-21 and 34, slate) · `histoire` (the gendarmerie cards — frise, organisation, territoriale, galons, G1-G3 — dark navy) · `route`
-(R1-R8, burnt orange) · `armement` (A1-A5, anthracite — deliberately neutral, because the colour
-codes *are* the subject of A1 and a coloured header would compete with them) · `statut` (D1-D11,
-olive — statut militaire, déontologie, discipline, récompenses).
+**Categories, IDs and colours** (3 Oct 2026). Every card belongs to one of nine categories, which
+follow one another in the order of the recueil. A card's ID is the category letter plus its rank in
+the category; its file is `build/fiches/<ID>.html` and its PDF `out/<ID>.pdf`.
 
-**Card numbers.** A « bis » card (22 bis, 33 bis) prints its suffix small in the header
-(`<div class="hdr__num">22<small>bis</small></div>`); its file is `fiche-22bis.html`. The scene cards
-were drafted as M1-M2 and built as **37-38** in the justice numbering.
+| Letter | Category | `data-fam` | Colour | Cards |
+|---|---|---|---|---|
+| G | Gendarmerie | `gendarmerie` | navy | G1-G7 |
+| S | Statut & déontologie | `statut` | olive | S1-S11 |
+| F | Force & armes | `force` | anthracite — deliberately neutral: the colour codes *are* F2's subject | F1-F5 |
+| I | L'infraction | `infraction` | bordeaux | I1-I7 |
+| P | Police judiciaire | `pj` | teal | P1-P3 |
+| R | Sécurité routière | `route` | burnt orange | R1-R8 |
+| E | Enquête | `enquete` | green | E1-E18 |
+| J | Culture juridique | `culture` | purple | J1-J12 |
+| L | Lexique | `lexique` | slate | L |
+
+**The header** is the same on every card: the ID in a fixed-width box (so titles align), then
+`hdr__cat` = « Category · sous-thème » (e.g. « Enquête · Interpellation »), then the title. No
+« Fiche n sur 21 », no « 1/2 », no « bis ».
+
+**Adding a card.** Give it the rank its place in `ORDRE` dictates. If it lands inside a category, the
+cards after it in that category move up one: rename their files, update `ORDRE`, and rewrite every
+cross-reference to them (grep the cards for « fiche E5 », « voir E5 », the lexique's `→` lists and
+the « Voir » column of S5). Cross-references are written « fiche E3 », « voir R5 », « fiches F3 et
+F5 ». Record the renumbering in `content/NUMEROTATION.md`.
 
 **Zone layout** — `.body.body--zones` holds:
 - `.key` — the *idée-clef* banner, full width
@@ -191,7 +211,7 @@ were drafted as M1-M2 and built as **37-38** in the justice numbering.
 - `.zcol` — everything else, in a real 2-column block
 
 This split exists because interleaving wide blocks into a multi-column flow left half-empty column
-banks everywhere (fiche 03 was at 146% with its second column barely used). Keep wide things in
+banks everywhere (fiche 03, now J3, was at 146% with its second column barely used). Keep wide things in
 `.zfull` and narrow things in `.zcol`.
 
 **Components:** `.node`/`.arr`/`.branch`/`.merge`/`.flow`/`.hflow` (diagrams) · `.ctrl` (object →
@@ -228,8 +248,8 @@ data-fill = 100 × used / avail
 Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or enlarge a hero table.
 
 **No density factors any more (3 Oct 2026).** Every card renders at the same type sizes: there is no
-`zoom` on `.body`, and `build/fit.py` is retired — **do not run it**, it would put the per-card zoom back
-and break the consistency. A card that overflows is split or re-laid out, never shrunk.
+`zoom` on `.body`, and `build/fit.py`, which set a per-card zoom, was deleted — do not bring it back:
+it breaks the consistency. A card that overflows is split or re-laid out, never shrunk.
 `check.sh` still reports the fill ratio.
 
 ---
@@ -245,7 +265,7 @@ and break the consistency. A card that overflows is split or re-laid out, never 
   After any scripted edit, run `check.sh` and `grep -o '<h2>[^<]*'` to confirm sections survived.
 - **Verify glyphs render.** `≈` was re-checked at 400 dpi to confirm it wasn't printing as `=`.
 - A clipped-text scan (elements whose `scrollWidth > clientWidth`) caught a flattened diagram in
-  fiche 02. Worth re-running after structural changes.
+  fiche 02 (now J2). Worth re-running after structural changes.
 
 ---
 
@@ -262,18 +282,18 @@ material. The sequence that has worked, in order:
    the only visible source and they **circulate abrogated versions** — the ZDHS sommations were
    three in the author's notes and have been two since 2009. Treat every such extract as `[SEC]`.
 3. **Send it for review.** See §8. This is a hard gate.
-4. **Apply corrections, then build.** New family → pick a `data-fam` colour that does not fight the
-   card's own content, add the directory to `render.sh`, `check.sh` and `package.sh`, and add a
-   `content/<FAMILY>.md` with verification tags.
-5. **Fit, then verify visually.** `fit.py`, then rasterise at 400 dpi and *look* — glyph fallbacks,
+4. **Apply corrections, then build.** Give the card its ID in its category (§4, *Adding a card*),
+   put it in `build/fiches/` and `ORDRE`, and add a `content/<SUBJECT>.md` with verification tags.
+   A new category is a design decision for the author, not a default.
+5. **Check, then verify visually.** `check.sh`, then rasterise at 400 dpi and *look* — glyph fallbacks,
    clipped diagrams and flattened tables do not show up in the fill ratio.
 6. **Record what you did not check** in the `content/` file under `[???]`. An unsourced claim that
    nobody wrote down becomes an unsourced claim nobody remembers.
 
-**When a card overflows, split along a real seam, not at the page break.** A1-A4 exist because the
-armement material split into configuration / L435-1 / safety rules / code de la défense — four
-coherent subjects. Shrinking one card to 0.78 zoom to keep it whole makes it unreadable, which is
-worse than two cards. Below ~0.85 density, split.
+**When a card overflows, split along a real seam, not at the page break.** F2-F5 (old A1-A4) exist
+because the armement material split into configuration / L435-1 / safety rules / code de la défense —
+four coherent subjects. Shrinking one card to keep it whole is not an option any more (§5): tighten
+the layout, or split.
 
 ---
 
@@ -327,7 +347,7 @@ public.** So:
   protects. Use a restricted notice to learn *what matters*, then write the card from the code.
 - **Record the source honestly** in `content/`, including when a card could not be built from public
   sources. A card that cannot be sourced publicly is a card that should not go in a public release.
-- **A1 and A3 ship.** A1's colour grid and A3's safety rules were drafted from the author's own
+- **A1 and A3 (now F2 and F4) ship.** A1's colour grid and A3's safety rules were drafted from the author's own
   training material; the call was made and it is **settled — do not reopen it**. The rule above
   governs what gets *committed* (never a restricted document itself) and how new cards are *written*
   (from the code, not from a notice's structure). It is not a veto on the deck's content.
@@ -338,7 +358,7 @@ public.** So:
   2006 *Practice Advice on House-to-House Enquiries*, College of Policing APP, the MIR/4
   questionnaire), US material (FBI Law Enforcement Bulletin, AMBER Advocate canvass form), a 2025
   article by a gendarmerie officer, the 2018 DGGN/DGPN/DACG circular on procès-verbaux, plus the code.
-  Fiches 35-36 (`content/VOISINAGE.md`) are written **only** from those. The module was used for one thing: a private
+  Fiches 35-36 (now E12-E13, `content/VOISINAGE.md`) are written **only** from those. The module was used for one thing: a private
   point-by-point alignment check, kept gitignored in `bloc1-reference/`. The one point with no public
   source (usually-parked vehicles now absent) stays off the card.
 - **The drafting method this establishes** — and its limit. A topic taught only in restricted
@@ -404,34 +424,23 @@ shrinking (§5). Page numbers will shift if the recueil order changes; re-identi
 
 ---
 
-## 9 bis. Next step — rework categories, numbering and headers
+## 9 bis. Categories and numbering — done 3 October 2026
 
-Planned, **not started**. The headers are a mashup: card numbers, family names, `hdr__cat` lines and
-colours come from the order in which the families were added, and read as shuffled in the recueil.
-The aim is one consistent header system. In this order:
-
-1. **Define the categories.** Decide how the 72 cards are grouped, define each category, give each its
-   own colour. Today's `data-fam` values (fondations, infraction, enquete, … route, armement, statut,
-   histoire) are historical, not a design.
-2. **Rename everything** — numbers, category lines, titles — **keeping the exact chronology of the
-   recueil** (`ORDRE` in `build/package.sh`, set by `content/CHRONOLOGIE_PMG.md`). Renaming must not
-   reorder a single page.
-3. **Before renaming, map the internal cross-references.** Find every « fiche 10 », « fiche D5 »,
-   « voir R3 »… in the cards and in `content/`, and record the page position each one points to.
-   After renaming, replace them from that map so the cross-referencing survives. Do this *first*:
-   once the old numbers are gone the references cannot be reconstructed reliably.
-
-Until then, keep the current numbers and do not add new cross-references that depend on them.
+The headers used to be a mashup (numbers, family names, `hdr__cat` lines and colours inherited from the
+order in which families were added). They were rebuilt in the planned order: categories
+defined first (§4), cross-references mapped to page positions **before** renaming, then everything
+renamed without moving a page, and the references rewritten from the map. The map and the old → new
+table are in `content/NUMEROTATION.md`.
 
 ---
 
 ## 10. Known open items
 
-- **Undefined terms — resolved by fiche 34 (Lexique).** The ~30 terms listed here before, and the
-  seven orientations fiche 14 names without gloss, are defined once on fiche 34, each with the cards
+- **Undefined terms — resolved by the lexique (L, old fiche 34).** The ~30 terms listed here before, and
+  the seven orientations E9 (old 14) names without gloss, are defined once on L, each with the cards
   that use it. Optional additions the reviewer suggested and that were not made: prescription,
   contradictoire, suspect / prévenu / accusé, réquisition.
 - `content/justice_france_21_fiches.md` claims currency to 21 Sept 2026 and cites a Cass. crim. ruling of
   9 April 2026 and the CPP rewrite effective 1 Jan 2029. **Not independently verified.**
-- The organisation card is dense (0.89). Splitting the UNPJ block onto its own card is the natural
+- The organisation card (G3) is dense. Splitting the UNPJ block onto its own card is the natural
   next move if more is added.
