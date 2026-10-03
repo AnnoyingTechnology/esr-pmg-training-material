@@ -353,6 +353,22 @@ public.** So:
 ---
 
 ## 9. Editorial rules
+- **Four-reader test — applies to every card, new or rewritten.** Before a card is drafted, and again
+  before it is sent for review, ask what each of these four readers would say:
+  1. **The user: an APJA gendarmerie reservist.** Is this useful to *me*, on a shift? Does it tell me
+     what I may do, what I must not do, and whom to call — or is it background I will never use?
+  2. **An OPJ gendarme with 25 years of experience.** Is it true on the ground (*le terrain*)? What
+     does he know that the code does not say — how this really goes, what gets people into trouble,
+     what is never done in practice?
+  3. **A very experienced lawyer (avocat).** Where would the defence attack this? Which formality,
+     which limit on a power, which nullity or right of the person is missing or overstated?
+  4. **A lifelong magistrate.** Is the doctrine and case law current and correctly scoped? Who decides,
+     who controls, and what does the judge actually look at?
+
+  A card that satisfies only the first reader is a summary; one that satisfies only the others is a
+  treatise. This is a **drafting and review lens, not card content**: it never appears on a card
+  (rule 5 of §2 still holds), and it **does not replace** the external review gate of §8 — use it to
+  write the brief for the reviewer and to decide what the card must say.
 - **PMG course material is never dropped for lack of a public source.** What the author's notebook
   records from his training goes on the card, marked ◇ (« enseigné en préparation militaire ») and
   tagged `[JUL]` in `content/`. A reviewer's *unverifiable* is not a reason to remove it — only *wrong*
