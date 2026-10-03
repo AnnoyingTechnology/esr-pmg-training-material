@@ -363,7 +363,11 @@ public.** So:
   3. **A very experienced lawyer (avocat).** Where would the defence attack this? Which formality,
      which limit on a power, which nullity or right of the person is missing or overstated?
   4. **A lifelong magistrate.** Is the doctrine and case law current and correctly scoped? Who decides,
-     who controls, and what does the judge actually look at?
+     who controls, and what does the judge actually look at? And what is the gap between the text and
+     practice — « oui, mais on ne poursuit pas vraiment ça » : which offences are rarely or never
+     prosecuted, which are routinely handled by alternatives (rappel à la loi, composition pénale,
+     amende forfaitaire), which are classées sans suite? This is one example of what the magistrate
+     brings, not the whole of it.
 
   A card that satisfies only the first reader is a summary; one that satisfies only the others is a
   treatise. This is a **drafting and review lens, not card content**: it never appears on a card
