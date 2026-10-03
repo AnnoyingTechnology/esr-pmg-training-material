@@ -532,6 +532,12 @@ td.lbl{
 }
 /* Pieds de fiche et bandeau : masqués */
 .foot, .stamp{ display:none !important; }
+/* Seule ligne de pied visible : l'avertissement de recodification du code de procédure pénale.
+   Posée dans la marge basse (le contenu s'arrête 5 mm au-dessus du bord tant que check.sh ≤ 100 %). */
+.caveat{
+  position:absolute; left:8mm; right:8mm; bottom:2.4mm;
+  font-size:4.6pt; line-height:1; color:var(--ink-3);
+}
 
 /* Utilitaires ---------------------------------------------------------- */
 .mt0{ margin-top:0; }  .mb0{ margin-bottom:0!important; }

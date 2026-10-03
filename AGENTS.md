@@ -177,7 +177,12 @@ To cut a release: `git tag v2026.09.22 && git push --tags`.
 A card is one `<section class="page" data-fam="…">` containing `.hdr`, `.body`, optional `.foot`,
 and `.stamp`. **Footers and stamps are hidden** (`display:none`, since 3 Oct 2026): they still hold
 the *Repères* (articles and sources) for whoever reads the HTML, but nothing in them reaches the
-page. Anything the reader needs — a legend, a footnote, a caveat — goes in the body.
+page. Anything the reader needs — a legend, a footnote, a caveat — goes in the body. **One
+exception**: the twelve cards that cite the code de procédure pénale by article number carry a single
+discreet line, `<div class="caveat">Numérotation du code de procédure pénale en vigueur jusqu’au 31
+décembre 2028.</div>`, pinned in the bottom margin (4.6 pt, 2.4 mm above the edge). It never collides
+with content as long as `check.sh` stays ≤ 100 % (content then ends ≥ 5 mm above the edge). Add it to
+any new card that cites the code de procédure pénale by number.
 
 **Categories, IDs and colours** (3 Oct 2026). Every card belongs to one of nine categories, which
 follow one another in the order of the recueil. A card's ID is the category letter plus its rank in
@@ -453,8 +458,8 @@ dropping any content and without per-card scaling**, in this order of preference
 
 Hiding the footers had also hidden content that was not a source: G1's mottos, G5's diagram legend
 and the EDCF date, G6's forms of address and footnote, J12's « opposables ». All moved into the body.
-The footers still hold the *Repères* — including, on twelve cards, « numérotation du code de procédure
-pénale en vigueur jusqu’au 31 décembre 2028 » — which no longer reach the page.
+The footers still hold the *Repères*, which no longer reach the page — except the recodification
+warning of the code de procédure pénale, brought back as a one-line `.caveat` on its twelve cards (§4).
 
 ---
 
