@@ -149,3 +149,12 @@ Articles are Code de procédure pénale unless stated.
   [Art. D15-5-1-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038582029)
 - [Loi n° 2026-798 du 18 août 2026](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054707332) ·
   [Décret n° 2022-1113 du 3 août 2022](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046138486)
+
+---
+
+## Amendment — 3 October 2026
+
+Complaints (CPP 15-3, loi n° 2026-798, in force 20 August 2026) added to the « Recevoir des
+déclarations » row, and the nullity line extended to complaints. Reviewed by `gpt-6-astra` as claims
+J12-J15 in `content/AJOUTS-FICHES-10-12-30.md`. Density 0.854 → 0.840.
+

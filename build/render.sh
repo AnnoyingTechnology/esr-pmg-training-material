@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rend toutes les fiches (21 fiches justice + cartes autonomes) en PDF A5 dans out/.
+# Rend toutes les fiches en PDF A5 dans out/.
 set -e
 cd "$(dirname "$0")/.."
 mkdir -p out
@@ -12,6 +12,8 @@ render() {  # $1 = source html, $2 = nom du pdf
 for f in build/fiches/fiche-*.html; do render "$f" "$(basename "$f" .html)"; done
 for f in build/route/route-*.html;  do render "$f" "$(basename "$f" .html)"; done
 for f in build/ip/ip-*.html;        do render "$f" "$(basename "$f" .html)"; done
+for f in build/statut/statut-*.html; do render "$f" "$(basename "$f" .html)"; done
+for f in build/gend/gend-*.html;    do render "$f" "$(basename "$f" .html)"; done
 render build/timeline.html     FRISE-gendarmerie-A5
 render build/organisation.html FICHE-organisation-A5
 render build/territoriale.html  FICHE-territoriale-A5

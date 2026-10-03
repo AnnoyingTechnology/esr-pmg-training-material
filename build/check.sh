@@ -4,7 +4,7 @@
 cd "$(dirname "$0")/.."
 CHROME="${CHROME:-google-chrome-stable}"   # surchargeable en intégration continue
 ko=0
-for f in build/fiches/fiche-*.html build/route/route-*.html build/ip/ip-*.html build/timeline.html build/organisation.html build/territoriale.html build/galons.html; do
+for f in build/fiches/fiche-*.html build/route/route-*.html build/ip/ip-*.html build/statut/statut-*.html build/gend/gend-*.html build/timeline.html build/organisation.html build/territoriale.html build/galons.html; do
   v=$("$CHROME" --headless=new --disable-gpu --no-sandbox \
         --virtual-time-budget=2500 --dump-dom "file://$PWD/$f" 2>/dev/null \
       | sed -n 's/.*data-fill="\([-0-9]*\)".*/\1/p' | head -1)

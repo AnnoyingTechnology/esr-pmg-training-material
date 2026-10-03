@@ -996,3 +996,23 @@ h2{ margin-bottom:1.5mm; }
 /* Fiche galons : tableau vectoriel importé (build/img/galons.svg), pleine largeur */
 .galons{ display:block; width:var(--gw,120mm); height:auto; margin:0 auto; }
 .galons__n{ font-size:6.3pt; color:var(--ink-2); margin-bottom:0; }
+
+/* =====================================================================
+   FAMILLE STATUT — statut militaire, déontologie, récompenses (série D)
+   Olive : aucune autre famille ne l'emploie.
+   ===================================================================== */
+.page[data-fam="statut"]{ --fam:#4d5a1e; --fam-soft:#f3f5e8; --fam-line:#d2d9b0; }
+
+/* Numéro « bis » dans l'en-tête */
+.hdr__num small{ font-size:9.21pt; font-weight:800; letter-spacing:0; margin-left:.4mm; }
+
+/* Serment, charte : texte cité intégralement */
+.oath{
+  border-left:1.1mm solid var(--fam); background:var(--fam-soft);
+  padding:1.6mm 2.4mm; font-size:6.53pt; font-style:italic; line-height:1.36;
+}
+.oath + .sub{ margin-top:1mm; }
+
+/* Provenance d'un point : ● source publique · ◇ usage enseigné */
+.prov{ font-style:normal; font-weight:900; color:var(--fam); margin-right:.8mm; }
+.prov--jul{ color:#8a5a12; }

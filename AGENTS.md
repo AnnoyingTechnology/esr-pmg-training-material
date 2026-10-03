@@ -22,23 +22,33 @@ Nothing about the PMG exam itself has ever been supplied.
 
 ## 1. What this repo produces
 
-**50 A5 cards** in five families. Everything in `out/` is generated and gitignored — it is never a
+**69 A5 cards** in six families. Everything in `out/` is generated and gitignored — it is never a
 source. `build/package.sh` assembles the collections; nothing is built by hand any more.
 
 | Output | What it is |
 |---|---|
-| `out/fiche-01.pdf` … `fiche-36.pdf` | the 36 justice cards, one A5 page each |
+| `out/fiche-01.pdf` … `fiche-38.pdf`, `fiche-22bis.pdf`, `fiche-33bis.pdf` | the 40 justice cards, one A5 page each |
 | `out/route-R1.pdf` … `route-R6.pdf` | sécurité routière (APJA) |
-| `out/ip-A1.pdf` … `ip-A4.pdf` | armement / intervention professionnelle |
+| `out/ip-A1.pdf` … `ip-A5.pdf` | armement / intervention professionnelle |
+| `out/statut-D1.pdf` … `statut-D11.pdf` | statut militaire, déontologie, discipline, récompenses |
+| `out/gend-G1.pdf` … `gend-G3.pdf` | the gendarmerie: missions and authorities, units, traditions |
 | `out/FRISE-gendarmerie-A5.pdf` | gendarmerie chronology (central-axis timeline) |
 | `out/FICHE-organisation-A5.pdf` | subdivisions / formations / units |
 | `out/FICHE-territoriale-A5.pdf` | territorial echelons, national → local |
 | `out/FICHE-galons-A5.pdf` | rank insignia and forms of address (imported vector chart) |
-| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 50 cards in order |
+| `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 69 cards in order |
 
 **One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
 was removed: A5 is half an A4, so any print dialog does it. If you add a family, add it to the
-`ORDRE` list in `package.sh` — do not add a new output file.
+`ORDRE` list in `package.sh` — do not add a new output file. `package.sh` refuses to build if a rendered
+card is missing from `ORDRE` or listed twice.
+
+**The order of the recueil** follows the chronology of the author's PMG notebook, recorded publicly in
+`content/CHRONOLOGIE_PMG.md` (topic titles only — the notebook stays private): the notebook's 31 pages
+in order, then the *culture générale* cards the notebook does not cover, then the lexique. A card keeps
+its number wherever it sits, so numbers no longer run in sequence through the PDF. The same caution
+applies as for the module outline above: the chronology orders the pages, it says nothing about what
+is examined.
 
 Source material lives in `content/`, one file per family, each carrying verification tags:
 
@@ -59,16 +69,36 @@ Source material lives in `content/`, one file per family, each carrying verifica
 | `content/GALONS.md` | galons | imported vector chart; **not reviewed** — claims list ready |
 | `content/VOISINAGE.md` | fiches 35-36 | public sources only (UK/US doctrine, circular, code); reviewed 30 Sept 2026, split in two at build |
 
-Proposed cards wait in `draft/` before any of that:
+Built from the drafts of 2 October, **reviewed by `gpt-6-astra` on 3 October 2026** (329 claims:
+239 correct · 69 incomplete · 10 wrong · 11 unverifiable) and built the same day. Each file carries the
+reviewed card text, a **Review** section (verdict, the reviewer's source and comment, and what changed,
+per claim) and the claims list as sent:
 
-| File | Covers | Status |
+| File | Covers | Note |
 |---|---|---|
-| `draft/PROGRAMME-APJA.md` | — | coverage map against the APJA module outline; orientation only, not a card and not a source |
+| `content/STATUT.md` | D1-D2 | statut militaire · réserviste (engagement, serment, chartes) |
+| `content/DEONTOLOGIE.md` | D3-D4 | code de déontologie R434 · qui contrôle le gendarme |
+| `content/SANCTIONS-DISCIPLINAIRES.md` | D5 | three groups, AM1-AM3, effacement; arrêté du 18 mars 2026 |
+| `content/DECORATIONS-RECOMPENSES.md` | D6 | récompenses D4137 · six medals |
+| `content/PROBITE.md` | D7 | R434-9, conflits d'intérêts, lanceur d'alerte, CP 432-10 s. |
+| `content/DISCRIMINATIONS.md` | D8 | CP 225-1, 432-7, 132-76/77, harcèlement |
+| `content/DISCRETION-IMAGE.md` | D9-D10 | secret, fichiers · filmé, réseaux, réserve |
+| `content/HAINE-EN-LIGNE.md` | D11 | loi de 1881 · fausses informations |
+| `content/GENDARMERIE-MISSIONS.md` | G1 | missions, autorités, DGGN, doctrine (public *Orientations* 2020) |
+| `content/UNITES.md` | G2 | who does what, from the Cour des comptes report of Feb 2026 |
+| `content/TRADITIONS.md` | G3 | symbols · présentation (author's course, marked ◇) · tenue |
+| `content/SCENE.md` | 37-38 | first responder · documenting the scene; public-sources method (UNODC, NIJ). Drafted as M1-M2 |
+| `content/IP-A5-FORCE.md` | A5 | graduated force, from Assemblée nationale documents |
+| `content/AMENDE-PAIEMENT.md` | 22 bis | AF deadlines, contestation, B2, NATINF open data |
+| `content/RETENIR-HORS-73.md` | 33 bis | 78-3, IPM, CESEDA, désertion |
+| `content/AJOUTS-FICHES-10-12-30.md` | 10, 12, 30 | amendments to reviewed cards (CPP 16, 151-154, 15-3) |
+| `content/CHRONOLOGIE_PMG.md` | — | the notebook's chapter order, which sets the order of the recueil; not a source |
 
-**Nothing in `draft/` has been reviewed.** Each file carries the card text, a numbered claims list
-with verification tags, and a brief for the reviewer. No draft is built, rendered or packaged until
-every claim has a verdict and the corrections are applied (§ 8); only then does its content move to
-`content/` and into HTML.
+Open items for the author are flagged in each Review intro — notably G3's course-only ◇ items, which
+rest on the author's course alone.
+
+Proposed cards wait in `draft/` before any of that. It holds only `draft/PROGRAMME-APJA.md` — the
+coverage map against the APJA module outline; orientation only, not a card and not a source.
 
 Only the **PDFs** are shared with other candidates, via GitHub releases. The repo itself is the
 workshop, not the deliverable.
@@ -142,11 +172,16 @@ To cut a release: `git tag v2026.09.22 && git push --tags`.
 A card is one `<section class="page" data-fam="…">` containing `.hdr`, `.body`, optional `.foot`,
 and `.stamp`.
 
-**Family colours** via `data-fam`: `fondations` (01-05, navy) · `infraction` (06-08, bordeaux) ·
-`enquete` (09-13, 26-33 and 35-36, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
-cyan) · `methode` (20-21 and 34, slate) · `histoire` (the gendarmerie cards — frise, organisation, galons — dark navy) · `route`
-(R1-R6, burnt orange) · `armement` (A1-A4, anthracite — deliberately neutral, because the colour
-codes *are* the subject of A1 and a coloured header would compete with them).
+**Family colours** via `data-fam`: `fondations` (01-05, navy) · `infraction` (06-08, 22-25 and 22 bis, bordeaux) ·
+`enquete` (09-13, 26-33, 33 bis and 35-38, green) · `jugement` (14-16, purple) · `garanties` (17-18, ochre) · `civil` (19,
+cyan) · `methode` (20-21 and 34, slate) · `histoire` (the gendarmerie cards — frise, organisation, territoriale, galons, G1-G3 — dark navy) · `route`
+(R1-R6, burnt orange) · `armement` (A1-A5, anthracite — deliberately neutral, because the colour
+codes *are* the subject of A1 and a coloured header would compete with them) · `statut` (D1-D11,
+olive — statut militaire, déontologie, discipline, récompenses).
+
+**Card numbers.** A « bis » card (22 bis, 33 bis) prints its suffix small in the header
+(`<div class="hdr__num">22<small>bis</small></div>`); its file is `fiche-22bis.html`. The scene cards
+were drafted as M1-M2 and built as **37-38** in the justice numbering.
 
 **Zone layout** — `.body.body--zones` holds:
 - `.key` — the *idée-clef* banner, full width
@@ -194,10 +229,11 @@ Target 90–98 %. Below ~70 % the page looks empty — add a `.notes` block or e
 ≤ 99 %. Current factors — cards not listed are at 1.00:
 
 ```
-01 0.858   02 0.900   03 0.856   06 0.924   09 0.848
-11 0.900   12 0.966   13 0.900   organisation 0.89
-route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854   23 0.888   25 0.935
-26 0.851   28 0.867   29 0.868   30 0.854   32 0.895   33 0.850   34 0.867
+01 0.858   02 0.900   03 0.856   06 0.924   09 0.848   10 0.900
+11 0.900   12 0.915   13 0.900   organisation 0.89
+route-R5 0.887   ip-A1 0.861   ip-A2 0.859   territoriale 0.873   22 0.854   22bis 0.929   23 0.888   25 0.935
+26 0.851   28 0.867   29 0.868   30 0.840   32 0.895   33 0.850   34 0.867
+statut-D1 0.904   statut-D2 0.870   statut-D5 0.840   statut-D7 0.929   statut-D8 0.970   gend-G1 0.928
 ```
 
 The armement set is A1–A4. A2 has been relieved twice already (safety material → A3, code de la
@@ -205,7 +241,13 @@ défense → A4). New legal material should open A5 rather than push A1/A2 below
 the type size *is* the message, since the colour chips and the article badges carry the structure.
 
 `fit.py` covers every card family and the organisation card, and honours `CHROME`. It rewrites the
-`zoom:` attribute in place — commit before running it if you want a clean diff.
+`zoom:` attribute in place — commit before running it if you want a clean diff. **Pass paths to fit
+only those cards** (`python3 build/fit.py build/statut/statut-D5.html`); with no argument it refits the
+whole deck.
+
+`fit.py` only ever shrinks. Cards that came out short were filled with a `.notes` block sized to the
+space left (D4, D9, D10, G3, A5, 33 bis, 37, 38), and D9, D10, A5 and 38 carry a card-level `<style>`
+that enlarges their hero text — refitting them will not undo either.
 
 So type size is **not uniform** across the deck; the densest cards read noticeably smaller. This is
 known and accepted. If a card needs to go below ~0.85, prefer splitting or re-laying-out.
@@ -331,6 +373,12 @@ public.** So:
 ---
 
 ## 9. Editorial rules
+- **PMG course material is never dropped for lack of a public source.** What the author's notebook
+  records from his training goes on the card, marked ◇ (« enseigné en préparation militaire ») and
+  tagged `[JUL]` in `content/`. A reviewer's *unverifiable* is not a reason to remove it — only *wrong*
+  is, and then the card says what the law says. The publication line still holds: nothing that
+  reproduces a restricted document (§ 8 bis). Learned on 3 October 2026, when « 40 % de police
+  judiciaire » and six other notebook items had been dropped as unsourced and had to be restored.
 - **State what you did not verify.** Several course dates (1848 Garde républicaine, 1918
   sous-officier rank, 1921 mobile platoons, 1928 police de la route, 1950, 1958 PGHM, 1987) are
   carried on the author's authority, not checked.

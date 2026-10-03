@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Ajuste, fiche par fiche, un facteur de densité pour tenir sur une page A5."""
-import re, glob, subprocess, math, os
+import re, glob, subprocess, math, os, sys
 
 CHROME = os.environ.get('CHROME', 'google-chrome-stable')
 
@@ -23,7 +23,13 @@ def set_zoom(path, z):
 CARDS = (sorted(glob.glob('build/fiches/fiche-*.html'))
          + sorted(glob.glob('build/route/route-*.html'))
          + sorted(glob.glob('build/ip/ip-*.html'))
+         + sorted(glob.glob('build/statut/statut-*.html'))
+         + sorted(glob.glob('build/gend/gend-*.html'))
          + ['build/organisation.html', 'build/territoriale.html', 'build/galons.html'])
+
+# Arguments facultatifs : ne régler que les fiches désignées (chemins .html).
+if len(sys.argv) > 1:
+    CARDS = sys.argv[1:]
 
 for f in CARDS:
     n = os.path.basename(f).replace('.html', '')
