@@ -1,0 +1,84 @@
+% Deux pages par feuille A4 paysage, à fond perdu, pour le massicot.
+%
+% Une A5 est aussi haute qu'une A4 est large : avec les 5 mm que l'imprimante ne marque pas et un
+% fond perdu, deux pages ne tiennent qu'à 93 % (138 × 196 mm). Pas de place pour des traits de
+% coupe : les cotes sont données dans le README.
+%
+% Les fiches n'ont pas de fond perdu dessiné : on prolonge leurs bords. La bande de la page prise
+% entre 0,6 et 1,2 mm du bord est étirée sur le fond perdu (et 0,3 mm en deçà de la coupe, ce qui
+% couvre le liseré gris que Chrome laisse au bord droit).
+%
+% Deux ordres (\ordre, fixé par livret.sh) :
+% - pile : « coupe et empile ». Après la coupe du milieu, la pile des moitiés gauches (pages 1 à
+%   N/2) se pose sur celle des moitiés droites.
+% - livret : agrafage à cheval. Les deux pages d'une planche se touchent au pli, sans fond perdu ;
+%   on plie, on agrafe, puis on rogne tête, pied et gouttière du livret fermé.
+% Recto verso bord court dans les deux cas.
+\documentclass{article}
+\usepackage[paperwidth=297mm,paperheight=210mm,margin=0pt]{geometry}
+\usepackage{graphicx,tikz}
+\pagestyle{empty}\setlength{\parindent}{0pt}
+\providecommand\src{out/livret/recueil.pdf}   % livret.sh le fixe
+\providecommand\ordre{pile}
+\def\W{148}\def\H{210}                  % page source (A5), mm
+\def\M{5}\def\G{2}\def\B{3}             % marge non imprimable, fond perdu imprimé, fond perdu dessiné
+\def\Si{0.6}\def\So{1.2}\def\Ov{0.3}    % bande prolongée, recouvrement en deçà de la coupe
+\pgfmathsetmacro\s{(210-2*(\M+\G))/\H}  % 196 / 210
+\pgfmathsetmacro\w{\W*\s}
+\def\pli{148.5}                         % milieu de la feuille : coupe ou pli
+\def\livret{livret}
+\ifx\ordre\livret
+  \pgfmathsetmacro\X{\pli-\w}\def\Xr{\pli}
+\else
+  \pgfmathsetmacro\X{(297-2*\w-2*\B)/2} % du bord de la feuille à la première coupe
+  \pgfmathsetmacro\Xr{\X+\w+2*\B}       % coupe gauche de la page de droite
+\fi
+\pgfmathsetmacro\Y{\M+\G}
+% Prolongement, en unités de la page source : u = A*u' + C (u = distance vers l'intérieur)
+\pgfmathsetmacro\b{\B/\s}\pgfmathsetmacro\o{\Ov/\s}
+\pgfmathsetmacro\A{(\b+\o)/(\So-\Si)}
+\pgfmathsetmacro\C{\o-\A*\So}
+\pgfmathsetmacro\Dw{\W*(1-\A)-\C}
+\pgfmathsetmacro\Dh{\H*(1-\A)-\C}
+\newsavebox\pg
+\newcommand\piece[3]{% zone à remplir (deux coins), transformation de la page
+  \begin{scope}\clip (#1) rectangle (#2);
+    \begin{scope}[#3]\node[inner sep=0,outer sep=0,anchor=south west,transform shape] at (0,0) {\usebox\pg};\end{scope}
+  \end{scope}}
+\newcommand\slot[2]{% n° de page, abscisse de sa coupe gauche (mm)
+  \sbox\pg{\includegraphics[width=\W mm,height=\H mm,page=#1]{\src}}%
+  \begin{scope}[shift={(current page.south west)},xshift=#2 mm,yshift=\Y mm,scale=\s]
+    \node[inner sep=0,outer sep=0,anchor=south west,transform shape] at (0,0) {\usebox\pg};
+    \piece{0,-\b}{\W,\o}{yshift=\C mm,yscale=\A}
+    \piece{0,\H-\o}{\W,\H+\b}{yshift=\Dh mm,yscale=\A}
+    \piece{-\b,0}{\o,\H}{xshift=\C mm,xscale=\A}
+    \piece{\W-\o,0}{\W+\b,\H}{xshift=\Dw mm,xscale=\A}
+    \piece{-\b,-\b}{\o,\o}{xshift=\C mm,yshift=\C mm,xscale=\A,yscale=\A}
+    \piece{\W-\o,-\b}{\W+\b,\o}{xshift=\Dw mm,yshift=\C mm,xscale=\A,yscale=\A}
+    \piece{-\b,\H-\o}{\o,\H+\b}{xshift=\C mm,yshift=\Dh mm,xscale=\A,yscale=\A}
+    \piece{\W-\o,\H-\o}{\W+\b,\H+\b}{xshift=\Dw mm,yshift=\Dh mm,xscale=\A,yscale=\A}
+  \end{scope}}
+\newcommand\face[2]{% page de gauche, page de droite ; chacune reste dans sa moitié de feuille
+  \mbox{}\begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm]
+    \begin{scope}\clip ([xshift=-1mm]current page.south west) rectangle ([xshift=\pli mm]current page.north west);
+      \slot{#1}{\X}\end{scope}
+    \begin{scope}\clip ([xshift=\pli mm]current page.south west) rectangle ([xshift=1mm]current page.north east);
+      \slot{#2}{\Xr}\end{scope}
+  \end{tikzpicture}\clearpage}
+\begin{document}
+\pdfximage{\src}\edef\N{\the\pdflastximagepages}
+\pgfmathtruncatemacro\n{\N/4}
+\foreach \i in {1,...,\n}{%
+  \ifx\ordre\livret
+    % feuille i, de l'extérieur vers le centre : N-2i+2 | 2i-1, puis 2i | N-2i+1
+    \pgfmathtruncatemacro\ga{\N-2*\i+2}\pgfmathtruncatemacro\gb{2*\i-1}%
+    \pgfmathtruncatemacro\da{2*\i}\pgfmathtruncatemacro\db{\N-2*\i+1}%
+    \face{\ga}{\gb}\face{\da}{\db}%
+  \else
+    \pgfmathtruncatemacro\ga{2*\i-1}\pgfmathtruncatemacro\gb{2*\i}%
+    \pgfmathtruncatemacro\da{2*(\i+\n)-1}\pgfmathtruncatemacro\db{2*(\i+\n)}%
+    \face{\ga}{\da}% recto : feuillet i à gauche, feuillet i + N/4 à droite
+    \face{\db}{\gb}% verso : retourné bord court, chaque verso derrière son recto
+  \fi
+}
+\end{document}

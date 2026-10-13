@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Fiches PMG — couverture du livret</title>
+<!-- Gabarit : build/livret/couverture.py remplit les {{…}} depuis les fiches et l'ORDRE de package.sh. -->
+<base href="{{BASE}}">
+<link rel="stylesheet" href="fiche.css">
+<link rel="stylesheet" href="livret/couverture.css">
+</head>
+<body>
+
+<!-- 1re de couverture -->
+<section class="page cv cv-front">
+  <div class="cv-eyebrow">Préparation militaire gendarmerie · réserve</div>
+  <div class="cv-title">Fiches<br>PMG</div>
+  <div class="cv-sub">{{TOTAL}} fiches de révision en {{NCAT}} catégories</div>
+  <div class="cv-strip">{{BANDE}}</div>
+  <div class="cv-cats">{{CATEGORIES}}</div>
+  <div class="cv-foot">
+    <div class="cv-ed">Édition du {{EDITION}}</div>
+    <div class="cv-note">Les notes d’un candidat. Elles ne remplacent ni le cours ni Légifrance.</div>
+  </div>
+</section>
+
+<!-- 2e de couverture -->
+<section class="page cv-som">
+  <div class="cv-h">Sommaire</div>
+  <div class="cv-h__s">{{TOTAL}} fiches dans l’ordre du recueil · chaque fiche porte la lettre de sa catégorie et son rang</div>
+  <div class="cv-som__cols">{{SOMMAIRE}}</div>
+</section>
+
+<!-- 3e de couverture -->
+<section class="page cv cv-avt">
+  <div class="cv-h">Avant d’utiliser ces fiches</div>
+  <div class="cv-p"><b>Ce n’est pas le programme de la PMG.</b>Rien de l’examen n’a servi à les construire, et rien ici n’est validé par la gendarmerie. Les fiches de culture juridique sont de la culture générale&nbsp;: choisies parce qu’elles sont utiles, pas parce qu’elles sont examinées.</div>
+  <div class="cv-p"><b>L’ordre est celui d’un carnet.</b>Celui de l’auteur, au fil des séances de sa préparation, dans un centre, en 2026. Il dit quand un sujet est venu, pas ce qui est examiné.</div>
+  <div class="cv-p"><b>Ce n’est pas une liste de révision.</b>Ce qui manque ici peut être examiné&nbsp;; ce qui y figure peut ne jamais l’être.</div>
+  <div class="cv-p"><b>Exactes à la date de l’édition, pas au-delà.</b>Le droit change, la doctrine aussi. Vérifiez tout ce qui compte sur Légifrance et auprès de vos instructeurs.</div>
+  <div class="cv-sign">Les notes d’un candidat, publiées au cas où elles serviraient à d’autres.</div>
+</section>
+
+<!-- 4e de couverture -->
+<section class="page cv cv-back">
+  <div class="cv-dos">
+    <div class="cv-strip">{{BANDE}}</div>
+    <div class="cv-dos__t">Fiches PMG</div>
+    <div class="cv-ed">Édition du {{EDITION}}</div>
+    <div class="cv-url">Version à jour&nbsp;: github.com/AnnoyingTechnology/esr-pmg-training-material</div>
+  </div>
+</section>
+
+</body>
+</html>

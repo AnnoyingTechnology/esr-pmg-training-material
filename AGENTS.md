@@ -37,11 +37,17 @@ source. `build/package.sh` assembles the collections; nothing is built by hand a
 | `out/J1.pdf` … `out/J12.pdf` | culture juridique: sources, institutions, peine, jugement, recours, libertés, mineurs, civil, method |
 | `out/L.pdf` | the lexique |
 | `out/FICHES-PMG-A5.pdf` | **the release artefact** — all 72 cards in order |
+| `out/livret/FICHES-PMG-*.pdf` | local only. `livret.sh` (§3) builds the A4 booklet (cover + cards) and its two full-bleed variants. Never released. |
 
-**One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else. The A4 imposition step
-was removed: A5 is half an A4, so any print dialog does it. If you add a card, add it to the
-`ORDRE` list in `package.sh` — do not add a new output file. `package.sh` refuses to build if a rendered
-card is missing from `ORDRE` or listed twice.
+**One deliverable.** `package.sh` produces `out/FICHES-PMG-A5.pdf` and nothing else, and it is the only
+release asset. A plain two-up print needs no imposition: A5 is half an A4, so any print dialog does it. If
+you add a card, add it to the `ORDRE` list in `package.sh` — do not add a new output file. `package.sh`
+refuses to build if a rendered card is missing from `ORDRE` or listed twice, so it also rejects any
+other PDF left in `out/`: anything else goes in a subfolder.
+
+**One local exception: the booklet** (13 October 2026). `build/livret.sh` builds an A4 booklet to fold
+once and staple, for the author's own printing, into `out/livret/`. It is not a release asset and CI
+does not build it (§3, *The booklet*).
 
 **The order of the recueil** follows the chronology of the author's PMG notebook, recorded publicly in
 `content/CHRONOLOGIE_PMG.md` (topic titles only — the notebook stays private): the notebook's 31 pages
@@ -143,8 +149,8 @@ HTML + fiche.css  ──chrome --print-to-pdf──▶  A5 PDF  ──pdfunite�
 ```
 
 Available and verified on this machine: `google-chrome-stable` (v152), `pdfunite`,
-`pdfinfo`, `pdftoppm`, `mutool`, `inkscape`, `pandoc`, Python 3 with `PIL` + `numpy`.
-**No** `weasyprint`, **no** `pypdf`.
+`pdfinfo`, `pdftoppm`, `mutool`, `inkscape`, `pandoc`, `pdfjam` (TeX Live), Python 3 with `PIL` +
+`numpy`. **No** `weasyprint`, **no** `pypdf`.
 
 Fonts: **Lato** (full weight family, local) + DejaVu fallback for symbols. No webfonts — the CSS
 must render offline.
@@ -155,6 +161,7 @@ must render offline.
 ./build/render.sh     # all card HTML → out/*.pdf
 ./build/check.sh      # fill ratio per page; exits non-zero if anything is >100 %
 ./build/package.sh    # assemble every card into out/FICHES-PMG-A5.pdf
+./build/livret.sh     # optional, local: the A4 booklet → out/livret/ (needs package.sh first)
 ```
 
 `render.sh` and `check.sh` honour `CHROME=/path/to/binary`; CI sets it for `render.sh`. Everything else is fixed.
@@ -169,6 +176,65 @@ replaces the **`courant`** release (a full release, marked latest, not a pre-rel
 the PDF before every push. Do not add a CI gate back.
 
 To cut a release: `git tag v2026.09.22 && git push --tags`.
+
+### The booklet (`build/livret.sh`)
+
+```
+build/livret/ ──couverture.py──▶ cover (4 A5) ─┐
+out/FICHES-PMG-A5.pdf ─────────────────────────┴─mutool merge─▶ 76 A5 ──pdfjam --booklet, 97 %──▶ 19 A4 sheets
+```
+
+- **Page order:** cover · contents · the 72 cards · notice · back cover. `livret.sh` refuses a page
+  count that is not a multiple of 4.
+- **The cover is generated, never hand-copied.** `build/livret/couverture.html` is a template;
+  `couverture.py` fills it from `ORDRE` in `package.sh`, each card's header (category and title), the
+  category colours in `fiche.css` and the date and hash of the last commit. Adding or renaming a card
+  updates the contents page by itself.
+- **The contents page must stay on one page.** It is split into two columns between categories,
+  balanced automatically. On 13 October 2026 it ended 16 mm above the bottom edge, room for about six
+  more cards. If it overflows, tighten `.cv-row` — never drop an entry. Rasterise
+  `out/livret/couverture.pdf` and look.
+- **The notice (page 75) is the README's warning, in French.** Keep the two in sync. The intro rule
+  applies to it as to any card: never imply that something is on the programme.
+- **No bleed.** Cover content stays at least 10 mm from the edge, because office printers do not mark
+  the outer 5 mm.
+- **Scale 0.97 — do not remove it.** Both office printers tested report a 5 mm unprintable margin,
+  and the card headers carry text 3 mm from the edge (lowest ink 4.6 mm from the bottom). At 97 %
+  that text sits about 6 mm from the edge of the sheet.
+- **Printing:** double-sided, flipped on the short edge, at actual size (CUPS: `-o print-scaling=none`,
+  so the printer does not shrink the page again). Test with the first two sheets (pages 1-4): nested and
+  folded, they read cover, contents, G1, G2 … J12, L, notice, back cover, all upright.
+- **Validated in print on 13 October 2026:** the 72-page imposition, page order and duplex
+  orientation, on two test sheets. The cover was approved on screen the same day.
+- `mutool merge` also rewrites a sound xref table: the one `pdfunite` writes is reported broken
+  (§10).
+- **Full-bleed variants, for a guillotine** (13 Oct 2026): `build/livret/fond-perdu.tex` (pdfLaTeX +
+  TikZ, two passes) puts the same 76 pages two per A4 landscape side, in one of two orders set by
+  `\ordre`:
+  - `livret`: saddle stitch, the same order as the pdfjam booklet. The facing pages touch at the fold,
+    with no bleed there. You fold, staple, and then trim the head, foot and open edge. Creep is not
+    compensated: the middle sheets lose up to about 2 mm more at the open edge, and the cards' 9 mm
+    side padding absorbs it.
+  - `pile`: cut and stack. Sheet *i* carries leaves *i* and *i* + N/4, so after the middle cut the
+    left halves go on top of the right halves.
+
+  Each page is clipped to its half of the sheet, so a page's bleed never runs onto its neighbour. The
+  outputs are `out/livret/FICHES-PMG-fond-perdu-{livret,pile}-A4.pdf`.
+  - **Two per sheet costs 7 %.** A5 is as tall as A4 is wide. Keeping the 5 mm the printer cannot mark
+    plus 2 mm of printed bleed leaves 196 mm, so the scale is 196/210 = 0.933 (138 × 196 mm). The author
+    chose two per sheet over full size at one per sheet ("we won't guillotine each A4 for one page").
+  - **No crop marks; the README gives the cut positions.** Both variants: 7 mm off the top and the
+    bottom. Stapled: the open edge 138.1 mm from the spine. Loose leaves: 7.4, 145.5, 151.5 and
+    289.6 mm from the left.
+  - **Bleed:** 3 mm is drawn and the printer clips the outermost millimetre. The cards draw no bleed of
+    their own, so the band of each page between 0.6 and 1.2 mm from the edge is stretched over the
+    bleed and over 0.3 mm inside the cut. That also hides the hairline Chrome leaves on the right edge.
+    Do not sample closer to the content: the caveat line sits 2.4 mm from the bottom edge before
+    scaling.
+  - **Printing:** double-sided, short edge, actual size. Validated in print on 13 October 2026 with
+    `pile`: front and back line up within about 1 mm, which the 2 mm bleed absorbs, and the full 19
+    sheets were printed. `livret` uses the same geometry and the saddle order already validated with
+    the pdfjam booklet.
 
 ---
 
@@ -473,3 +539,7 @@ warning of the code de procédure pénale, brought back as a one-line `.caveat` 
   9 April 2026 and the CPP rewrite effective 1 Jan 2029. **Not independently verified.**
 - The organisation card (G3) is dense. Splitting the UNPJ block onto its own card is the natural
   next move if more is added.
+- **`pdfunite` (poppler 26.07) writes a broken xref table** (seen 13 Oct 2026): `mutool` reports
+  "incorrect number of xref entries" on `out/FICHES-PMG-A5.pdf` and on any two-card `pdfunite`, never on
+  Chrome's single-card PDFs. Viewers repair it silently. The release PDF is still built that way;
+  `livret.sh` is not affected.
